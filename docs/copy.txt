@@ -1,0 +1,111 @@
+Game Details Schema
+------------------
+
+Details:
+- Time
+- Day
+- Month
+- Year
+- Court
+- Game_against
+- Our_Scores
+- Their_Scores
+- Good_bad_ref
+- Who_was_the_ref
+- Player_Calm
+- Player_Angry
+- Intensity
+- Other_team_calm
+- Other_team_angry
+- Amount_of_timeouts
+- Amount_of_refs
+- Amount_of_subs
+- Total_team_players
+- Other_team_players
+- Amount_of_fill_in
+- Clear_good_player
+
+Team Example:
+Newport Raiders U16 Boys Julie
+
+Code Review Questions:
+--------------------
+1. Why have you made these changes?
+2. What will these changes do to help later?
+3. What's the difference between my implementation and yours?
+4. How does it make the code cleaner and more reusable?
+
+Please explain everything with examples.
+
+Function References:
+------------------
+- highest_stats_game()
+- get_a_team(cls, team, The_game, look_good=False)
+- get_all_players_game_stats(data, players_name)
+
+Report Generation Example:
+------------------------
+````python
+report += "\n Game-by-Game Stats:\n"
+for game, stats in game_stats.items():
+    stat_line = ", ".join([f"{k}: {v}" for k, v in stats.items()])
+    report += f"    {game}: {stat_line}\n"
+
+Claude Remember Chat:
+-------------------
+This is from another chat remember it he was a good guy
+
+Hey apparently this chat is too long so i going start a new one in a differnt chat can you remember everything pleaseeee
+
+I can't remember anything from this chat in a new one - each conversation is completely separate and I have no memory between them.
+What you should do:
+1. Save your current `player_report.py` file (you already have it)
+2. In the new chat, share that file with me
+3. Tell me what you need next (we were working on the last two functions: `game_rating` and `season_game_rating`)
+Quick summary for the new chat:
+* You have a PyQt5 basketball stats app
+* 4/6 features are done: Quick Stats, Compare Games, Grading, Highlights
+* Still need: Game Rating (individual game) and Season Game Rating (all games)
+* We just wrote `show_game_rating()` and `format_game_rating_html()`
+* Need to: connect button, update `back_to_main_menu()`, then do `season_game_rating`
+Start the new chat with your current code and I'll pick up where we left off!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Parameters
+Returns

@@ -1,0 +1,42 @@
+mainMenu line 14
+
+======================================================= WELCOME TO DRAGONE =======================================================
+             
+             1.                                                  Get details on the game
+             2.                                              Compare games, quarters and players
+             3.                                      Get stats and analytics on games, quarters and players
+
+             
+             Make your choice (1-3):  
+
+
+             ------------------------------------------------------- WELCOME TO DRAGONE -------------------------------------------------------
+             
+             1.                                                  Get details on the game
+             2.                                              Compare games, quarters and players
+             3.                                      Get stats and analytics on games, quarters and players
+
+                    Make your choice (1-3):  
+
+
+             ******************************************************* WELCOME TO DRAGONE *******************************************************
+             
+             1.                                                  Get details on the game
+             2.                                              Compare games, quarters and players
+             3.                                      Get stats and analytics on games, quarters and players
+
+                    Make your choice (1-3):
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+======================================== Myles Dragone Report Card ======================================
+
+1. Get quick stats 
+2. Comapre all games
+3. season grading
+4. best worst game highlights               
+5. Game rating
+6. Season Game Rating
