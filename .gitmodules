@@ -1,0 +1,3 @@
+[submodule "MylesBasketballStatsAndData"]
+	path = MylesBasketballStatsAndData
+	url = https://github.com/SigmaCoder12205/Old-basketball-stats.git
