@@ -366,8 +366,6 @@ class PlayerReport(QWidget):
         output += "</div></div>"
         self.trends_display.setHtml(output)
 
-        
-
     def show_compare_all_games(self):
         # Hide main menu buttons
         for btn in [self.get_quick_stats_btn, self.compare_all_games_btn,
