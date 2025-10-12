@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
+=======
+[submodule "Old-basketball-stats"]
+	path = Old-basketball-stats
+	url = https://github.com/SigmaCoder12205/Old-basketball-stats.git
+>>>>>>> Stashed changes
 [submodule "MylesBasketballStatsAndData"]
 	path = MylesBasketballStatsAndData
 	url = https://github.com/SigmaCoder12205/Old-basketball-stats.git
