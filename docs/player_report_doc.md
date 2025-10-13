@@ -3132,4 +3132,1039 @@ Display the Game Rating interface for individual game performance analysis.
             - HTML rendering enables rich color-coded display
             - game_list created from dictionary keys (order may vary)
             - Dropdown repopulated each time (could cache for performance)
-          - 
+
+=== Show Game Rating ===
+
+Display the Game Rating interface for individual game performance analysis.
+        
+        Shows a dropdown menu populated with all games played during the season, and
+        displays a detailed performance rating (0-100) for the selected game with a
+        stat-by-stat contribution breakdown. Unlike other features with fixed stat
+        options, this dropdown contains dynamic game names. Implements widget reuse
+        pattern for performance.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Side Effects:
+            - Hides all 6 main menu buttons
+            - Retrieves all games played from AccessData
+            - Extracts game names as list
+            - Shows or creates 3 widgets: game_selector, game_rating_display, back_button_game_rating
+            - Populates game_selector dropdown with actual game names
+            - Connects game_selector dropdown to format_game_rating() method
+            - Sets game_rating_display to read-only mode
+            - Connects back_button_game_rating to back_to_main_menu() method
+            - Calls format_game_rating() with first game to show default rating
+            - All widgets added to main vbox layout
+
+        Widget Lifecycle:
+            First Call:
+                1. Check if widgets exist (hasattr returns False)
+                2. Create new widgets
+                3. Configure and connect signals
+                4. Add to layout
+                5. Show widgets
+            
+            Subsequent Calls:
+                1. Check if widgets exist (hasattr returns True)
+                2. Skip creation (widgets already exist)
+                3. Show existing widgets (faster, preserves state)
+
+        Widgets Created/Shown:
+            game_selector (QComboBox):
+                - Dropdown populated with dynamic game names from season data
+                - Options: All games player participated in (e.g., "Game_1", "Game_2", "Game_3")
+                - Connected to: format_game_rating() via currentTextChanged signal
+                - Purpose: User selects which specific game to rate
+                - Signal fires automatically on selection change
+                - Note: Dynamic content, not fixed like other feature dropdowns
+            
+            game_rating_display (QTextEdit):
+                - Multi-line text display area
+                - Read-only: User cannot edit content
+                - HTML rendering enabled (shows styled rating with breakdown)
+                - Purpose: Displays 0-100 rating with color coding and stat contributions
+                - Shows: Large rating number, descriptive label, itemized breakdown
+                - Styled by CSS: monospace font, dark background, padding
+            
+            back_button_game_rating (QPushButton):
+                - Text: "Back to Main Menu"
+                - Object name: "backButton" (for CSS styling)
+                - Connected to: back_to_main_menu() via clicked signal
+                - Purpose: Return to main menu and hide this interface
+                - Styled by CSS: gradient background, hover effects
+
+        Widgets Hidden:
+            Main Menu (6 buttons):
+                - get_quick_stats_btn
+                - compare_all_games_btn
+                - season_grading_btn
+                - best_worst_game_btn
+                - game_rating_btn
+                - season_game_rating_btn
+
+        Execution Flow:
+            1. Hide all main menu buttons (6 buttons)
+            2. Retrieve all game stats from AccessData (individual games, not totals)
+            3. Extract game names as list (e.g., ["Game_1", "Game_2", "Game_3"])
+            4. Check if game_selector exists
+               - If yes: Show it
+               - If no: Create, populate with game names, connect, add to layout
+            5. Check if game_rating_display exists
+               - If yes: Show it
+               - If no: Create, set read-only, add to layout
+            6. Check if back_button_game_rating exists
+               - If yes: Show it
+               - If no: Create, name, connect, add to layout
+            7. If games exist: Call format_game_rating() with first game name
+
+        Default Display:
+            Shows rating for first game automatically:
+            - Large colored rating number (0-100)
+            - Descriptive label (Excellent, Good, Average, etc.)
+            - Stat breakdown showing contribution of each stat
+            - Color-coded contributions (green=positive, red=negative)
+
+        Dynamic Dropdown Population:
+            Game List Creation:
+                all_games = AccessData.Get_season_stats(sum_total=False)
+                # Returns: {'Game_1': {...}, 'Game_2': {...}, 'Game_3': {...}}
+                
+                game_list = list(all_games.keys())
+                # Converts to: ['Game_1', 'Game_2', 'Game_3']
+                
+                game_selector.addItems(game_list)
+                # Populates dropdown with actual game names
+
+        Signal-Slot Connections:
+            game_selector.currentTextChanged → format_game_rating(game_name)
+            back_button_game_rating.clicked → back_to_main_menu()
+
+        Performance Optimization:
+            Widget Reuse Pattern:
+                - First access: ~50ms (widget creation + layout + data retrieval)
+                - Subsequent access: ~10ms (show existing widgets + re-populate dropdown)
+                - Note: Dropdown repopulated each time (ensures current data)
+                - Display widget reused for efficiency
+
+        Layout Addition:
+            All widgets added to self.vbox (main vertical layout):
+            [Header]
+            [game_selector]                 ← Added here
+            [game_rating_display]           ← Added here
+            [back_button_game_rating]       ← Added here
+
+        Connected To:
+            game_rating_btn.clicked signal triggers this method
+
+        Related Methods:
+            format_game_rating(): Formats rating display when game selected
+            game_rating(): Calculates the 0-100 rating
+            back_to_main_menu(): Returns to main menu
+
+        Example User Flow:
+            1. User clicks "Game Rating" button
+            2. show_game_rating() called
+            3. Main menu hidden
+            4. System retrieves all games: ["Game_1", "Game_2", "Game_3"]
+            5. Dropdown populated with game names
+            6. Display and back button shown/created
+            7. Default rating for "Game_1" displayed:
+               
+               Game Rating - Game_1
+               
+               Overall Rating
+               45.2
+               Average
+               
+               Stat Breakdown
+               Points (10 × 1.5)       +15.0
+               Assists (2 × 1.0)       +2.0
+               Rebounds (8 × 1.25)     +10.0
+               Fouls (1 × -0.5)        -0.5
+               Turnovers (2 × -1.5)    -3.0
+               
+            8. User selects "Game_2" from dropdown
+            9. format_game_rating("Game_2") automatically called
+            10. Display refreshes with Game_2 rating
+            11. User clicks "Back to Main Menu"
+            12. back_to_main_menu() hides these widgets
+
+        Empty Game List Handling:
+            if game_list:
+                self.format_game_rating(game_list[0])
+            
+            - Checks if any games exist
+            - Only formats rating if games are available
+            - Prevents IndexError on empty list
+            - If no games: dropdown empty, no default rating shown
+
+        Differences from Other Features:
+            Dynamic Dropdown Content:
+                - Other features: Fixed options (Points, Fouls, etc.)
+                - This feature: Dynamic game names from data
+                - Dropdown content changes based on season data
+                - More flexible but requires data retrieval
+            
+            Game-Specific Display:
+                - Shows ONE game at a time in detail
+                - Deep dive into individual performance
+                - Complements "Season Game Rating" (shows all games)
+
+        Data Retrieval:
+            AccessData.Get_season_stats(players_name, sum_total=False):
+                Returns: {
+                    'Game_1': {'Points': 10, 'Fouls': 1, ...},
+                    'Game_2': {'Points': 22, 'Fouls': 1, ...},
+                    'Game_3': {'Points': 8, 'Fouls': 3, ...}
+                }
+                Purpose: Get all individual game data to extract names
+
+        Visual Design:
+            Rating Display:
+                - Prominent number (64px font)
+                - Color-coded by performance level
+                - Descriptive label provides context
+                - Centered for visual impact
+            
+            Stat Breakdown:
+                - Transparent to user how rating calculated
+                - Shows contribution of each stat
+                - Helps identify strengths and weaknesses
+                - Color-coded for quick scanning
+
+        Use Cases:
+            Performance Analysis:
+                - Review specific game performance
+                - Understand rating composition
+                - Identify which stats hurt/helped rating
+                - Compare different games by switching dropdown
+            
+            Post-Game Review:
+                - Coach and player can review together
+                - Objective performance metric
+                - Detailed breakdown for discussion
+                - Visual feedback on performance quality
+
+        Notes:
+            - Read-only prevents accidental user edits
+            - Dynamic dropdown ensures always shows available games
+            - Default first game selection provides immediate value
+            - Object name "backButton" required for CSS styling
+            - hasattr checks prevent AttributeError on first access
+            - Empty list check prevents crash if no games played
+            - HTML rendering enables rich color-coded display
+            - game_list created from dictionary keys (order may vary)
+            - Dropdown repopulated each time (could cache for performance)
+
+=== Season Game Rating ===
+
+    Calculate performance ratings for all games in the season.
+
+    Computes individual game ratings (0-100) for every game the player participated
+    in during the season, calculates the season average rating, and returns both
+    the average and individual ratings in a structured dictionary format. Provides
+    a comprehensive view of performance consistency across the season.
+
+    Parameters:
+    None
+
+    Returns:
+    dict: Dictionary containing season average and all individual game ratings:
+        {
+            "average": float,              # Season average rating (0.0-100.0)
+            "all_games": {
+                "Game_1": float,           # Rating for Game_1
+                "Game_2": float,           # Rating for Game_2
+                "Game_3": float,           # Rating for Game_3
+                ...
+            }
+        }
+        
+        OR {"average": 0, "all_games": {}} if no games played
+        OR "can't dived by 0" string if ZeroDivisionError (typo preserved)
+
+    Algorithm:
+    1. Retrieve all game stats from AccessData (individual games, not totals)
+    2. Check if any games exist:
+        - If empty: Return dict with 0 average and empty games dict
+    3. Initialize empty ratings list and game_rating dictionary
+    4. For each game in season:
+        a. Calculate rating using game_rating() method
+        b. Append rating to ratings list (for average calculation)
+        c. Store game_name → rating mapping in game_rating dict
+    5. Calculate average:
+        a. Sum all ratings
+        b. Divide by count of ratings
+        c. Wrap in try-except for ZeroDivisionError
+    6. Return dictionary with rounded average and all game ratings
+
+    Data Source:
+    AccessData.Get_season_stats(players_name, sum_total=False, look_good=False):
+        Returns: {
+            'Game_1': {'Points': 10, 'Fouls': 1, ...},
+            'Game_2': {'Points': 22, 'Fouls': 1, ...},
+            'Game_3': {'Points': 8, 'Fouls': 3, ...}
+        }
+        Purpose: Get all games to calculate ratings for each
+
+    Calculation Process:
+    Step 1 - Retrieve data:
+        all_game_stats = {'Game_1': {...}, 'Game_2': {...}, 'Game_3': {...}}
+
+    Step 2 - Calculate individual ratings:
+        Game_1: game_rating('Game_1') → 45.2
+        Game_2: game_rating('Game_2') → 98.3
+        Game_3: game_rating('Game_3') → 62.7
+        
+        ratings = [45.2, 98.3, 62.7]
+        game_rating = {'Game_1': 45.2, 'Game_2': 98.3, 'Game_3': 62.7}
+
+    Step 3 - Calculate average:
+        avg_rating = (45.2 + 98.3 + 62.7) / 3 = 206.2 / 3 = 68.73
+        Rounded: 68.7
+
+    Step 4 - Build result:
+        return {
+            'average': 68.7,
+            'all_games': {
+                'Game_1': 45.2,
+                'Game_2': 98.3,
+                'Game_3': 62.7
+            }
+        }
+
+    Average Calculation:
+    Formula: sum(all_ratings) / count(ratings)
+
+    Examples:
+        Consistent Performance:
+            Ratings: [65.0, 68.0, 66.0]
+            Average: 66.3 (low standard deviation)
+        
+        Inconsistent Performance:
+            Ratings: [20.0, 95.0, 45.0]
+            Average: 53.3 (high standard deviation)
+        
+        Improving Performance:
+            Ratings: [40.0, 60.0, 80.0]
+            Average: 60.0 (upward trend)
+
+    Return Value Structure:
+    Success Case:
+        {
+            "average": 68.7,          # Float, 1 decimal place
+            "all_games": {
+                "Game_1": 45.2,       # Individual ratings
+                "Game_2": 98.3,
+                "Game_3": 62.7
+            }
+        }
+
+    No Games Case:
+        {
+            "average": 0,             # Integer 0, not float
+            "all_games": {}           # Empty dictionary
+        }
+
+    ZeroDivisionError Case:
+        "can't dived by 0"            # String (typo: "dived" not "divide")
+        Note: This shouldn't happen if no-games case handled correctly
+
+    Edge Cases:
+    No Games Played:
+        - all_game_stats is empty dict
+        - Returns {"average": 0, "all_games": {}}
+        - Handled before division attempt
+
+    Single Game:
+        - ratings list has 1 element
+        - Average equals that single rating
+        - Example: [75.0] → average 75.0
+
+    All Zero Ratings:
+        - ratings list like [0.0, 0.0, 0.0]
+        - Average: 0.0
+        - Valid result (very poor performances)
+
+    ZeroDivisionError:
+        - Should be prevented by no-games check
+        - Try-except as safety net
+        - Returns string instead of dict (inconsistent return type)
+
+    Performance Consistency Metrics (not calculated but derivable):
+    Standard Deviation:
+        - Measure of rating variability
+        - Low: Consistent performance
+        - High: Volatile performance
+
+    Trend Analysis:
+        - Compare early vs late season
+        - Identify improvement/decline patterns
+
+    Range:
+        - Difference between best and worst
+        - Shows performance span
+
+    Performance:
+    Time Complexity: O(n) where n = number of games
+        - Iteration through games: O(n)
+        - game_rating() calls: O(n)
+        - sum() operation: O(n)
+        - Total: O(3n) → O(n)
+
+    Space Complexity: O(n)
+        - ratings list: n elements
+        - game_rating dict: n key-value pairs
+
+    Typical Execution: ~30ms for 3 games (10ms per game rating)
+
+    Called By:
+    show_game_season_game_rating(): Uses data to create interface
+    format_season_game_rating(): Formats this data as HTML
+
+    Related Methods:
+    game_rating(): Calculates individual game ratings
+    format_season_game_rating(): Formats this data for display
+    show_game_season_game_rating(): Creates interface showing results
+
+    Data Structures Used:
+    ratings (list):
+        - Ordered collection of all ratings
+        - Used for average calculation
+        - Example: [45.2, 98.3, 62.7]
+
+    game_rating (dict):
+        - Maps game name to rating
+        - Preserves game identity
+        - Used for display
+        - Example: {'Game_1': 45.2, 'Game_2': 98.3}
+
+    Rounding:
+    round(avg_rating, 1):
+        - Rounds average to 1 decimal place
+        - Consistent with individual ratings
+        - Examples: 68.73 → 68.7, 75.0 → 75.0
+
+    Return Type Inconsistency:
+    Normal: dict with "average" and "all_games" keys
+    Error: string "can't dived by 0"
+    Issue: Calling code must handle both types
+    Better: Always return dict, even with error flag
+
+    Example Return Values:
+    Good Season:
+        {
+            'average': 75.5,
+            'all_games': {
+                'Game_1': 70.2,
+                'Game_2': 78.3,
+                'Game_3': 78.0
+            }
+        }
+
+    Inconsistent Season:
+        {
+            'average': 55.0,
+            'all_games': {
+                'Game_1': 20.5,
+                'Game_2': 90.0,
+                'Game_3': 54.5
+            }
+        }
+
+    Empty Season:
+        {
+            'average': 0,
+            'all_games': {}
+        }
+
+    Use Cases:
+    Season Overview:
+        - Quick assessment of overall season quality
+        - Compare average to expectations
+        - Identify best/worst games
+
+    Performance Tracking:
+        - Monitor consistency across games
+        - Detect improvement or decline trends
+        - Compare to teammates (if available)
+
+    Goal Setting:
+        - Use average as baseline
+        - Set targets for future games
+        - Track progress toward goals
+
+    Notes:
+    - Typo in error message: "dived" should be "divide"
+    - ZeroDivisionError catch likely unnecessary (no-games check prevents it)
+    - Return type inconsistency (dict vs string) is poor design
+    - Individual ratings stored for transparency
+    - Average provides single-number season summary
+    - No weighting by game importance (all games equal)
+    - Doesn't account for opponent difficulty
+    - Pure statistical aggregation
+
+=== Show Game Season Game Rating ===
+
+        Display the Season Game Rating interface showing all games at once.
+        
+        Shows a comprehensive season overview with the season average rating prominently
+        displayed at the top, followed by individual ratings for every game in color-coded
+        cards. Unlike the single game rating feature which requires dropdown selection,
+        this displays all games simultaneously for easy comparison. Implements widget
+        reuse pattern for performance.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Side Effects:
+            - Hides all 6 main menu buttons
+            - Shows or creates 2 widgets: season_rating_display, back_button_season_rating
+            - Sets season_rating_display to read-only mode
+            - Connects back_button_season_rating to back_to_main_menu() method
+            - Calls format_season_game_rating() to generate and display rating overview
+            - All widgets added to main vbox layout
+
+        Widget Lifecycle:
+            First Call:
+                1. Check if widgets exist (hasattr returns False)
+                2. Create new widgets
+                3. Configure and connect signals
+                4. Add to layout
+                5. Show widgets
+            
+            Subsequent Calls:
+                1. Check if widgets exist (hasattr returns True)
+                2. Skip creation (widgets already exist)
+                3. Show existing widgets (faster, preserves state)
+
+        Widgets Created/Shown:
+            season_rating_display (QTextEdit):
+                - Multi-line text display area
+                - Read-only: User cannot edit content
+                - HTML rendering enabled (shows styled rating cards)
+                - Purpose: Displays season average + all individual game ratings
+                - Shows: Large average rating, list of all game ratings with colors
+                - Styled by CSS: monospace font, dark background, padding
+            
+            back_button_season_rating (QPushButton):
+                - Text: "Back to Main Menu"
+                - Object name: "backButton" (for CSS styling)
+                - Connected to: back_to_main_menu() via clicked signal
+                - Purpose: Return to main menu and hide this interface
+                - Styled by CSS: gradient background, hover effects
+
+        Widgets Hidden:
+            Main Menu (6 buttons):
+                - get_quick_stats_btn
+                - compare_all_games_btn
+                - season_grading_btn
+                - best_worst_game_btn
+                - game_rating_btn
+                - season_game_rating_btn
+
+        Execution Flow:
+            1. Hide all main menu buttons (6 buttons)
+            2. Check if season_rating_display exists
+               - If yes: Show it
+               - If no: Create, set read-only, add to layout
+            3. Check if back_button_season_rating exists
+               - If yes: Show it
+               - If no: Create, name, connect, add to layout
+            4. Call format_season_game_rating() to generate and display ratings
+
+        Default Display:
+            Shows ALL games immediately (no dropdown selection needed):
+            - Season Average Rating (large, centered, color-coded)
+            - List of all games with individual ratings:
+              * Game_1: [Rating] (color-coded)
+              * Game_2: [Rating] (color-coded)
+              * Game_3: [Rating] (color-coded)
+              * ...
+            
+            Color coding by rating level:
+            - 80-100: Green (Excellent)
+            - 60-79: Blue (Good)
+            - 40-59: Yellow (Average)
+            - 0-39: Red (Below Average/Poor)
+
+        Signal-Slot Connections:
+            back_button_season_rating.clicked → back_to_main_menu()
+
+        Performance Optimization:
+            Widget Reuse Pattern:
+                - First access: ~60ms (widget creation + rating calculation for all games)
+                - Subsequent access: ~40ms (show existing widgets + recalculate ratings)
+                - Note: Ratings recalculated each time to ensure current data
+                - Display widget reused for efficiency
+
+        Layout Addition:
+            All widgets added to self.vbox (main vertical layout):
+            [Header]
+            [season_rating_display]         ← Added here
+            [back_button_season_rating]     ← Added here
+
+        Design Difference from Other Features:
+            No Dropdown Selector:
+                - Single Game Rating: dropdown → select game → see one rating
+                - This feature: immediately see ALL game ratings
+                - Design choice: comprehensive overview vs detailed single-game view
+                - User can quickly scan all games without clicking
+                - Provides context (consistency, trends, outliers)
+
+        Connected To:
+            season_game_rating_btn.clicked signal triggers this method
+
+        Related Methods:
+            format_season_game_rating(): Generates HTML display with all ratings
+            season_game_rating(): Calculates ratings for all games
+            back_to_main_menu(): Returns to main menu
+
+        Example User Flow:
+            1. User clicks "Season Game Rating" button
+            2. show_game_season_game_rating() called
+            3. Main menu hidden
+            4. Display and back button shown/created
+            5. format_season_game_rating() called
+            6. season_game_rating() calculates all ratings
+            7. HTML generated with season overview
+            8. Display shows complete season ratings:
+               
+               Season Game Ratings - Aston Sharp
+               
+               [Centered card]
+               Season Average Rating
+               68.7
+               
+               All Games
+               
+               Game_1                                    45.2
+               [Yellow border - Average]
+               
+               Game_2                                    98.3
+               [Green border - Excellent]
+               
+               Game_3                                    62.7
+               [Blue border - Good]
+               
+            9. User reviews all ratings simultaneously
+            10. User clicks "Back to Main Menu"
+            11. back_to_main_menu() hides these widgets
+
+        Visual Design:
+            Season Average:
+                - Centered display
+                - Large font (64px)
+                - Color-coded by average rating level
+                - Provides overall season summary
+            
+            Individual Game Cards:
+                - List format for easy scanning
+                - Game name on left, rating on right
+                - Color-coded left border matching rating level
+                - Consistent spacing between cards
+                - All visible simultaneously (no scrolling needed for 3-5 games)
+
+        Use Cases:
+            Season Overview:
+                - Quick assessment of entire season
+                - See all performances at a glance
+                - Identify best and worst games visually
+                - Understand performance consistency
+            
+            Pattern Recognition:
+                - Spot improvement or decline trends
+                - Identify clusters of good/bad games
+                - Notice outlier performances
+                - Assess volatility
+            
+            Comparison Context:
+                - Compare specific game to season average
+                - See how current game ranks among all games
+                - Understand relative performance
+                - Set realistic expectations
+
+        Advantages over Single Game Rating:
+            Comprehensive View:
+                - No need to switch between games
+                - All data visible simultaneously
+                - Easier to spot patterns
+                - Better for season-level analysis
+            
+            Efficiency:
+                - One view shows everything
+                - No dropdown interaction needed
+                - Faster for reviewing multiple games
+                - Better for presentations/reports
+
+        Complementary Features:
+            Single Game Rating:
+                - Deep dive into one game
+                - Stat-by-stat breakdown
+                - Detailed contribution analysis
+            
+            Season Game Rating:
+                - High-level season overview
+                - All games comparison
+                - Trend identification
+                - Overall performance summary
+
+        Performance Notes:
+            Calculation Load:
+                - Calls season_game_rating() which rates all games
+                - ~10ms per game × number of games
+                - For 5 games: ~50ms calculation time
+                - Acceptable for interactive display
+            
+            Display Efficiency:
+                - HTML generation: ~10ms
+                - Total: ~60ms for 5 games
+                - Responsive enough for good UX
+
+        Notes:
+            - Read-only prevents accidental user edits
+            - No dropdown needed (all games shown at once)
+            - format_season_game_rating() called every time to ensure fresh data
+            - Object name "backButton" required for CSS styling
+            - hasattr checks prevent AttributeError on first access
+            - Simpler interface than most features (only 2 widgets)
+            - HTML rendering enables rich color-coded display
+            - Season average provides single-number summary
+            - Individual games provide detailed breakdown
+            - Color coding enables quick visual assessment
+            - Complements single game rating feature perfectly
+
+=== Format Season Game Rating === 
+
+Generate and display HTML-formatted season rating overview with all games.
+        
+        Retrieves season rating data from season_game_rating(), formats it as HTML with
+        a prominent season average at the top and color-coded cards for each individual
+        game. The season average is displayed in large font with color indicating overall
+        performance level, followed by a list of all games with their ratings in matching
+        color-coded cards for easy visual comparison.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Side Effects:
+            - Calls season_game_rating() to get all rating data
+            - Extracts season average and individual game ratings
+            - Determines color for season average based on rating level
+            - Generates HTML string with styled season overview
+            - For each game: determines color and creates card
+            - Updates season_rating_display QTextEdit widget with HTML
+            - Triggers re-render of display area in GUI
+
+        Algorithm:
+            1. Call season_game_rating() to get complete data
+            2. Extract season average rating
+            3. Extract all_games dictionary (game_name → rating mapping)
+            4. Determine season average color based on thresholds:
+               - 80+: Green (#10b981)
+               - 60-79: Blue (#3b82f6)
+               - 40-59: Yellow (#eab308)
+               - 0-39: Red (#ef4444)
+            5. Build HTML with header (player name)
+            6. Create centered season average display card
+            7. Add "All Games" section header
+            8. For each game in all_games:
+               a. Determine color based on individual rating thresholds
+               b. Create card with game name and rating
+               c. Apply colored left border matching rating level
+               d. Append to output HTML
+            9. Close HTML tags
+            10. Update season_rating_display with complete HTML
+
+        Season Rating Data Structure (from season_game_rating()):
+            {
+                "average": 68.7,
+                "all_games": {
+                    "Game_1": 45.2,
+                    "Game_2": 98.3,
+                    "Game_3": 62.7
+                }
+            }
+
+        Color Thresholds:
+            Both season average and individual games use same thresholds:
+            
+            Excellent (80-100):
+                - Color: #10b981 (green)
+                - Interpretation: Outstanding performance
+            
+            Good (60-79):
+                - Color: #3b82f6 (blue)
+                - Interpretation: Solid performance
+            
+            Average (40-59):
+                - Color: #eab308 (yellow)
+                - Interpretation: Acceptable performance
+            
+            Below Average/Poor (0-39):
+                - Color: #ef4444 (red)
+                - Interpretation: Subpar performance
+
+        HTML Structure:
+            <div style='padding: 20px;'>
+                <!-- Header -->
+                <h2>Season Game Ratings - {player_name}</h2>
+                
+                <!-- Season Average Display (Centered) -->
+                <div style='...centered card...'>
+                    <div>Season Average Rating</div>
+                    <div style='...huge colored number...'>{avg:.1f}</div>
+                </div>
+                
+                <!-- All Games Section -->
+                <h3>All Games</h3>
+                
+                <!-- For each game -->
+                <div style='...card with colored left border...'>
+                    <div style='...flexbox row...'>
+                        <span>{game_name}</span>
+                        <span style='...colored rating...'>{rating:.1f}</span>
+                    </div>
+                </div>
+                <!-- Repeat for all games -->
+            </div>
+
+        Season Average Display Styling:
+            Container:
+                - Text align: center
+                - Padding: 30px
+                - Background: rgba(30, 30, 40, 0.6) (semi-transparent dark)
+                - Border radius: 16px (rounded)
+                - Margin bottom: 20px
+            
+            Label ("Season Average Rating"):
+                - Color: #9ca3af (medium gray)
+                - Font size: 16px
+                - Margin bottom: 10px
+            
+            Average Rating Number:
+                - Color: {avg_color} (dynamic based on performance)
+                - Font size: 64px (very large for emphasis)
+                - Font weight: 700 (bold)
+                - Format: {avg:.1f} (one decimal place)
+                - No descriptive text (number speaks for itself)
+
+        Individual Game Card Styling:
+            Container:
+                - Padding: 16px
+                - Margin bottom: 10px (spacing between cards)
+                - Background: rgba(30, 30, 40, 0.4) (semi-transparent dark)
+                - Border left: 4px solid {color} (rating-specific accent)
+                - Border radius: 8px (rounded corners)
+            
+            Flexbox Row:
+                - Display: flex (horizontal layout)
+                - Justify: space-between (game name left, rating right)
+                - Align: center (vertical alignment)
+            
+            Game Name (Left):
+                - Color: #e5e7eb (light gray)
+                - Font size: 16px
+            
+            Rating (Right):
+                - Color: {color} (matches left border)
+                - Font size: 24px (large for emphasis)
+                - Font weight: 700 (bold)
+                - Format: {rating:.1f} (one decimal place)
+
+        Color Determination Logic:
+            Season Average:
+                if avg >= 80: avg_color = green
+                elif avg >= 60: avg_color = blue
+                elif avg >= 40: avg_color = yellow
+                else: avg_color = red
+            
+            Each Individual Game:
+                if rating >= 80: color = green
+                elif rating >= 60: color = blue
+                elif rating >= 40: color = yellow
+                else: color = red
+            
+            Same thresholds for consistency
+
+        Example Visual Output:
+            Season Game Ratings - Aston Sharp
+            
+            [Centered dark card]
+            Season Average Rating
+            68.7
+            [Number in blue color]
+            
+            All Games
+            
+            [Card with yellow left border]
+            Game_1                                    45.2
+            
+            [Card with green left border]
+            Game_2                                    98.3
+            
+            [Card with blue left border]
+            Game_3                                    62.7
+
+        Visual Design Principles:
+            Hierarchy:
+                - Season average most prominent (largest, centered)
+                - Individual games secondary (smaller, left-aligned list)
+                - Clear visual hierarchy guides attention
+            
+            Color Consistency:
+                - Same thresholds for average and games
+                - Consistent interpretation across display
+                - Easy to compare individual games to average
+            
+            Scanning Efficiency:
+                - Left borders provide instant visual cues
+                - Color-coded ratings enable quick assessment
+                - Flexbox alignment keeps info organized
+                - Consistent spacing aids readability
+
+        Data Flow:
+            show_game_season_game_rating()
+                → format_season_game_rating()
+                → season_game_rating() [calculate all ratings]
+                → HTML generation with color coding
+                → season_rating_display.setHtml(output)
+                → Visual update in GUI
+
+        Iteration Pattern:
+            for game_name, rating in all_games.items():
+                - Iterates through all games in dictionary
+                - Order depends on dictionary iteration (may vary)
+                - Each game gets own card
+                - Cards stacked vertically
+
+        Performance:
+            Time Complexity: O(n) where n = number of games
+                - season_game_rating() call: O(n)
+                - Iteration for HTML generation: O(n)
+                - Total: O(2n) → O(n)
+            
+            Execution Time:
+                - Rating calculation: ~30ms for 3 games
+                - HTML generation: ~5ms
+                - Total: ~35ms
+
+        Formatting Details:
+            Rating Display:
+                - One decimal place: {rating:.1f}
+                - Examples: 98.3, 45.2, 68.7
+                - Consistent precision across all displays
+            
+            Color Values:
+                - Hex codes for precise color matching
+                - Consistent with app theme
+                - Accessible contrast ratios
+
+        Related Methods:
+            season_game_rating(): Provides the data being formatted
+            show_game_season_game_rating(): Creates interface and calls this method
+
+        Called By:
+            show_game_season_game_rating(): Every time season rating interface displayed
+
+        Use Cases:
+            Performance Summary:
+                - Quick visual scan of entire season
+                - Identify best and worst games at a glance
+                - Understand overall season quality from average
+            
+            Trend Analysis:
+                - Visual pattern recognition
+                - Spot clusters of similar performances
+                - Identify outlier games
+            
+            Goal Assessment:
+                - Compare to target average
+                - See how many games met expectations
+                - Track improvement over season
+
+        Visual Comparison Features:
+            Average vs Individual:
+                - Average provides baseline
+                - Easy to see which games above/below average
+                - Color differences make comparisons instant
+            
+            Game to Game:
+                - Side-by-side comparison of all games
+                - Identify performance gaps
+                - Understand consistency level
+
+        Edge Cases:
+            No Games:
+                - season_game_rating() returns {'average': 0, 'all_games': {}}
+                - Average displays as 0.0 (red)
+                - No game cards generated (empty iteration)
+                - "All Games" header shown but no content
+            
+            Single Game:
+                - Average equals that game's rating
+                - Both have same color
+                - One card in list
+            
+            All Games Same Rating:
+                - All cards same color
+                - Average equals individual ratings
+                - Shows consistency visually
+
+        Notes:
+            - Season average lacks descriptive text (unlike single game rating)
+            - No "Excellent"/"Good" labels (color provides context)
+            - All games shown simultaneously (no pagination needed for typical seasons)
+            - Color-coded left borders enable quick visual scanning
+            - Large season average (64px) designed for prominence
+            - Smaller game ratings (24px) maintain hierarchy
+            - Flexbox ensures consistent alignment
+            - Header uses indigo (#6366f1) matching app theme
+            - Semi-transparent backgrounds layer over main theme
+            - One decimal precision balances detail and simplicity
+
+=== If __name__ == '__main__' === 
+
+    Application entry point for standalone execution.
+    
+    Creates the Qt application instance, initializes a PlayerReport window for
+    the specified player ("Aston Sharp"), displays the window, and starts the
+    Qt event loop which handles all GUI interactions until the user closes the
+    application.
+    
+    Execution Flow:
+        1. Create QApplication instance (manages application-wide resources)
+        2. Instantiate PlayerReport with player name "Aston Sharp"
+        3. Display the window with show()
+        4. Enter Qt event loop with exec_()
+        5. Exit cleanly when window closed (sys.exit ensures proper cleanup)
+    
+    Usage:
+        Direct execution:
+            python player_report.py
+        
+        Programmatic usage (from main.py):
+            from testing.player_report import PlayerReport
+            app = QApplication(sys.argv)
+            report = PlayerReport("Benjamin Berridge")
+            report.show()
+    
+    Exit:
+        - Close window: Click X button
+        - Keyboard: Alt+F4 (Windows), Cmd+Q (Mac)
+        - Terminal: Ctrl+C
+    
+    Note:
+        Player name "Aston Sharp" is hardcoded for testing. In production,
+        this should be passed as command-line argument or selected via GUI.
