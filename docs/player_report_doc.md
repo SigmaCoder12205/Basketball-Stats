@@ -2637,3 +2637,499 @@ Find the player's best and worst game performances for a specific stat.
             - Single decimal precision balances detail and simplicity
             - Pure calculation method (no GUI interaction)
             - Deterministic (same stats = same rating always)
+            - === Format Game Rating ===
+
+        Generate and display HTML-formatted game rating with detailed stat breakdown.
+        
+        Calculates the overall game rating, determines color and text label based on rating
+        level, computes individual stat contributions, and formats everything as an HTML
+        display with a prominent rating number, descriptive label, and itemized breakdown
+        showing how each stat contributed to the final rating.
+
+        Parameters:
+            game_name (str): The game identifier to format rating for (e.g., "Game_1", "Game_2")
+
+        Returns:
+            None
+
+        Side Effects:
+            - Calls game_rating(game_name) to calculate overall rating
+            - Calls AccessData.Get_game_stats() to retrieve game statistics
+            - Determines rating color and text based on rating value
+            - Calculates display-specific contribution values for each stat
+            - Generates HTML string with styled rating display
+            - Updates game_rating_display QTextEdit widget with HTML
+            - Triggers re-render of display area in GUI
+
+        Algorithm:
+            1. Calculate overall game rating (0-100)
+            2. Retrieve game statistics from AccessData
+            3. Determine rating color and text label based on rating thresholds:
+               - 80+: Green, "Excellent"
+               - 60-79: Blue, "Good"
+               - 40-59: Yellow, "Average"
+               - 20-39: Orange, "Below Average"
+               - 0-19: Red (no text stored in this branch)
+            4. Calculate display contribution values for each stat:
+               - Points × 1.5 (for display simplification)
+               - Assists × 1.0
+               - Rebounds × 1.25
+               - Fouls × -0.5
+               - Turnovers × -1.5
+            5. Build HTML with three sections:
+               a. Header with game name
+               b. Large centered rating display
+               c. Itemized stat breakdown
+            6. Update game_rating_display with HTML
+
+        Rating Thresholds and Colors:
+            Excellent (80-100):
+                - Color: #10b981 (green)
+                - Text: "Excellent"
+                - Meaning: Outstanding performance
+            
+            Good (60-79):
+                - Color: #3b82f6 (blue)
+                - Text: "Good"
+                - Meaning: Solid performance
+            
+            Average (40-59):
+                - Color: #eab308 (yellow)
+                - Text: "Average"
+                - Meaning: Acceptable performance
+            
+            Below Average (20-39):
+                - Color: #f97316 (orange)
+                - Text: "Below Average"
+                - Meaning: Subpar performance
+            
+            Poor (0-19):
+                - Color: #ef4444 (red)
+                - Text: (not set, but displayed)
+                - Meaning: Very poor performance
+
+        Display Contribution Calculations:
+            Note: These differ from actual rating formula multipliers
+            
+            Points: stat_value × 1.5
+                - Simplified from rating formula's 1.7
+                - Easier for user comprehension
+                - Still shows points as most valuable
+            
+            Assists: stat_value × 1.0
+                - Simplified from rating formula's 1.2
+                - Clean 1:1 ratio for mental math
+            
+            Rebounds: stat_value × 1.25
+                - Simplified from rating formula's 1.45
+                - Quarter increments easier to understand
+            
+            Fouls: stat_value × -0.5
+                - Simplified from rating formula's -0.3
+                - Half-point penalty clearer
+            
+            Turnovers: stat_value × -1.5
+                - Simplified from rating formula's -1.3
+                - Consistent with points multiplier (inverted)
+
+        HTML Structure:
+            <div style='padding: 20px;'>
+                <!-- Header -->
+                <h2>Game Rating - {game_name}</h2>
+                
+                <!-- Rating Display (Centered) -->
+                <div style='...centered card...'>
+                    <div>Overall Rating</div>
+                    <div style='...huge colored number...'>{rating}</div>
+                    <div style='...colored label...'>{rating_text}</div>
+                </div>
+                
+                <!-- Stat Breakdown -->
+                <div>
+                    <h3>Stat Breakdown</h3>
+                    
+                    <!-- For each stat -->
+                    <div style='...stat card...'>
+                        <div style='...flexbox row...'>
+                            <span>{stat_name} ({value} × {multiplier})</span>
+                            <span style='...colored contribution...'>+{contribution}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        Rating Display Styling:
+            Container:
+                - Text align: center
+                - Padding: 30px
+                - Background: rgba(30, 30, 40, 0.6) (semi-transparent dark)
+                - Border radius: 16px (rounded)
+                - Margin bottom: 20px
+            
+            Label ("Overall Rating"):
+                - Color: #9ca3af (medium gray)
+                - Font size: 16px
+                - Margin bottom: 10px
+            
+            Rating Number:
+                - Color: {rating_color} (dynamic based on performance)
+                - Font size: 64px (very large for emphasis)
+                - Font weight: 700 (bold)
+                - Margin bottom: 10px
+                - Format: {rating:.1f} (one decimal place)
+            
+            Rating Text ("Excellent", "Good", etc.):
+                - Color: {rating_color} (matches number)
+                - Font size: 20px
+                - Font weight: 600 (semi-bold)
+
+        Stat Breakdown Styling:
+            Section Header:
+                - Color: #e5e7eb (light gray)
+                - Font size: 18px
+                - Margin bottom: 12px
+            
+            Each Stat Card:
+                - Padding: 12px
+                - Margin bottom: 8px
+                - Background: rgba(30, 30, 40, 0.4) (semi-transparent dark)
+                - Border radius: 8px
+                
+                Flexbox Row:
+                    - Display: flex
+                    - Justify: space-between (label left, value right)
+                    
+                    Left Side (Label):
+                        - Color: #9ca3af (medium gray)
+                        - Format: "{stat} ({value} × {multiplier})"
+                        - Example: "Points (15 × 1.5)"
+                    
+                    Right Side (Contribution):
+                        - Font weight: 600 (semi-bold)
+                        - Format: "{sign}{value:.1f}"
+                        - Color logic:
+                            * Green (#10b981) if positive contribution
+                            * Red (#ef4444) if negative contribution
+                            * Gray (#9ca3af) if zero
+
+        Contribution Color Logic:
+            Positive Stats (Points, Assists, Rebounds):
+                if contribution > 0: green
+                else: gray
+            
+            Negative Stats (Fouls, Turnovers):
+                if contribution < 0: red
+                else: gray
+            
+            Edge Case (Zero Values):
+                All stats default to gray when zero
+
+        Example Visual Output:
+            Game Rating - Game_2
+            
+            [Centered dark card]
+            Overall Rating
+            98.3
+            Excellent
+            
+            Stat Breakdown
+            
+            Points (22 × 1.5)                    +33.0
+            Assists (0 × 1.0)                    +0.0
+            Rebounds (1 × 1.25)                  +1.2
+            Fouls (1 × -0.5)                     -0.5
+            Turnovers (0 × -1.5)                 +0.0
+
+        Display vs Rating Formula Differences:
+            Important: Display multipliers ≠ Rating formula multipliers
+            
+            Rating Formula (actual calculation):
+                Points × 1.7, Assists × 1.2, Rebounds × 1.45, 
+                Fouls × -0.3, Turnovers × -1.3
+                Plus: +10 offset, ×2.2 scale
+            
+            Display Values (simplified for user):
+                Points × 1.5, Assists × 1.0, Rebounds × 1.25,
+                Fouls × -0.5, Turnovers × -1.5
+                No offset or scaling shown
+            
+            Rationale:
+                - Display values are illustrative, not exact
+                - Simpler multipliers easier to understand
+                - Show relative importance without complexity
+                - Users don't need to know full formula
+
+        Data Flow:
+            game_selector dropdown selection
+                → format_game_rating(game_name)
+                → game_rating(game_name) [calculate rating]
+                → AccessData.Get_game_stats() [get stats]
+                → HTML generation with colors
+                → game_rating_display.setHtml(output)
+                → Visual update in GUI
+
+        Connected To:
+            game_selector.currentTextChanged signal
+            - Automatically called when dropdown selection changes
+
+        Related Methods:
+            game_rating(): Calculates the actual 0-100 rating
+            show_game_rating(): Creates interface with dropdown and display
+
+        Performance:
+            Time Complexity: O(1) - constant time operations
+            Execution Time: ~10ms (rating calc + HTML generation)
+
+        Edge Cases:
+            Perfect Game (100.0):
+                - Green color
+                - "Excellent" text
+                - Multiple positive contributions
+            
+            Zero Stats Game:
+                - Low rating (depends on formula offset)
+                - All contributions show +0.0 or +0.0
+                - Gray colors for all stats
+            
+            High Turnover Game:
+                - Negative contributions dominate
+                - Red color for turnovers line
+                - Overall rating likely orange/red
+
+        Notes:
+            - Display multipliers simplified for user understanding
+            - Rating color provides instant visual feedback
+            - Large 64px rating number designed for quick scanning
+            - Stat breakdown provides transparency into rating
+            - Contribution values help identify strengths/weaknesses
+            - Color coding: green=positive, red=negative, gray=neutral
+            - Header uses indigo (#6366f1) matching app theme
+
+=== Show Game Rating === 
+
+Display the Game Rating interface for individual game performance analysis.
+        
+        Shows a dropdown menu populated with all games played during the season, and
+        displays a detailed performance rating (0-100) for the selected game with a
+        stat-by-stat contribution breakdown. Unlike other features with fixed stat
+        options, this dropdown contains dynamic game names. Implements widget reuse
+        pattern for performance.
+
+        Parameters:
+            None
+
+        Returns:
+            None
+
+        Side Effects:
+            - Hides all 6 main menu buttons
+            - Retrieves all games played from AccessData
+            - Extracts game names as list
+            - Shows or creates 3 widgets: game_selector, game_rating_display, back_button_game_rating
+            - Populates game_selector dropdown with actual game names
+            - Connects game_selector dropdown to format_game_rating() method
+            - Sets game_rating_display to read-only mode
+            - Connects back_button_game_rating to back_to_main_menu() method
+            - Calls format_game_rating() with first game to show default rating
+            - All widgets added to main vbox layout
+
+        Widget Lifecycle:
+            First Call:
+                1. Check if widgets exist (hasattr returns False)
+                2. Create new widgets
+                3. Configure and connect signals
+                4. Add to layout
+                5. Show widgets
+            
+            Subsequent Calls:
+                6. Check if widgets exist (hasattr returns True)
+                7. Skip creation (widgets already exist)
+                8. Show existing widgets (faster, preserves state)
+
+        Widgets Created/Shown:
+            game_selector (QComboBox):
+                - Dropdown populated with dynamic game names from season data
+                - Options: All games player participated in (e.g., "Game_1", "Game_2", "Game_3")
+                - Connected to: format_game_rating() via currentTextChanged signal
+                - Purpose: User selects which specific game to rate
+                - Signal fires automatically on selection change
+                - Note: Dynamic content, not fixed like other feature dropdowns
+            
+            game_rating_display (QTextEdit):
+                - Multi-line text display area
+                - Read-only: User cannot edit content
+                - HTML rendering enabled (shows styled rating with breakdown)
+                - Purpose: Displays 0-100 rating with color coding and stat contributions
+                - Shows: Large rating number, descriptive label, itemized breakdown
+                - Styled by CSS: monospace font, dark background, padding
+            
+            back_button_game_rating (QPushButton):
+                - Text: "Back to Main Menu"
+                - Object name: "backButton" (for CSS styling)
+                - Connected to: back_to_main_menu() via clicked signal
+                - Purpose: Return to main menu and hide this interface
+                - Styled by CSS: gradient background, hover effects
+
+        Widgets Hidden:
+            Main Menu (6 buttons):
+                - get_quick_stats_btn
+                - compare_all_games_btn
+                - season_grading_btn
+                - best_worst_game_btn
+                - game_rating_btn
+                - season_game_rating_btn
+
+        Execution Flow:
+            1. Hide all main menu buttons (6 buttons)
+            2. Retrieve all game stats from AccessData (individual games, not totals)
+            3. Extract game names as list (e.g., ["Game_1", "Game_2", "Game_3"])
+            4. Check if game_selector exists
+               - If yes: Show it
+               - If no: Create, populate with game names, connect, add to layout
+            5. Check if game_rating_display exists
+               - If yes: Show it
+               - If no: Create, set read-only, add to layout
+            6. Check if back_button_game_rating exists
+               - If yes: Show it
+               - If no: Create, name, connect, add to layout
+            7. If games exist: Call format_game_rating() with first game name
+
+        Default Display:
+            Shows rating for first game automatically:
+            - Large colored rating number (0-100)
+            - Descriptive label (Excellent, Good, Average, etc.)
+            - Stat breakdown showing contribution of each stat
+            - Color-coded contributions (green=positive, red=negative)
+
+        Dynamic Dropdown Population:
+            Game List Creation:
+                all_games = AccessData.Get_season_stats(sum_total=False)
+                # Returns: {'Game_1': {...}, 'Game_2': {...}, 'Game_3': {...}}
+                
+                game_list = list(all_games.keys())
+                # Converts to: ['Game_1', 'Game_2', 'Game_3']
+                
+                game_selector.addItems(game_list)
+                # Populates dropdown with actual game names
+
+        Signal-Slot Connections:
+            game_selector.currentTextChanged → format_game_rating(game_name)
+            back_button_game_rating.clicked → back_to_main_menu()
+
+        Performance Optimization:
+            Widget Reuse Pattern:
+                - First access: ~50ms (widget creation + layout + data retrieval)
+                - Subsequent access: ~10ms (show existing widgets + re-populate dropdown)
+                - Note: Dropdown repopulated each time (ensures current data)
+                - Display widget reused for efficiency
+
+        Layout Addition:
+            All widgets added to self.vbox (main vertical layout):
+            [Header]
+            [game_selector]                 ← Added here
+            [game_rating_display]           ← Added here
+            [back_button_game_rating]       ← Added here
+
+        Connected To:
+            game_rating_btn.clicked signal triggers this method
+
+        Related Methods:
+            format_game_rating(): Formats rating display when game selected
+            game_rating(): Calculates the 0-100 rating
+            back_to_main_menu(): Returns to main menu
+
+        Example User Flow:
+            1. User clicks "Game Rating" button
+            2. show_game_rating() called
+            3. Main menu hidden
+            4. System retrieves all games: ["Game_1", "Game_2", "Game_3"]
+            5. Dropdown populated with game names
+            6. Display and back button shown/created
+            7. Default rating for "Game_1" displayed:
+               
+               Game Rating - Game_1
+               
+               Overall Rating
+               45.2
+               Average
+               
+               Stat Breakdown
+               Points (10 × 1.5)       +15.0
+               Assists (2 × 1.0)       +2.0
+               Rebounds (8 × 1.25)     +10.0
+               Fouls (1 × -0.5)        -0.5
+               Turnovers (2 × -1.5)    -3.0
+               
+            8. User selects "Game_2" from dropdown
+            9. format_game_rating("Game_2") automatically called
+            10. Display refreshes with Game_2 rating
+            11. User clicks "Back to Main Menu"
+            12. back_to_main_menu() hides these widgets
+
+        Empty Game List Handling:
+            if game_list:
+                self.format_game_rating(game_list[0])
+            
+            - Checks if any games exist
+            - Only formats rating if games are available
+            - Prevents IndexError on empty list
+            - If no games: dropdown empty, no default rating shown
+
+        Differences from Other Features:
+            Dynamic Dropdown Content:
+                - Other features: Fixed options (Points, Fouls, etc.)
+                - This feature: Dynamic game names from data
+                - Dropdown content changes based on season data
+                - More flexible but requires data retrieval
+            
+            Game-Specific Display:
+                - Shows ONE game at a time in detail
+                - Deep dive into individual performance
+                - Complements "Season Game Rating" (shows all games)
+
+        Data Retrieval:
+            AccessData.Get_season_stats(players_name, sum_total=False):
+                Returns: {
+                    'Game_1': {'Points': 10, 'Fouls': 1, ...},
+                    'Game_2': {'Points': 22, 'Fouls': 1, ...},
+                    'Game_3': {'Points': 8, 'Fouls': 3, ...}
+                }
+                Purpose: Get all individual game data to extract names
+
+        Visual Design:
+            Rating Display:
+                - Prominent number (64px font)
+                - Color-coded by performance level
+                - Descriptive label provides context
+                - Centered for visual impact
+            
+            Stat Breakdown:
+                - Transparent to user how rating calculated
+                - Shows contribution of each stat
+                - Helps identify strengths and weaknesses
+                - Color-coded for quick scanning
+
+        Use Cases:
+            Performance Analysis:
+                - Review specific game performance
+                - Understand rating composition
+                - Identify which stats hurt/helped rating
+                - Compare different games by switching dropdown
+            
+            Post-Game Review:
+                - Coach and player can review together
+                - Objective performance metric
+                - Detailed breakdown for discussion
+                - Visual feedback on performance quality
+
+        Notes:
+            - Read-only prevents accidental user edits
+            - Dynamic dropdown ensures always shows available games
+            - Default first game selection provides immediate value
+            - Object name "backButton" required for CSS styling
+            - hasattr checks prevent AttributeError on first access
+            - Empty list check prevents crash if no games played
+            - HTML rendering enables rich color-coded display
+            - game_list created from dictionary keys (order may vary)
+            - Dropdown repopulated each time (could cache for performance)
+          - 
