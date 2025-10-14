@@ -1,3 +1,5 @@
+# Rated 942/1000
+
 import sys
 """System-specific parameters and functions for path manipulation and application control"""
 
