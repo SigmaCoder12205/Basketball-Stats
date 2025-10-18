@@ -1,14 +1,35 @@
 # Rated 740/1000
 
 import json
-from pathlib import Path
+"""
+JSON encoder and decoder for Python data structures.
 
+USAGE IN THIS MODULE:
+    - json.load(): Read and parse Data.json file into Python dictionary
+    - Converts JSON data types to Python equivalents:
+        * JSON object → Python dict
+        * JSON array → Python list
+        * JSON string → Python str
+        * JSON number → Python int/float
+        * JSON true/false → Python True/False
+        * JSON null → Python None
+
+ERROR HANDLING:
+    - FileNotFoundError: Caught when Data.json doesn't exist
+    - json.JSONDecodeError: Caught when JSON is malformed
+    - Used in AccessData.Initialize() method
+
+PERFORMANCE:
+    - File read once at initialization
+    - Data cached in memory for fast subsequent access
+    - No repeated file I/O operations
+"""
 class AccessData:
     data = {}
     _initialized = False
 
     def __init__(self):
-        self.Initialize()
+        self.initialize()
 
     @classmethod
     def _ensure_initialized(cls):
@@ -16,20 +37,26 @@ class AccessData:
             instance = cls()
             cls._initialized = True
 
-    def Initialize(self, load=False, filename="Data.json"):
+    def initialize(self, load: bool = False, filename: str = "Data.json"):
+        if isinstance(bool, load):
+            return f"Error: load ({load}) must be a boolean"
+        
+        if isinstance(str, filename):
+            return f"Error: filename ({filename}) must be a string"
+
         try:
             data_file = r"C:\Users\Drags Jrs\Mylesbasketballstatsanddata\Database\Data.json"
             with open(data_file, "r") as file:
                 AccessData.data = json.load(file)
                 
         except FileNotFoundError:
-            print(f"File not found: {data_file}") 
+            print(f"Error: File not found: File: {data_file}") 
             return None
         except json.JSONDecodeError:
-            print(f"Error reading JSON from {data_file}")  
+            print(f"Error reading JSON from File: {data_file}")  
             return None
         except Exception as e:
-            print(f"Unknown error: {e}")
+            print(f"Error: {e}")
             return None
         
         if load:
@@ -37,15 +64,22 @@ class AccessData:
 
         
     @classmethod
-    def Get_details(cls, game=None, look_good=False): # Original name: quick_game_details gets the details in a game 
+    def Get_details(cls, game: str, look_good: bool = False):
         cls._ensure_initialized()
+
+        if isinstance(str, game): 
+            return f"Error: Game {game} must be a string"
+        
+        if isinstance(look_good, bool):
+            return f"Error: look_good ({look_good}) must be a boolean"
+
         if not game or game not in cls.data:
-            return {"Error": f"Invalid game: {game}"}
+            return f"Error:  invalid game: {game}"
 
         game_stats = cls.data.get(game, {})
 
         if game_stats == {}:
-            return {"Error": f"Game: {game} not found"}
+            return f"Error game: {game} not found"
 
         details = game_stats.get("Details", {})
 
@@ -59,8 +93,18 @@ class AccessData:
             return details.copy()
 
     @classmethod
-    def Get_a_lineup(cls, game=None, team=None, look_good=False): # Original name: get_a_team gets a lineup in a game
+    def Get_a_lineup(cls, game: str, team: str, look_good: bool =False): 
         cls._ensure_initialized()
+
+        if isinstance(str, game):
+            return f"Error: game ({game}) must be a string"
+        
+        if isinstance(str, team):
+            return f"Error: team ({team}) must be a string"
+        
+        if isinstance(bool, look_good):
+            return f"Error: look_good ({look_good}) must be boolean"
+
         game_stats = cls.data.get(game, {})
 
         if not game_stats:
@@ -69,7 +113,7 @@ class AccessData:
         team_players = game_stats.get("Lineup", {}).get(team, [])
         
         if not team_players:
-            return {"error": f"{team} not found in {game}"}
+            return {"Error": f"Team: {team} not found in Game: {game}"}
         
         if look_good:
             output = ["----------------- Team players ----------------------"]
@@ -77,21 +121,21 @@ class AccessData:
                 output.append(f"{num}. {player}")
             return "\n\n".join(output)
         else:
-            return team_players
+            return team_players.copy()
     
     @classmethod
-    def Get_quarter_stats(cls, game=None, quarter=None, look_good=False): # Same name gets quarter stats
+    def Get_quarter_stats(cls, game: str, quarter: str, look_good: bool = False):
         cls._ensure_initialized()
         game_stats = cls.data.get(game, {})
 
         if not game_stats:
-            return {"error": f"Game: {game} not found"}
+            return {"Error": f"Game: {game} not found"}
         
         quarters = game_stats.get("Quarters")
         quarter_stats = quarters.get(quarter, {})
 
         if not quarter_stats:
-            return {"error": f"Quarter: {quarter} not found"}
+            return {"Error": f"Quarter: {quarter} not found"}
         
         if look_good:
             output = [f"-------------------- {game}: {quarter} stats --------------------------"]
@@ -442,3 +486,6 @@ class AccessData:
                 return output
             else:
                 return True
+            
+if __name__ == '__main__':
+    app = AccessData()
