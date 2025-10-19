@@ -385,7 +385,7 @@ Ensure data is loaded before query execution (lazy initialization).
 
         Side Effects:
             If not initialized (_initialized == False):
-                - Creates AccessData instance
+                - Creates AccessData instancea
                 - Instance __init__() calls Initialize()
                 - Initialize() loads Data.json into cls.data
                 - Sets cls._initialized to True

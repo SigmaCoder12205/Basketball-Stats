@@ -20,9 +20,7 @@ Acts as the intermediary between this GUI and the Data.json file.
 Used extensively throughout PlayerReport for all statistical queries.
 """
 
-from PyQt5.QtWidgets import (QApplication, QWidget, QLabel,
-                             QLineEdit, QPushButton, QVBoxLayout, QTextEdit,
-                             QComboBox)
+from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QTextEdit, QComboBox)
 """
 Import PyQt5 GUI widgets:
 - QApplication: Main application controller and event loop manager
@@ -196,8 +194,7 @@ class PlayerReport(QWidget):
             }
         """)
 
-                       
-    def back_to_main_menu(self):
+    def _back_to_main_menu(self):
         # Hide dynamic widgets
         for attr in ["stat_selector", "stats_display", "back_button",
                     "stat_selector_compare", "trends_display", "back_button_compare",
@@ -214,28 +211,36 @@ class PlayerReport(QWidget):
                     self.game_rating_btn, self.season_game_rating_btn]:
             btn.show()
 
-    def update_season_stats(self, stat_name):
-        result = self.calculate_season_average(stat_name)
+    def _hide_menu_buttons(self):
+        for btn in self.menu_buttons:
+            btn.hide()
+
+    def _update_season_stats(self, stat_name):
+        result = self._calculate_season_average(stat_name)
         self.stats_display.setHtml(result)
 
-    def calculate_season_average(self, what_to_look_for: str):
-        sum_games_stats = AccessData.Get_season_stats(players_name=self.players_name, sum_total=True)
+    def _calculate_season_average(self, what_to_look_for: str):
+        sum_games_stats = AccessData.get_season_stats(player=self.players_name, sum_total=True)
 
         if what_to_look_for not in sum_games_stats:
             return "No games played"
         
-        all_games_stats = AccessData.Get_season_stats(players_name=self.players_name, sum_total=False)
+        all_games_stats = AccessData.get_season_stats(player=self.players_name, sum_total=False)
         games_played = len(all_games_stats)
 
         mean_val = sum_games_stats[what_to_look_for] / games_played
         values = [game[what_to_look_for] for game in all_games_stats.values()]
         values.sort()
+
+        if not values:
+            return "<p>No game data available</p>"
+
         mid = len(values) // 2
         median_val = values[mid] if len(values) % 2 != 0 else (values[mid - 1] + values[mid]) / 2 
         best_val = max(values)
         worst_val = min(values)
         range_val = best_val - worst_val
-        team_stats = AccessData.Get_team_season_stats(sum_total=True, look_good=False)
+        team_stats = AccessData.get_team_season_stats(sum_total=True, look_good=False)
         team_total = sum(player[what_to_look_for] for player in team_stats.values() if what_to_look_for in player) 
         percent = (sum_games_stats[what_to_look_for] / team_total * 100) if team_total > 0 else 0
 
@@ -275,13 +280,7 @@ class PlayerReport(QWidget):
                 """
         return output
     def Season_average(self):
-        # Hide main menu buttons
-        for attr in ["get_quick_stats_btn", "compare_all_games_btn", "season_grading_btn",
-                    "best_worst_game_btn", "game_rating_btn", "season_game_rating_btn",
-                    "game_selector", "game_rating_display", "back_button_game_rating"]:
-            if hasattr(self, attr):
-                getattr(self, attr).hide()
-
+        self._hide_menu_buttons()
 
         if hasattr(self, "stat_selector"):
             self.stat_selector.show()
@@ -294,7 +293,7 @@ class PlayerReport(QWidget):
         if not hasattr(self, "stat_selector"):
             self.stat_selector = QComboBox()
             self.stat_selector.addItems(["Points", "Fouls", "Assists", "Rebounds", "Turnovers"])
-            self.stat_selector.currentTextChanged.connect(self.update_season_stats)
+            self.stat_selector.currentTextChanged.connect(self._update_season_stats)
             self.vbox.addWidget(self.stat_selector)
 
         if not hasattr(self, "stats_display"):
@@ -305,13 +304,13 @@ class PlayerReport(QWidget):
         if not hasattr(self, "back_button"):
             self.back_button = QPushButton("Back to Main Menu")
             self.back_button.setObjectName("backButton")  # ADD THIS
-            self.back_button.clicked.connect(self.back_to_main_menu)
+            self.back_button.clicked.connect(self._back_to_main_menu)
             self.vbox.addWidget(self.back_button)
 
-        self.update_season_stats("Points")
+        self._update_season_stats("Points")
 
-    def compare_all_games(self):
-        all_games_stats = AccessData.Get_season_stats(players_name=self.players_name)
+    def _compare_all_games(self):
+        all_games_stats = AccessData.get_season_stats(player=self.players_name)
         stat_names = set()
         trends_report = {}
         game_names = list(all_games_stats.keys()) # all games stat names
@@ -331,8 +330,8 @@ class PlayerReport(QWidget):
 
         return trends_report
     
-    def update_game_comparison(self, stat_name):
-        trend_report = self.compare_all_games()
+    def _update_game_comparison(self, stat_name):
+        trend_report = self._compare_all_games()
 
         if stat_name not in trend_report:
             self.trends_display.setHtml("<p style='color: #ef4444;'>No data available for this stat</p>")
@@ -369,11 +368,7 @@ class PlayerReport(QWidget):
         self.trends_display.setHtml(output)
 
     def show_compare_all_games(self):
-        # Hide main menu buttons
-        for btn in [self.get_quick_stats_btn, self.compare_all_games_btn,
-                    self.season_grading_btn, self.best_worst_game_btn,
-                    self.game_rating_btn, self.season_game_rating_btn]:
-            btn.hide()
+        self._hide_menu_buttons()
 
         if hasattr(self, "stat_selector_compare"):
             self.stat_selector_compare.show()
@@ -386,7 +381,7 @@ class PlayerReport(QWidget):
         if not hasattr(self, "stat_selector_compare"):
             self.stat_selector_compare = QComboBox()
             self.stat_selector_compare.addItems(["Points", "Fouls", "Assists", "Rebounds", "Turnovers"])
-            self.stat_selector_compare.currentTextChanged.connect(self.update_game_comparison)
+            self.stat_selector_compare.currentTextChanged.connect(self._update_game_comparison)
             self.vbox.addWidget(self.stat_selector_compare)
 
         if not hasattr(self, "trends_display"):
@@ -397,16 +392,13 @@ class PlayerReport(QWidget):
         if not hasattr(self, "back_button_compare"):
             self.back_button_compare = QPushButton("Back to Main Menu")
             self.back_button_compare.setObjectName("backButton")  # ADD THIS
-            self.back_button_compare.clicked.connect(self.back_to_main_menu)
+            self.back_button_compare.clicked.connect(self._back_to_main_menu)
             self.vbox.addWidget(self.back_button_compare)
 
-        self.update_game_comparison("Points")
+        self._update_game_comparison("Points")
 
     def show_grading(self):
-        for btn in [self.get_quick_stats_btn, self.compare_all_games_btn,
-                    self.season_grading_btn, self.best_worst_game_btn,
-                    self.game_rating_btn, self.season_game_rating_btn]:
-            btn.hide()
+        self._hide_menu_buttons()
 
         if hasattr(self, "grading_display"):
             self.grading_display.show()
@@ -421,12 +413,12 @@ class PlayerReport(QWidget):
         if not hasattr(self, "back_button_grading"):
             self.back_button_grading = QPushButton("Back to Main Menu")
             self.back_button_grading.setObjectName("backButton")
-            self.back_button_grading.clicked.connect(self.back_to_main_menu)
+            self.back_button_grading.clicked.connect(self._back_to_main_menu)
             self.vbox.addWidget(self.back_button_grading)
-        self.format_grading()
+        self._format_grading()
 
-    def format_grading(self):
-        grades = self.grading()
+    def _format_grading(self):
+        grades = self._grading()
         output = f"""
         <div style='padding: 20px;'>
             <h2 style='color: #6366f1; margin-bottom: 20px; border-bottom: 2px solid #6366f1; padding-bottom: 10px; font-size: 22px;'>
@@ -466,10 +458,10 @@ class PlayerReport(QWidget):
 
         self.grading_display.setHtml(output)
 
-    def grading(self):
+    def _grading(self):
         
-        summed_team_stats = AccessData.Get_team_season_stats(True, False)
-        summed_player_season_stats = AccessData.Get_season_stats(players_name=self.players_name, sum_total=True, look_good=False)
+        summed_team_stats = AccessData.get_team_season_stats(True, False)
+        summed_player_season_stats = AccessData.get_season_stats(player=self.players_name, sum_total=True, look_good=False)
     
         grades = {}
         for stat, player_value in summed_player_season_stats.items():
@@ -497,28 +489,29 @@ class PlayerReport(QWidget):
 
         return grades
         
-    def best_worst_highlights(self, what_to_look_for: str):
-        all_games = AccessData.Get_season_stats(players_name=self.players_name, sum_total=False, look_good=False)
+    def _best_worst_highlights(self, what_to_look_for: str):
+        all_games = AccessData.get_season_stats(player=self.players_name, sum_total=False)
         nums = {}
         # {'Game_1': {'Points': 5, 'Fouls': 1, 'Rebounds': 2, 'Assists': 4, 'Turnovers': 2}, 'Game_2': {'Points': 22, 'Fouls': 1, 'Rebounds': 1, 'Assists': 0, 'Turnovers': 0}, 'Game_3': {'Points': 10, 'Fouls': 1, 'Rebounds': 2, 'Assists': 1, 'Turnovers': 0}}
         
         for game_name, game_stats in all_games.items():
             if what_to_look_for in game_stats:
-                nums[game_name] = game_stats[what_to_look_for]
+                nums[game_name] = game_stats.get(what_to_look_for, 0)
 
     # {'Game_1': 5, 'Game_2': 22, 'Game_3': 10}
+
+        if not nums:
+            return None
 
         best_game = max(nums, key=nums.get)
         worst_game = min(nums, key=nums.get)
 
 
-        return {"best": best_game, "best_val": nums.get(best_game), "worst": worst_game, "worst_val": nums.get(worst_game)}
+        return {"best": best_game, "best_val": nums[best_game], "worst": worst_game, "worst_val": nums[worst_game]}
     
     def show_best_worst_highlights(self):
-        for btn in [self.get_quick_stats_btn, self.compare_all_games_btn,
-                    self.season_grading_btn, self.best_worst_game_btn,
-                    self.game_rating_btn, self.season_game_rating_btn]:
-                btn.hide()
+        self._hide_menu_buttons()
+
         if hasattr(self , "highlights_selector"):
             self.highlights_selector.show()
         if hasattr(self, "highlights_display"):
@@ -529,7 +522,7 @@ class PlayerReport(QWidget):
         if not hasattr(self, "highlights_selector"):
             self.highlights_selector = QComboBox()
             self.highlights_selector.addItems(["Points", "Fouls", "Assists", "Rebounds", "Turnovers"])
-            self.highlights_selector.currentTextChanged.connect(self.format_highlights)
+            self.highlights_selector.currentTextChanged.connect(self._format_highlights)
             self.vbox.addWidget(self.highlights_selector)
 
         if not hasattr(self, "highlights_display"):
@@ -540,16 +533,17 @@ class PlayerReport(QWidget):
         if not hasattr(self, "back_button_highlights"):
             self.back_button_highlights = QPushButton("Back to Main Menu")
             self.back_button_highlights.setObjectName("backButton")
-            self.back_button_highlights.clicked.connect(self.back_to_main_menu)  # FIX THIS
+            self.back_button_highlights.clicked.connect(self._back_to_main_menu)  # FIX THIS
             self.vbox.addWidget(self.back_button_highlights)
 
-        self.format_highlights("Points")
+        self._format_highlights("Points")
 
-    def format_highlights(self, stat_name):
-        highlights = self.best_worst_highlights(stat_name)
+    def _format_highlights(self, stat_name):
+        highlights = self._best_worst_highlights(stat_name)
         
         if not highlights:
             self.highlights_display.setHtml("<p style='color: #ef4444;'>No data available</p>")
+            return
         
         best_game=highlights['best']
         best_val=highlights['best_val']
@@ -592,8 +586,8 @@ class PlayerReport(QWidget):
         """
         self.highlights_display.setHtml(output)
 
-    def game_rating(self, game_name: str):
-        game_stats = AccessData.Get_game_stats(game_id=game_name, player=self.players_name, look_good=False)
+    def _game_rating(self, game_name: str):
+        game_stats = AccessData.get_game_stats(game=game_name, player=self.players_name, look_good=False)
 
         scores = (
             game_stats.get('Points', 0) * 1.7 +
@@ -607,9 +601,9 @@ class PlayerReport(QWidget):
 
         return round(rating, 1)
 
-    def format_game_rating(self, game_name):
-        rating = self.game_rating(game_name)
-        game_stats = AccessData.Get_game_stats(game_id=game_name, player=self.players_name, look_good=False)
+    def _format_game_rating(self, game_name):
+        rating = self._game_rating(game_name)
+        game_stats = AccessData.get_game_stats(game=game_name, player=self.players_name, look_good=False)
 
         if rating >= 80:
             rating_color = "#10b981"
@@ -628,7 +622,7 @@ class PlayerReport(QWidget):
             rating_text = "Poor"
 
         points_contrib = game_stats.get('Points', 0) * 1.5
-        assists_contrib = game_stats.get('Assists') * 1.0
+        assists_contrib = game_stats.get('Assists', 0) * 1.0
         rebounds_contrib = game_stats.get('Rebounds', 0) * 1.25
         fouls_contrib = game_stats.get('Fouls', 0) * -0.5
         turnovers_contrib = game_stats.get('Turnovers', 0) * -1.5
@@ -689,14 +683,9 @@ class PlayerReport(QWidget):
         self.game_rating_display.setHtml(output)
 
     def show_game_rating(self):
-        for btn in [
-            self.get_quick_stats_btn, self.compare_all_games_btn,
-            self.season_grading_btn, self.best_worst_game_btn,
-            self.game_rating_btn, self.season_game_rating_btn
-        ]:
-            btn.hide()
+        self._hide_menu_buttons()
 
-        all_games = AccessData.Get_season_stats(players_name=self.players_name, sum_total=False)
+        all_games = AccessData.get_season_stats(player=self.players_name, sum_total=False)
         game_list = list(all_games.keys())
 
         if hasattr(self, "game_selector"):
@@ -704,7 +693,7 @@ class PlayerReport(QWidget):
         else:
             self.game_selector = QComboBox()
             self.game_selector.addItems(game_list)
-            self.game_selector.currentTextChanged.connect(self.format_game_rating)
+            self.game_selector.currentTextChanged.connect(self._format_game_rating)
             self.vbox.addWidget(self.game_selector)
 
         if hasattr(self, "game_rating_display"):
@@ -719,15 +708,15 @@ class PlayerReport(QWidget):
         else:
             self.back_button_game_rating = QPushButton("Back to Main Menu")
             self.back_button_game_rating.setObjectName("backButton")
-            self.back_button_game_rating.clicked.connect(self.back_to_main_menu)
+            self.back_button_game_rating.clicked.connect(self._back_to_main_menu)
             self.vbox.addWidget(self.back_button_game_rating)
 
         if game_list:
-            self.format_game_rating(game_list[0])
+            self._format_game_rating(game_list[0])
 
 
-    def season_game_rating(self):
-        all_game_stats = AccessData.Get_season_stats(players_name=self.players_name, sum_total=False, look_good=False)
+    def _season_game_rating(self):
+        all_game_stats = AccessData.get_season_stats(player=self.players_name, sum_total=False, look_good=False)
 
         if not all_game_stats:
             return {"average": 0, "all_games": {}}
@@ -737,25 +726,20 @@ class PlayerReport(QWidget):
         game_rating = {}
 
         for game_name in all_game_stats.keys():
-            rating = self.game_rating(game_name=game_name)
+            rating = self._game_rating(game_name=game_name)
             ratings.append(rating)
             game_rating[game_name] = rating
 
         try:
             avg_rating = sum(ratings) / len(ratings)
         except ZeroDivisionError:
-            return f"can't dived by 0"
+            return {"average": 0, "all_games": {}}
 
         return {"average": round(avg_rating, 1),
                 "all_games": game_rating}
     
     def show_game_season_game_rating(self):
-        for btn in [
-            self.get_quick_stats_btn, self.compare_all_games_btn,
-            self.season_grading_btn, self.best_worst_game_btn,
-            self.game_rating_btn, self.season_game_rating_btn
-        ]:
-            btn.hide()
+        self._hide_menu_buttons()
 
         if hasattr(self, "season_rating_display"):
             self.season_rating_display.show()
@@ -769,12 +753,12 @@ class PlayerReport(QWidget):
         else:
             self.back_button_season_rating = QPushButton("Back to Main Menu")
             self.back_button_season_rating.setObjectName("backButton")
-            self.back_button_season_rating.clicked.connect(self.back_to_main_menu)
+            self.back_button_season_rating.clicked.connect(self._back_to_main_menu)
             self.vbox.addWidget(self.back_button_season_rating)
             
-        self.format_season_game_rating()    
-    def format_season_game_rating(self):
-        data = self.season_game_rating()
+        self._format_season_game_rating()    
+    def _format_season_game_rating(self):
+        data = self._season_game_rating()
         avg = data['average']
         all_games = data['all_games']
 
@@ -788,7 +772,7 @@ class PlayerReport(QWidget):
             avg_color = "#ef4444"
 
         output = f"""
-                 <div style='padding: 20px;'>
+                <div style='padding: 20px;'>
                 <h2 style='color: #6366f1; margin-bottom: 20px; border-bottom: 2px solid #6366f1; padding-bottom: 10px; font-size: 22px;'>
                     Season Game Ratings - {self.players_name}
                 </h2>
@@ -812,7 +796,7 @@ class PlayerReport(QWidget):
                 color = "#ef4444"
 
             output += f"""
-         <div style='padding: 16px; margin-bottom: 10px; background: rgba(30, 30, 40, 0.4); border-left: 4px solid {color}; border-radius: 8px;'>
+        <div style='padding: 16px; margin-bottom: 10px; background: rgba(30, 30, 40, 0.4); border-left: 4px solid {color}; border-radius: 8px;'>
             <div style='display: flex; justify-content: space-between; align-items: center;'>
                 <span style='color: #e5e7eb; font-size: 16px;'>{game_name}</span>
                 <span style='color: {color}; font-size: 24px; font-weight: 700;'>{rating:.1f}</span>
@@ -859,26 +843,6 @@ if __name__ == "__main__":
 # 5. Game Rating - Individual game 0-100 rating with breakdown
 # 6. Season Game Rating - All game ratings with season average
 # ============================================================================
-
-# ============================================================================
-# KNOWN ISSUES / BUG FIXES NEEDED AT THE MOMENT
-# ============================================================================
-# CRITICAL:
-#
-# - format_game_rating(): Missing default value for Assists .get() (line ~XXX)
-#   Fix: Change .get('Assists') to .get('Assists', 0)
-#
-# - format_highlights(): Missing early return after error message (line ~XXX)
-#   Fix: Add 'return' after setHtml error message
-#
-# MINOR:
-# - season_game_rating(): Typo "can't dived by 0" should be "divide" (line ~XXX)
-#   Fix: Change string to "can't divide by 0"
-#
-# - best_worst_highlights(): Unused look_good parameter
-#   Fix: Remove parameter or implement functionality
-# ============================================================================
-
 # ============================================================================
 # PERFORMANCE NOTES
 # ============================================================================
