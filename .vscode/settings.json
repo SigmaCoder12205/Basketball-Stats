@@ -1,0 +1,14 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Tokyo Night",
+    "cSpell.words": [
+        "Dragone",
+        "Mylesbasketballstatsanddata",
+        "qlineargradient"
+    ],
+    "python.testing.pytestArgs": [
+        "Code"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

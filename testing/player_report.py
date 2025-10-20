@@ -39,7 +39,19 @@ Import Qt core module for constants and enums.
 Used for: widget alignment (Qt.AlignCenter), object naming, and other Qt core functionality.
 """
 
+import traceback
+
+def qt_except_hook(exctype, value, tb):
+    traceback.print_exception(exctype, value=value, tb=tb)
+    with open("player_report_requests.json", "a") as f:
+        traceback.print_exception(exctype, value, tb=tb)
+    sys.__excepthook__(exctype, value, tb)
+
+sys.excepthook = qt_except_hook
+
+
 class PlayerReport(QWidget):
+
     def __init__(self, players_name: str):
         super().__init__()
         self.players_name = players_name

@@ -1,0 +1,3 @@
+{"timestamp": "2025-10-19 19:51:38", "event": "return", "function": "<module>", "duration_ms": 0.0, "file": "main.py", "path": "C:\\Users\\Drags Jrs\\Drags/Code/main.py", "line": 12, "code": 200}
+{"timestamp": "2025-10-20 18:14:11", "event": "return", "function": "<module>", "duration_ms": 0.0, "file": "main.py", "path": "C:\\Users\\Drags Jrs\\Drags/Code/main.py", "line": 16, "code": 200}
+{"timestamp": "2025-10-20 18:22:06", "event": "return", "function": "<module>", "duration_ms": 0.0, "file": "main.py", "path": "C:\\Users\\Drags Jrs\\Drags/Code/main.py", "line": 16, "code": 200}

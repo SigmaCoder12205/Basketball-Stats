@@ -1,0 +1,407 @@
+{
+    "Game_1": {
+            "Details": {
+                "Time": "6:05PM",
+                "Day": "Monday",
+                "Month": "Aug",
+                "Year": 2025,
+                "Court": 3,
+                "Game_against": "Newport Raiders U16 Boys Paul",
+                "Our_Scores": 40,
+                "There_Scores": 65,
+                "Good_bad_ref": "mid",
+                "Who_was_the_ref": "white head old guy",
+                "Player_Calm": "Benjamin",
+                "Player_Angry": "Angus",
+                "Intensity": "low",
+                "Other_team_calm": "Daniel",
+                "Other_team_angry": "no",
+                "Amount_of_timeouts": 1,
+                "Amount_of_refs": 2,
+                "Amount_of_subs": 5,
+                "Total_team_players": 7,
+                "Other_team_players": 7,
+                "Amount_of_fill_in": 1,
+                "Clear_good_player": 1  
+        },
+        "Lineup": {
+            "Newport Raiders U16 Boys Paul": ["William McGirr",
+                                                "Bailey McPherson",
+                                                "Seamus Martins", 
+                                                "Hudson Mann",
+                                                "Xavier Zagame", 
+                                                "Ethan Burgess", 
+                                                "Fill-in",
+                                                "Dainiel Ugiagbe"
+                                            ],
+
+            "Newport Raiders U16 Boys Julie": ["Benjamin Berridge",
+                                                "Angus Lee", 
+                                                "Fill-in",
+                                                "Aston Sharp",
+                                                "Leon Baronti",
+                                                "Ryder Sotiroudis",
+                                                "Myles Dragone"
+            ]
+        },
+        "Quarters": {
+            "Quarter 1": {
+                "Benjamin Berridge": {
+                    "Points": 2,
+                    "Fouls": 1,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 2
+                },
+                "Angus Lee": {
+                    "Points": 3,
+                    "Fouls": 1,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 2
+                },
+                "Fill-in": {
+                    "Points": 3,
+                    "Fouls": 0,
+                    "Rebounds": 1,
+                    "Assists": 0,
+                    "Turnovers": 1
+                },
+                "Aston Sharp": {
+                    "Points": 0,
+                    "Fouls": 2,
+                    "Rebounds": 2,
+                    "Assists": 1,
+                    "Turnovers": 1
+                },
+                "Leon Baronti": {
+                    "Points": 3, 
+                    "Fouls": 1,
+                    "Rebounds": 1,
+                    "Assists": 1,
+                    "Turnovers": 2
+                },
+                "Ryder Sotiroudis": {
+                    "Points": 3, 
+                    "Fouls": 0,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Myles Dragone": {
+                    "Points": 0,
+                    "Fouls": 1,
+                    "Rebounds": 1,
+                    "Assists": 1,
+                    "Turnovers": 4
+                }
+            },
+            "Quarter 2": {
+                "Benjamin Berridge": {
+                    "Points": 8,
+                    "Fouls": 0,
+                    "Rebounds": 6,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Angus Lee": {
+                    "Points": 9,
+                    "Fouls": 0,
+                    "Rebounds": 1,
+                    "Assists": 1,
+                    "Turnovers": 2                            
+                }, 
+                "Fill-in": {
+                    "Points": 4,
+                    "Fouls": 0,
+                    "Rebounds": 1,
+                    "Assists": 1,
+                    "Turnovers": 0
+                },
+                "Aston Sharp": {
+                    "Points": 0,
+                    "Fouls": 0,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 1   
+                },
+                "Leon Baronti": {
+                    "Points": 2,
+                    "Fouls": 0,
+                    "Rebounds": 1,
+                    "Assists": 3,
+                    "Turnovers": 0
+                },
+                "Ryder Sotiroudis": {
+                    "Points": 1,
+                    "Fouls": 0,
+                    "Rebounds": 3,
+                    "Assists": 0,
+                    "Turnovers": 2
+                },
+                "Myles Dragone": {
+                    "Points": 0,
+                    "Fouls": 0,
+                    "Rebounds": 0,
+                    "Assists": 0,
+                    "Turnovers": 1
+                }
+            }
+        }
+    },
+    "Game_2": {
+        "Details": {
+            "Time": "6:05PM",
+            "Day": "Monday",
+            "Month": "Aug",
+            "Year": 2025,
+            "Court": 3,
+            "Game_against": "Truganina South Basketball Club Bullets",
+            "Our_Scores": 50,
+            "There_Scores": 84,
+            "Good_bad_ref": "good",
+            "Who_was_the_ref": "Dunno",
+            "Player_Calm": "None",
+            "Player_Angry": "None",
+            "Intensity": "low",
+            "Other_team_calm": "None",
+            "Other_team_angry": "None",
+            "Amount_of_timeouts": 2,
+            "Amount_of_refs": 2,
+            "Amount_of_subs": 0,
+            "Total_team_players": 5,
+            "Other_team_players": 6,
+            "Amount_of_fill_in": 0,
+            "Clear_good_player": 1
+        },
+        "Lineup": {
+            "Truganina South Basketball Club Bullets": [
+                "Pradyun Raj",
+                "Paul Tzellious",
+                "Nate Slattery",
+                "Prabal Virk",
+                "Ezekia Vosa",
+                "Fill-in"
+            ],
+            "Newport Raiders U16 Boys Julie": [
+                "Angus Lee",
+                "Aston Sharp",
+                "Leon Baronti",
+                "Ryder Sotiroudis",
+                "Myles Dragone"
+            ]
+        },
+        "Quarters": {
+            "Quarter 1": {
+                "Angus Lee": {
+                    "Points": 6,
+                    "Fouls": 0,
+                    "Rebounds": 3,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Aston Sharp": {
+                    "Points": 2,
+                    "Fouls": 1,
+                    "Rebounds": 1,
+                    "Assists": 1,
+                    "Turnovers": 1
+                },
+                "Leon Baronti": {
+                    "Points": 9,
+                    "Fouls": 0,
+                    "Rebounds": 0,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Ryder Sotiroudis": {
+                    "Points": 4,
+                    "Fouls": 1,
+                    "Rebounds": 3,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Myles Dragone": {
+                    "Points": 0,
+                    "Fouls": 1,
+                    "Rebounds": 0,
+                    "Assists": 1,
+                    "Turnovers": 0
+                }
+            },
+            "Quarter 2": {
+                "Angus Lee": {
+                    "Points": 0,
+                    "Fouls": 0,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 1
+                },
+                "Aston Sharp": {
+                    "Points": 11,
+                    "Fouls": 0,
+                    "Rebounds": 3,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Leon Baronti": {
+                    "Points": 13,
+                    "Fouls": 1,
+                    "Rebounds": 1,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Ryder Sotiroudis": {
+                    "Points": 2,
+                    "Fouls": 2,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 0
+                }, 
+                "Myles Dragone": {
+                    "Points": 3,
+                    "Fouls": 1,
+                    "Rebounds": 1,
+                    "Assists": 1,
+                    "Turnovers": 1
+                }
+            }
+        }
+    },
+    "Game_3": {
+        "Details": {
+            "Time": "6:05PM",
+            "Day": "Monday",
+            "Month": "Aug",
+            "Year": 2025,
+            "Court": 1,
+            "Game_against": "Willy Cannons U16 Boys JAZZ",
+            "Our_Scores": 37,
+            "There_Scores": 39,
+            "Good_bad_ref": "mid",
+            "Who_was_the_ref": "Young boy",
+            "Player_Calm": "None",
+            "Player_Angry": "Aston",
+            "Intensity": "mid-high",
+            "Other_team_calm": "French Guy",
+            "Other_team_Angry": "curly hair guy",
+            "Amount_of_timeouts": 1,
+            "Amount_of_refs": 2,
+            "Amount_of_subs": 7,
+            "Total_team_players": 6,
+            "Other_team_players": 9,
+            "Clear_good_player": 3
+        }, 
+        "Lineup": {
+            "Newport Raiders U16 Boys Julie": [
+                "Benjamin Berridge",
+                "Angus Lee",
+                "Aston Sharp",
+                "Leon Baronti",
+                "Ryder Sotiroudis",
+                "Myles Dragone"
+            ],
+            "Willy Cannons U16 Boys JAZZ": [
+                "Jack Court",
+                "Charlie Pearson",
+                "Caleb Hickman",
+                "Joshua Marra",
+                "Blake Williams",
+                "Harrison Wood",
+                "William Killeen",
+                "Xavier Marinovic",
+                "Mason Walker"
+            ]   
+        },
+        "Quarters": {
+            "Quarter 1": {
+                "Benjamin Berridge": {
+                    "Points": 6, 
+                    "Fouls": 0,
+                    "Rebounds": 4,
+                    "Assists": 0,
+                    "Turnovers": 1
+                },
+                "Angus Lee": {
+                    "Points": 5,
+                    "Fouls": 0,
+                    "Rebounds": 3,
+                    "Assists": 1,
+                    "Turnovers": 1
+                },
+                "Aston Sharp": {
+                    "Points": 2,
+                    "Fouls": 0,
+                    "Rebounds": 1,
+                    "Assists": 0,
+                    "Turnovers": 1
+                },
+                "Leon Baronti": {
+                    "Points": 8,
+                    "Fouls": 0,
+                    "Rebounds": 0,
+                    "Assists": 1,
+                    "Turnovers": 0
+                },
+                "Ryder Sotiroudis": {
+                    "Points": 4,
+                    "Fouls": 0,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Myles Dragone": {
+                    "Points": 0,
+                    "Fouls": 2,
+                    "Rebounds": 0,
+                    "Assists": 0,
+                    "Turnovers": 0
+                }
+            },
+            "Quarter 2": {
+                "Benjamin Berridge": {
+                    "Points": 4,
+                    "Fouls": 0,
+                    "Rebounds": 3,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Angus Lee": {
+                    "Points": 3,
+                    "Fouls": 3,
+                    "Rebounds": 1,
+                    "Assists": 0,
+                    "Turnovers": 1
+                },
+                "Aston Sharp": {
+                    "Points": 0,
+                    "Fouls": 0,
+                    "Rebounds": 1,
+                    "Assists": 0,
+                    "Turnovers": 1
+                },
+                "Leon Baronti": {
+                    "Points": 2,
+                    "Fouls": 1,
+                    "Rebounds": 2,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Ryder Sotiroudis": {
+                    "Points": 3,
+                    "Fouls": 0,
+                    "Rebounds": 1,
+                    "Assists": 0,
+                    "Turnovers": 0
+                },
+                "Myles Dragone": {
+                    "Points": 0,
+                    "Fouls": 2,
+                    "Rebounds": 1,
+                    "Assists": 0,
+                    "Turnovers": 0
+                }
+            }
+        }
+    }
+}
