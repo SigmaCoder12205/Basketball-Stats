@@ -4,11 +4,14 @@ import json
 import os 
 import shutil
 from typing import Optional, Dict, Any
+from datetime import datetime
+from utils import write
 
 class AccessData:
     data: Dict[str, Any] = {}
     file_path: str = ""
     _initialized: bool = False
+    current_time = datetime.now()
     
     def __init__(self):
         try:
@@ -600,7 +603,14 @@ class AccessData:
         cls._ensure_initialized()
 
         if not isinstance(game, str):
-            return {"error": f"game must be a string"}
+            error_message = {"error": "game must be a string",
+                            "where": "check_player",
+                            "what_error": "invalid prams",
+                            "when": cls.current_time.isoformat(),
+                            "time": f"{cls.current_time.time().isoformat()}"}
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+        
     
         if not isinstance(team, str):
             return {"error": f"team must be a string"}

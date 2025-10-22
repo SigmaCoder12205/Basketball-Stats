@@ -39,21 +39,14 @@ Import Qt core module for constants and enums.
 Used for: widget alignment (Qt.AlignCenter), object naming, and other Qt core functionality.
 """
 
-import traceback
-
-def qt_except_hook(exctype, value, tb):
-    traceback.print_exception(exctype, value=value, tb=tb)
-    with open("player_report_requests.json", "a") as f:
-        traceback.print_exception(exctype, value, tb=tb)
-    sys.__excepthook__(exctype, value, tb)
-
-sys.excepthook = qt_except_hook
-
-
 class PlayerReport(QWidget):
 
     def __init__(self, players_name: str):
         super().__init__()
+
+        if not isinstance(players_name, str):
+            return {'error': f"players_name must be a string"}
+
         self.players_name = players_name
 
         # Header
@@ -227,11 +220,17 @@ class PlayerReport(QWidget):
         for btn in self.menu_buttons:
             btn.hide()
 
-    def _update_season_stats(self, stat_name):
+    def _update_season_stats(self, stat_name: str):
+        if not isinstance(stat_name, str):
+            return {'error': f'stat_name must be a string'}
+
         result = self._calculate_season_average(stat_name)
         self.stats_display.setHtml(result)
 
     def _calculate_season_average(self, what_to_look_for: str):
+        if not isinstance(what_to_look_for, str):
+            return {'error': f"what_to_look_for must be a string"}
+        
         sum_games_stats = AccessData.get_season_stats(player=self.players_name, sum_total=True)
 
         if what_to_look_for not in sum_games_stats:
@@ -342,7 +341,10 @@ class PlayerReport(QWidget):
 
         return trends_report
     
-    def _update_game_comparison(self, stat_name):
+    def _update_game_comparison(self, stat_name: str):
+        if not isinstance(stat_name, str):
+            return {'error': f'stat_name must be a string'}
+        
         trend_report = self._compare_all_games()
 
         if stat_name not in trend_report:
@@ -502,6 +504,10 @@ class PlayerReport(QWidget):
         return grades
         
     def _best_worst_highlights(self, what_to_look_for: str):
+        if not isinstance(what_to_look_for, str):
+            return {'error': f'what_to_look_for must be a string'}
+
+
         all_games = AccessData.get_season_stats(player=self.players_name, sum_total=False)
         nums = {}
         # {'Game_1': {'Points': 5, 'Fouls': 1, 'Rebounds': 2, 'Assists': 4, 'Turnovers': 2}, 'Game_2': {'Points': 22, 'Fouls': 1, 'Rebounds': 1, 'Assists': 0, 'Turnovers': 0}, 'Game_3': {'Points': 10, 'Fouls': 1, 'Rebounds': 2, 'Assists': 1, 'Turnovers': 0}}
@@ -550,9 +556,12 @@ class PlayerReport(QWidget):
 
         self._format_highlights("Points")
 
-    def _format_highlights(self, stat_name):
+    def _format_highlights(self, stat_name: str):
+        if not isinstance(stat_name, str):
+            return {'error': 'stat_name must be a string'}
+
         highlights = self._best_worst_highlights(stat_name)
-        
+
         if not highlights:
             self.highlights_display.setHtml("<p style='color: #ef4444;'>No data available</p>")
             return
@@ -599,6 +608,9 @@ class PlayerReport(QWidget):
         self.highlights_display.setHtml(output)
 
     def _game_rating(self, game_name: str):
+        if not isinstance(game_name, str):
+            return {'error': f"game_name must be a string"}
+
         game_stats = AccessData.get_game_stats(game=game_name, player=self.players_name, look_good=False)
 
         scores = (
@@ -613,7 +625,10 @@ class PlayerReport(QWidget):
 
         return round(rating, 1)
 
-    def _format_game_rating(self, game_name):
+    def _format_game_rating(self, game_name: str):
+        if not isinstance(game_name, str):
+            return {'error': f'game_name must be a string'}
+
         rating = self._game_rating(game_name)
         game_stats = AccessData.get_game_stats(game=game_name, player=self.players_name, look_good=False)
 
