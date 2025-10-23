@@ -17,27 +17,105 @@ class AccessData:
         try:
             self.initialize()
         except Exception as e:
-            print(f"INIT ERROR: {e}")
+            error_message = {
+            "error_message": e,
+            "type": "Exception",
+            "where": "__init__",
+            "when": self.current_time.isoformat(),
+            "time": f"{self.current_time.time().isoformat()}"
+        }
+
+        write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+        return error_message
 
     def __repr__(self):
-        game_count = len(self.data) if isinstance(self.data, dict) else 0 
-        player_count = 0
+        try:
+            game_count = len(self.data) if isinstance(self.data, dict) else 0 
+            player_count = 0
 
-        for game in self.data.values():
-            if isinstance(game, dict) and "Lineup" in game:
-                for team in game["Lineup"].values():
-                    player_count += len(team) if isinstance(team, list) else 0
-        return f"<AccessData file={self.file_path or 'Unknown'}\n games={game_count} players={player_count}>"
+            for game in self.data.values():
+                if isinstance(game, dict) and "Lineup" in game:
+                    for team in game["Lineup"].values():
+                        player_count += len(team) if isinstance(team, list) else 0
+            return f"<AccessData file={self.file_path or 'Unknown'}\n games={game_count} players={player_count}>"
+        except ValueError as e:
+            error_message = {
+                "error_message": e,
+                "type": "ValueError",
+                "where": "__repr__",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+        except KeyError as e:
+            error_message = {
+                "error_message": e,
+                "type": "KeyError",
+                "where": "__repr__",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+        except Exception as e:
+            error_message = {
+                "error_message": e,
+                "type": "Exception",
+                "where": "__repr__",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
     
     def __str__(self):
-        game_count = len(self.data) if isinstance(self.data, dict) else 0
-        player_count = 0
+        try:
+            game_count = len(self.data) if isinstance(self.data, dict) else 0
+            player_count = 0
 
-        for game in self.data.values():
-            if isinstance(game, dict) and "Lineup" in game:
-                for team in game["Lineup"].values():
-                    player_count += len(team) if isinstance(team, list) else 0
-        return f"File: {self.file_path or "Unknown"}\n Games Loaded: {game_count}\n Total Players: {player_count}"
+            for game in self.data.values():
+                if isinstance(game, dict) and "Lineup" in game:
+                    for team in game["Lineup"].values():
+                        player_count += len(team) if isinstance(team, list) else 0
+            return f"File: {self.file_path or "Unknown"}\n Games Loaded: {game_count}\n Total Players: {player_count}"
+
+        except ValueError as e:
+            error_message = {
+                "error_message": e,
+                "type": "ValueError",
+                "where": "__str__",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+        except KeyError as e:
+            error_message = {
+                "error_message": e,
+                "type": "KeyError",
+                "where": "__str__",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+        except Exception as e:
+            error_message = {
+                "error_message": e,
+                "type": "Exception",
+                "where": "__str__",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
 
     @classmethod
     def _ensure_initialized(cls):
@@ -47,10 +125,26 @@ class AccessData:
 
     def initialize(self, load: bool = False, filename: str = "Data.json") -> Optional[Dict[str, Any]]:
         if not isinstance(load, bool):
-            raise TypeError(f"Expected bool for 'load', got {type(load).__name__}")
-        
+            error_message = {
+                "error": "load must be a bool",
+                "where": "initialize",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
+
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+                    
         if not isinstance(filename, str):
-            raise TypeError(f"Expected str for 'filename', got {type(filename).__name__}")
+            error_message = {
+                "error": "filename must be a str",
+                "where": "initialize",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
+
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
         
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         data_file = os.path.abspath(os.path.join(base_dir, "Database", filename))
@@ -66,21 +160,64 @@ class AccessData:
                     raise ValueError(f"Invalid JSON structure - root must be an object (dict)")
                 AccessData.data = data
         except json.JSONDecodeError as e:
-            raise ValueError(f"JSON Decode error: {e}")
+            error_message = {
+                "error_message": e,
+                "type": "json.JSONDecodeError",
+                "where": "initialize",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
         except OSError as e:
-            raise RuntimeError(f"OS error while reading file: {e}")
+            error_message = {
+                "error_message": e,
+                "type": "OSError",
+                "where": "initialize",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
         except Exception as e:
-            raise RuntimeError(f"Unexpected error: {e}")
+            error_message = {
+                "error_message": e,
+                "type": "Exception",
+                "where": "initialize",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
         if load:
             return AccessData.data
         
     def save(self, filename: Optional[str] = None, backup: bool = True) -> bool:
         if not isinstance(self.data, dict):
-            raise ValueError("Cannot save: data must be a dict")
+            error_message = {
+                "error": "Cannot save: data must be a dict",
+                "where": "save",
+                "what_error": "invalid prams",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"}
+
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
         
         save_path = filename or self.file_path
         if not save_path:
-            raise ValueError("File path is not set")
+            error_message = {
+                "error": "File path not set",
+                "where": "save",
+                "what_error": "file path not set",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"}
+
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
         
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
@@ -96,40 +233,80 @@ class AccessData:
             os.replace(temp_file, save_path)
             return True
         except (OSError, IOError) as e:
-            print(f"Save error: failed to write file: {e}")
-            return False
+            error_message = {
+                "error_message": e,
+                "type": "Either OSError or IOError",
+                "where": "save",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
         except Exception as e:
-            print(f"Save error: unexpected error: {e}")
-            return False
+            error_message = {
+                "error_message": e,
+                "type": "Exception",
+                "where": "save",
+                "when": self.current_time.isoformat(),
+                "time": f"{self.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
 
     @classmethod
     def get_details(cls, game: str, look_good: bool = False):
-        cls._ensure_initialized()
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(game, str): 
-            return {"error": f"Game {game} must be a string"}
-        
-        if not isinstance(look_good, bool):
-            return f"error: look_good ({look_good}) must be a boolean"
+            if not isinstance(game, str): 
+                error_message = {
+                    "error": "game must be a string",
+                    "where": "get_details",
+                    "what_error": "invalid prams",
+                    "when": cls.current_time.isoformat(),
+                    "time": f"{cls.current_time.time().isoformat()}"}
 
-        if not game or game not in cls.data:
-            return {"error": f"invalid game: {game}"}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
+                        
+            if not isinstance(look_good, bool):
+                error_message = {
+                    "error": "look_good must be a bool",
+                    "where": "get_details",
+                    "what_error": "invalid prams",
+                    "when": cls.current_time.isoformat(),
+                    "time": f"{cls.current_time.time().isoformat()}"}
 
-        game_stats = cls.data.get(game, {})
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
 
-        if game_stats == {}:
-            return {"error": f"game: {game} not found"}
+            if not game or game not in cls.data:
+                error_message = {
+                    "error": f"could not find the {game}",
+                    "where": "get_details",
+                    "what_error": "invalid prams",
+                    "when": cls.current_time.isoformat(),
+                    "time": f"{cls.current_time.time().isoformat()}"}
 
-        details = game_stats.get("Details", {})
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
 
-        if look_good:
-            output = ["--------------------- Details ------------------------"]
-            for detail, stat in details.items():
-                output.append(f"{detail}: {stat}")
-            output.append("--------------------------------------------------")
-            return "\n".join(output)
-        else:
-            return details.copy()
+            game_stats = cls.data.get(game, {})
+
+            details = game_stats.get("Details", {})
+
+            if look_good:
+                output = ["--------------------- Details ------------------------"]
+                for detail, stat in details.items():
+                    output.append(f"{detail}: {stat}")
+                output.append("--------------------------------------------------")
+                return "\n".join(output)
+            else:
+                return details.copy()
+        except ValueError as e:
+            pass
 
     @classmethod
     def get_a_lineup(cls, game: str, team: str, look_good: bool =False): 
@@ -600,50 +777,121 @@ class AccessData:
     
     @classmethod
     def check_player(cls, game: str, team: str, player: str, look_good: bool = False):
-        cls._ensure_initialized()
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(game, str):
-            error_message = {"error": "game must be a string",
-                            "where": "check_player",
-                            "what_error": "invalid prams",
-                            "when": cls.current_time.isoformat(),
-                            "time": f"{cls.current_time.time().isoformat()}"}
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
-            return error_message
-        
-    
-        if not isinstance(team, str):
-            return {"error": f"team must be a string"}
-        
-        if not isinstance(player, str):
-            return {"error": f"player_name must be a string"}
-        
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
-
-        if game not in cls.data:
-            return {"error": f"Could not find Game: {game}"}
-        
-        game_stats = cls.data.get(game, {})
-
-        if team not in game_stats["Lineup"]:
-            return {"error": f"Could not find Team: {team}"}
-        
-        team_players = game_stats.get("Lineup").get(team)
-
-        if player not in team_players:
-            if look_good:
-                output = f"{player} was not found in {game} of {team}"
-                return output
-            else:
-                return False
-        else:
-            if look_good:
-                output = f"{player} was found in {game} of {team}"
-                return output
-            else:
-                return True
+            if not isinstance(game, str):
+                error_message = {"error": "game must be a string",
+                                "where": "check_player",
+                                "what_error": "invalid prams",
+                                "when": cls.current_time.isoformat(),
+                                "time": f"{cls.current_time.time().isoformat()}", 
+                                "who_caused_the_error": "me"}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
             
+        
+            if not isinstance(team, str):
+                error_message = {"error": "team must be a string",
+                    "where": "check_player",
+                    "what_error": "invalid prams",
+                    "when": cls.current_time.isoformat(),
+                    "time": f"{cls.current_time.time().isoformat()}",
+                    "who_caused_the_error": "me"}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
+            
+            if not isinstance(player, str):
+                error_message = {"error": "player must be a string",
+                                "where": "check_player",
+                                "what_error": "invalid prams",
+                                "when": cls.current_time.isoformat(),
+                                "time": f"{cls.current_time.time().isoformat()}",
+                                "who_caused_the_error": "me"}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
+            
+            if not isinstance(look_good, bool):
+                error_message = {"error": "game must be a string",
+                                "where": "check_player",
+                                "what_error": "invalid prams",
+                                "when": cls.current_time.isoformat(),
+                                "time": f"{cls.current_time.time().isoformat()}",
+                                "who_caused_the_error": "me"}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
+
+            if game not in cls.data:
+                error_message = {"error": "could not find the game",
+                                "where": "check_player",
+                                "what_error": "unable to fine the game",
+                                "when": cls.current_time.isoformat(),
+                                "time": f"{cls.current_time.time().isoformat()}",
+                                "who_caused_the_error": "you"}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
+            
+            game_stats = cls.data.get(game, {})
+
+            if team not in game_stats["Lineup"]:
+                error_message = {"error": "game must be a string",
+                    "where": "check_player",
+                    "what_error": "invalid prams",
+                    "when": cls.current_time.isoformat(),
+                    "time": f"{cls.current_time.time().isoformat()}",
+                    "who_caused_the_error": "you"}
+                    
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+                return error_message
+            
+            team_players = game_stats.get("Lineup").get(team)
+
+            if player not in team_players:
+                if look_good:
+                    output = f"{player} was not found in {game} of {team}"
+                    return output
+                else:
+                    return False
+            else:
+                if look_good:
+                    output = f"{player} was found in {game} of {team}"
+                    return output
+                else:
+                    return True
+                
+        except ValueError as e:
+            error_message = {
+                "error_message": e,
+                "type": "ValueError",
+                "where": "check_player",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+        except KeyError as e:
+            error_message = {
+                "error_message": e,
+                "type": "KeyError",
+                "where": "check_player",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+        except Exception as e:
+            error_message = {
+                            "error_message": e,
+                            "type": "Exception",
+                            "where": "check_player",
+                            "when": cls.current_time.isoformat(),
+                            "time": f"{cls.current_time.time().isoformat()}"
+                        }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+            return error_message
+
 if __name__ == '__main__':
     app = AccessData()
-    print(app.__repr__())
