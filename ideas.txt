@@ -1,1 +1,27 @@
-{"what_error": ..., "when": time, function_name: ""}
+
+
+
+error_message = {
+    "error": "filename must be a str",
+    "where": "initialize",
+    "what_error": "invalid prams",
+    "when": cls.current_time.isoformat(),
+    "time": f"{cls.current_time.time().isoformat()}"}
+
+write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
+return error_message
+
+
+##########################################################################################################
+
+
+error_message = {
+    "error_message": e,
+    "type": "ValueError",
+    "where": "check_player",
+    "when": cls.current_time.isoformat(),
+    "time": f"{cls.current_time.time().isoformat()}"
+}
+
+write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
+return error_message
