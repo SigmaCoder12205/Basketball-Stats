@@ -24,6 +24,14 @@
             "program": "${workspaceFolder}/Code/main.py",
             "console": "integratedTerminal",
             "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "▶ Run AccessData Module",
+            "type": "python",
+            "request": "launch",
+            "module": "utils.accessing_data",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
