@@ -711,175 +711,337 @@ class AccessData:
 
     @classmethod
     def get_game_stats(cls, game: str, player: str, look_good: bool = False): # Original name: get_total_stats sums up a games stats
-        cls._ensure_initialized()
-        
-        if not isinstance(game, str):
-            return {"error": f"game_name must be a string"}
+        try:
+            cls._ensure_initialized()
+            
+            if not isinstance(game, str):
+                cls.error_message = {
+                "error": "game must be a str",
+                "where": "get_game_stats",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
 
-        if not isinstance(player, str):
-            return {"error": f"player must be a string"}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
 
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
-        
-        game_stats = cls.data.get(game, {})
-        
-        if not game:
-            return {"error": f"{game} not found"}
-        
-        quarters = game_stats.get("Quarters", {})
-        if not quarters:
-            return {}
-        
-        totals = {}
+            if not isinstance(player, str):
+                cls.error_message = {
+                "error": "player must be a str",
+                "where": "get_game_stats",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
 
-        for _, quarter_stats in quarters.items():
-            for player_name, stats in quarter_stats.items():
-                if player and player_name != player:
-                    continue
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
 
-                if player_name not in totals:
-                    totals[player_name] = {key: 0 for key in stats}
+            if not isinstance(look_good, bool):
+                cls.error_message = {
+                "error": "look_good must be a look_good",
+                "where": "get_game_stats",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
 
-                for stat_name, value in stats.items():
-                    totals[player_name][stat_name] += value 
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
+            
+            game_stats = cls.data.get(game, {})
+            
+            if not game:
+                cls.error_message = {
+                "error": "game not found",
+                "where": "get_game_stats",
+                "what_error": "invalid game",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
+
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
+            
+            quarters = game_stats.get("Quarters", {})
+            if not quarters:
+                return {}
+            
+            totals = {}
+
+            for _, quarter_stats in quarters.items():
+                for player_name, stats in quarter_stats.items():
+                    if player and player_name != player:
+                        continue
+
+                    if player_name not in totals:
+                        totals[player_name] = {key: 0 for key in stats}
+
+                    for stat_name, value in stats.items():
+                        totals[player_name][stat_name] += value 
 
 
-        if look_good:
-            if player:
-                formatted = [f"------------------ Game: {game} ------------------\n"]
-                player_stats = totals.get(player, {})
-                formatted.extend( f"{stat}: {value}" for stat, value in player_stats.items())
-                return "\n".join(formatted)
+            if look_good:
+                if player:
+                    formatted = [f"------------------ Game: {game} ------------------\n"]
+                    player_stats = totals.get(player, {})
+                    formatted.extend( f"{stat}: {value}" for stat, value in player_stats.items())
+                    return "\n".join(formatted)
+                else:
+                    lines = [f"------------------ Game: {game} Stats ------------------------\n"]
+                    for player_name, stats in totals.items():
+                        stat_line = ", ".join(f"{key}: {value}" for key, value in stats.items())
+                        lines.append(f"{player_name}: {stat_line}")
+                    return "\n".join(lines)
             else:
-                lines = [f"------------------ Game: {game} Stats ------------------------\n"]
-                for player_name, stats in totals.items():
-                    stat_line = ", ".join(f"{key}: {value}" for key, value in stats.items())
-                    lines.append(f"{player_name}: {stat_line}")
-                return "\n".join(lines)
-        else:
-            return totals if not player else totals.get(player, {})
+                return totals if not player else totals.get(player, {})
+        except ValueError as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "ValueError",
+                "where": "get_game_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            return cls.error_message
+        except KeyError as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "KeyError",
+                "where": "get_game_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            return cls.error_message
+        except Exception as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "Exception",
+                "where": "get_game_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
     
     @classmethod
     def get_season_stats(cls, player: str, sum_total: bool = False, look_good: bool = False):
-        cls._ensure_initialized()
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(player, str):
-            return {"error": f"players_name must be a string"}
-        
-        if not isinstance(sum_total, bool):
-            return {"error": f"sum_total must be a boolean"}
-        
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
+            if not isinstance(player, str):
+                cls.error_message = {
+                "error": "player must be a string",
+                "where": "get_season_stats",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
 
-        total = {}
-
-        if sum_total:
-            for game_name, game_stats in cls.data.items():
-                for quarter, quarter_stats in game_stats["Quarters"].items():
-                    if player in quarter_stats:
-                        for stat_name, stat_value in quarter_stats[player].items():
-                            total[stat_name] = total.get(stat_name, 0) + stat_value                          
-
-            if look_good:
-                output = f"Season stats for {player}\n"
-                for stat, value in total.items():
-                    output += f"    - {stat}: {value}\n"
-                return output
-            else:
-                return total
-        else:
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
             
-            game_totals = {}
+            if not isinstance(sum_total, bool):
+                cls.error_message = {
+                "error": "sum_total must be a bool",
+                "where": "get_season_stats",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
 
-            for game_name, game_stats in cls.data.items():
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
+            
+            if not isinstance(look_good, bool):
+                cls.error_message = {
+                "error": "look_good must be a bool",
+                "where": "get_season_stats",
+                "what_error": "invalid prams",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"}
 
-                players_total = {}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
 
-                for quarter_stats in game_stats["Quarters"].values():
-                    if player in quarter_stats:
-                        for players_stat_name, players_stat_value in quarter_stats[player].items():
-                            players_total[players_stat_name] = players_total.get(players_stat_name, 0) + players_stat_value
+            total = {}
+
+            if sum_total:
+                for game_name, game_stats in cls.data.items():
+                    for quarter, quarter_stats in game_stats["Quarters"].items():
+                        if player in quarter_stats:
+                            for stat_name, stat_value in quarter_stats[player].items():
+                                total[stat_name] = total.get(stat_name, 0) + stat_value                          
+
+                if look_good:
+                    output = f"Season stats for {player}\n"
+                    for stat, value in total.items():
+                        output += f"    - {stat}: {value}\n"
+                    return output
+                else:
+                    return total
+            else:
                 
-                if players_total:
-                    game_totals[game_name] = players_total
-            
-            # {'Game_1': {'Points': 0, 'Fouls': 1, 'Rebounds': 1, 'Assists': 1, 'Turnovers': 5}, 'Game_2': {'Points': 3, 'Fouls': 2, 'Rebounds': 1, 'Assists': 2, 'Turnovers': 1}, 'Game 3': {'Points': 0, 'Fouls': 4, 'Rebounds': 1, 'Assists': 0, 'Turnovers': 0}}
+                game_totals = {}
 
-            if look_good:
-                output = f"------------------------- Game stats for {player} -------------------------------\n"
-                for game_name, game_stats in game_totals.items():
-                    output += f"----------- {game_name} stats: ------------\n"
-                    for stat_name, stat_value in game_stats.items():
-                        output += f"    - {stat_name}: {stat_value}\n"
-                        if stat_name == "Turnovers":
-                            output += "\n"
-                return output        
-            else:
-                return game_totals
+                for game_name, game_stats in cls.data.items():
 
+                    players_total = {}
+
+                    for quarter_stats in game_stats["Quarters"].values():
+                        if player in quarter_stats:
+                            for players_stat_name, players_stat_value in quarter_stats[player].items():
+                                players_total[players_stat_name] = players_total.get(players_stat_name, 0) + players_stat_value
+                    
+                    if players_total:
+                        game_totals[game_name] = players_total
+                
+                # {'Game_1': {'Points': 0, 'Fouls': 1, 'Rebounds': 1, 'Assists': 1, 'Turnovers': 5}, 'Game_2': {'Points': 3, 'Fouls': 2, 'Rebounds': 1, 'Assists': 2, 'Turnovers': 1}, 'Game 3': {'Points': 0, 'Fouls': 4, 'Rebounds': 1, 'Assists': 0, 'Turnovers': 0}}
+
+                if look_good:
+                    output = f"------------------------- Game stats for {player} -------------------------------\n"
+                    for game_name, game_stats in game_totals.items():
+                        output += f"----------- {game_name} stats: ------------\n"
+                        for stat_name, stat_value in game_stats.items():
+                            output += f"    - {stat_name}: {stat_value}\n"
+                            if stat_name == "Turnovers":
+                                output += "\n"
+                    return output        
+                else:
+                    return game_totals
+        except ValueError as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "ValueError",
+                "where": "get_season_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            return cls.error_message
+        
+        except KeyError as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "KeyError",
+                "where": "get_season_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            return cls.error_message
+        except Exception as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "Exception",
+                "where": "get_season_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            return cls.error_message
     @classmethod
     def get_team_season_stats(cls, sum_total: bool = False, look_good: bool = False):
-        cls._ensure_initialized()
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(sum_total, bool):
-            return {"error": f"sum_total must be a boolean"}
-        
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
+            if not isinstance(sum_total, bool):
+                cls.error_message = {
+                    "error": "sum_total must be a bool",
+                    "where": "get_team_season_stats",
+                    "what_error": "invalid prams",
+                    "when": cls.current_time.isoformat(),
+                    "time": f"{cls.current_time.time().isoformat()}"}
 
-        if sum_total:
-            team_totals = {}
-
-            for game_name, game_data in cls.data.items():
-                for quarter_name, quarter_stats in game_data["Quarters"].items():
-                    for players_name, players_stats in quarter_stats.items():
-                        if players_name not in team_totals:
-                            team_totals[players_name] = {}  # {"Myles Dragone": None}
-                        for stat_name, stat_value in players_stats.items():
-                            team_totals[players_name][stat_name] = team_totals[players_name].get(stat_name, 0) + stat_value # {"Myles Dragone": {"Points": 3}}
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
             
-            if look_good:
-                output = "---------------- Newport Raiders U16 Boys Julie Season stats ----------------\n"
+            if not isinstance(look_good, bool):
+                cls.error_message = {
+                    "error": "look_good must be a bool",
+                    "where": "get_team_season_stats",
+                    "what_error": "invalid prams",
+                    "when": cls.current_time.isoformat(),
+                    "time": f"{cls.current_time.time().isoformat()}"}
 
-                for team_players_name, team_players_stats in team_totals.items():
-                    output += f"\n                       {team_players_name}                               \n"
-                    for team_players_stat_name, team_players_stat_value in team_players_stats.items():
-                        output += f"                            - {team_players_stat_name}: {team_players_stat_value}\n"
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
+                return cls.error_message
+
+            if sum_total:
+                team_totals = {}
+
+                for game_name, game_data in cls.data.items():
+                    for quarter_name, quarter_stats in game_data["Quarters"].items():
+                        for players_name, players_stats in quarter_stats.items():
+                            if players_name not in team_totals:
+                                team_totals[players_name] = {}  # {"Myles Dragone": None}
+                            for stat_name, stat_value in players_stats.items():
+                                team_totals[players_name][stat_name] = team_totals[players_name].get(stat_name, 0) + stat_value # {"Myles Dragone": {"Points": 3}}
                 
-                return output
+                if look_good:
+                    output = "---------------- Newport Raiders U16 Boys Julie Season stats ----------------\n"
+
+                    for team_players_name, team_players_stats in team_totals.items():
+                        output += f"\n                       {team_players_name}                               \n"
+                        for team_players_stat_name, team_players_stat_value in team_players_stats.items():
+                            output += f"                            - {team_players_stat_name}: {team_players_stat_value}\n"
+                    
+                    return output
+                else:
+                    return team_totals
             else:
-                return team_totals
-        else:
-            game_team_totals = {}
-                
-            for game_name, game_data in cls.data.items():
-                
-                player_total = {}
+                game_team_totals = {}
+                    
+                for game_name, game_data in cls.data.items():
+                    
+                    player_total = {}
 
-                for quarter_name, quarter_stats in game_data["Quarters"].items():
-                    for players_name, players_data in quarter_stats.items():
-                        if players_name not in player_total:
-                            player_total[players_name] = {} # {"Myles Dragone": {}}
-                        for player_stat_name, player_stat_value in players_data.items():
-                            player_total[players_name][player_stat_name] = player_total[players_name].get(player_stat_name, 0) + player_stat_value
+                    for quarter_name, quarter_stats in game_data["Quarters"].items():
+                        for players_name, players_data in quarter_stats.items():
+                            if players_name not in player_total:
+                                player_total[players_name] = {} # {"Myles Dragone": {}}
+                            for player_stat_name, player_stat_value in players_data.items():
+                                player_total[players_name][player_stat_name] = player_total[players_name].get(player_stat_name, 0) + player_stat_value
 
-                game_team_totals[game_name] = player_total
-            
-            if look_good:
-                output = ""
-                output += f"---------------------- Newport Raiders U16 Boys Julie Season stats ----------------------\n"
-                # 'Game_1': {'Benjamin Berridge': {'Points': 10, 'Fouls': 1, 'Rebounds': 8, 'Assists': 0, 'Turnovers': 2}
-                for game_stat_name, game_stat_value in game_team_totals.items():
-                    output += f"\n\n{game_stat_name}                                   \n"
-                    for players_name, players_stats in game_stat_value.items():
-                        output += f"\n\n{players_name}                                     \n"
-                        for stat_name, stat_value in players_stats.items():
-                            output += f"\n{stat_name}: {stat_value}                       "
-                return output
-            else:
-                return game_team_totals
+                    game_team_totals[game_name] = player_total
+                
+                if look_good:
+                    output = ""
+                    output += f"---------------------- Newport Raiders U16 Boys Julie Season stats ----------------------\n"
+                    # 'Game_1': {'Benjamin Berridge': {'Points': 10, 'Fouls': 1, 'Rebounds': 8, 'Assists': 0, 'Turnovers': 2}
+                    for game_stat_name, game_stat_value in game_team_totals.items():
+                        output += f"\n\n{game_stat_name}                                   \n"
+                        for players_name, players_stats in game_stat_value.items():
+                            output += f"\n\n{players_name}                                     \n"
+                            for stat_name, stat_value in players_stats.items():
+                                output += f"\n{stat_name}: {stat_value}                       "
+                    return output
+                else:
+                    return game_team_totals
+        except ValueError as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "ValueError",
+                "where": "get_team_season_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            return cls.error_message
+        except KeyError as e:
+            cls.error_message = {
+                "error_message": e,
+                "type": "KeyError",
+                "where": "get_team_season_stats",
+                "when": cls.current_time.isoformat(),
+                "time": f"{cls.current_time.time().isoformat()}"
+            }
+
+            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            return cls.error_message
 
     @classmethod
     def get_quarter_season_stats(cls, player: str, quarter: str, sum_total: bool = False, look_good: bool = False): # Made by me does the same thing as get_season_stats but only for quarter stats 
