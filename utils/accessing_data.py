@@ -5,11 +5,45 @@ import json
 import os 
 os.makedirs("C:/Users/Drags Jrs/Database/errors", exist_ok=True)
 import shutil
+import socket
+import uuid
+import urllib.request
 from typing import Optional, Dict, Any
-from datetime import datetime
+from datetime import datetime, timezone
 from utils import write 
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
+def get_public_ip() -> str:
+    try:
+        return urllib.request.urlopen("https://api.ipify.org").read().decode()
+    except Exception as e:
+        return socket.gethostbyname(socket.gethostname())
+    
+def create_log(
+        level: str,
+        message: str,
+        where: str,
+        error: Optional[Dict[str, Any]] = None,
+        service_name: str = "access_data_service",
+        host: str = socket.gethostname(),
+        user_id: str = "N/A",
+        source_ip: str = "N/A",
+        request_id: str = str(uuid.uuid4())
+) -> Dict[str, Any]:
+    return {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "log_level": level,
+        "service_name": service_name,
+        "host": host,
+        "message": message,
+        "where": where,
+        "user_id": user_id,
+        "source_ip": source_ip,
+        "request_id": request_id,
+        **({"error": error} if error else {})
+    }
 
 class AccessData:
     data: Dict[str, Any] = {}
@@ -18,22 +52,36 @@ class AccessData:
     current_time = datetime.now()
     error_message = {}
     
-    def __init__(self):
+    def __init__(self, user_id: str = "anonymous", source_ip: Optional[str] = None):
+        self.user_id = user_id
+        self.source_ip = source_ip
+        self.request_id = str(uuid.uuid4())
+        self.current_time = datetime.now(timezone.utc)
         self.error_message = {}
+        
         try:
             self.initialize()
+            log_entry = create_log(
+                level="INFO",
+                message="AccessData initialized successfully",
+                where="__init__",
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_lpg.json", log_entry)
         except Exception as e:
-            self.error_message = {
-            "error_message": e,
-            "type": "Exception",
-            "where": "__init__",
-            "when": self.current_time.isoformat(),
-            "time": f"{self.current_time.time().isoformat()}"
-        }
-
-        write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-        return None
-
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="AccessData initialized failed",
+                where="__init__",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_lpg.json", log_entry)
     def __repr__(self):
         self.error_message = {}
         try:
@@ -44,40 +92,30 @@ class AccessData:
                 if isinstance(game, dict) and "Lineup" in game:
                     for team in game["Lineup"].values():
                         player_count += len(team) if isinstance(team, list) else 0
+
+            log_entry = create_log(
+                level="INFO",
+                message="__repr__ ran successfully",
+                where="__repr__",
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_lpg.json", log_entry)
+            
             return f"<AccessData file={self.file_path or 'Unknown'}\n games={game_count} players={player_count}>"
-        except ValueError as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "__repr__",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
-        except KeyError as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "__repr__",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
         except Exception as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "__repr__",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="__repr__ failed",
+                where="__repr__",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
     
     def __str__(self):
         self.error_message = {}
@@ -89,41 +127,31 @@ class AccessData:
                 if isinstance(game, dict) and "Lineup" in game:
                     for team in game["Lineup"].values():
                         player_count += len(team) if isinstance(team, list) else 0
+            
+            log_entry = create_log(
+                level="INFO",
+                message="__str__ ran successfully",
+                where="__str__",
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            
             return f"File: {self.file_path or "Unknown"}\n Games Loaded: {game_count}\n Total Players: {player_count}"
 
-        except ValueError as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "__str__",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
-        except KeyError as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "__str__",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
         except Exception as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "__str__",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="__str__ failed",
+                where="__str__",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
     @classmethod
     def _ensure_initialized(cls):
@@ -134,115 +162,59 @@ class AccessData:
 
     def initialize(self, load: bool = False, filename: str = "Data.json") -> Optional[Dict[str, Any]]:
         if not isinstance(load, bool):
-            self.error_message = {
-                "error": "load must be a bool",
-                "where": "initialize",
-                "what_error": "invalid prams",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"}
-
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            raise TypeError('load must be a bool')
                     
         if not isinstance(filename, str):
-            self.error_message = {
-                "error": "filename must be a str",
-                "where": "initialize",
-                "what_error": "invalid prams",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"}
-
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            raise TypeError('filename must be a str')
         
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         data_file = os.path.abspath(os.path.join(base_dir, "Database", filename))
         self.file_path = data_file
 
         if not os.path.isfile(data_file):
-            self.error_message = {
-                "error": "Could not find the data",
-                "where": "initialize",
-                "what_error": "invalid filename",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"}
-
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            return FileNotFoundError("Could not find the file. Or wrong data format")
         
         try:
             with open(data_file, 'r', encoding="utf-8") as file:
                 data = json.load(file)
                 if not isinstance(data, dict):
-                    self.error_message = {
-                        "error": "Invalid data format",
-                        "where": "initialize",
-                        "what_error": "invalid data format",
-                        "when": self.current_time.isoformat(),
-                        "time": f"{self.current_time.time().isoformat()}"}
-
-                    write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", self.error_message)
+                    return ValueError("Invalid data format")
                     return self.error_message
                 AccessData.data = data
-        except json.JSONDecodeError as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "json.JSONDecodeError",
-                "where": "initialize",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
 
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
-        except OSError as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "OSError",
-                "where": "initialize",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
+            log_entry = create_log(
+                            level="INFO",
+                            message="initialize ran successfully",
+                            where="initialize",
+                            user_id=self.user_id,
+                            source_ip=self.source_ip,
+                            request_id=self.request_id
+                        )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            if load:
+                return AccessData.data
+        
         except Exception as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "initialize",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
-        if load:
-            return AccessData.data
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="initialize failed",
+                where="initialize",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
         
     def save(self, filename: Optional[str] = None, backup: bool = True) -> bool:
         if not isinstance(self.data, dict):
-            self.error_message = {
-                "error": "Cannot save: data must be a dict",
-                "where": "save",
-                "what_error": "invalid prams",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"}
-
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            raise TypeError('self.data must be a dict')
         
         save_path = filename or self.file_path
         if not save_path:
-            self.error_message = {
-                "error": "File path not set",
-                "where": "save",
-                "what_error": "file path not set",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"}
-
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            raise TypeError('File path not set')
         
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
@@ -256,29 +228,30 @@ class AccessData:
                 json.dump(self.data, temp_file, indent=4, ensure_ascii=False)
 
             os.replace(temp_path, save_path)
+
+            log_entry = create_log(
+                            level="INFO",
+                            message="save ran successfully",
+                            where="save",
+                            user_id=self.user_id,
+                            source_ip=self.source_ip,
+                            request_id=self.request_id
+                        )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
             return True
-        except (OSError, IOError) as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "Either OSError or IOError",
-                "where": "save",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
         except Exception as e:
-            self.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "save",
-                "when": self.current_time.isoformat(),
-                "time": f"{self.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", self.error_message)
-            return self.error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="save failed",
+                where="save",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
     @classmethod
     def get_details(cls, game: str, look_good: bool = False):
@@ -286,37 +259,12 @@ class AccessData:
             cls._ensure_initialized()
 
             if not isinstance(game, str): 
-                cls.error_message = {
-                    "error": "game must be a string",
-                    "where": "get_details",
-                    "what_error": "invalid prams",
-                    "when": cls.current_time.isoformat(),
-                    "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("game must be a string")
                         
             if not isinstance(look_good, bool):
-                cls.error_message = {
-                    "error": "look_good must be a bool",
-                    "where": "get_details",
-                    "what_error": "invalid prams",
-                    "when": cls.current_time.isoformat(),
-                    "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
-
+                raise TypeError("look_good must be a bool")
             if not game or game not in cls.data:
-                cls.error_message = {
-                    "error": f"could not find the {game}",
-                    "where": "get_details",
-                    "what_error": "invalid prams",
-                    "when": cls.current_time.isoformat(),
-                    "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise KeyError("Could not find the game")
 
             game_stats = cls.data.get(game, {})
 
@@ -327,151 +275,109 @@ class AccessData:
                 for detail, stat in details.items():
                     output.append(f"{detail}: {stat}")
                 output.append("--------------------------------------------------")
+
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_details ran successfully",
+                            where="get_details",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
                 return "\n".join(output)
             else:
+
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_details ran successfully",
+                            where="get_details",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
                 return details.copy()
-        except ValueError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "get_details",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        except KeyError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "get_details",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
+            
         except Exception as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "get_details",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_details failed",
+                where="get_details",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
     @classmethod
-    def get_lineup(cls, game: str, team: str, look_good: bool =False): 
-        cls._ensure_initialized()
+    def get_lineup(cls, game: str, team: str, look_good: bool =False):
         try:
-            if not isinstance(game, str):
-                cls.error_message = {
-                        "error": "game must be a string",
-                        "where": "get_a_lineup",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
+            cls._ensure_initialized()
 
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+            if not isinstance(game, str):
+                raise TypeError("game must be a string")
             
             if not isinstance(team, str):
-                cls.error_message = {
-                        "error": "team must be a string",
-                        "where": "get_a_lineup",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
-            
+                raise TypeError("team must be a string")
+                
             if not isinstance(look_good, bool):
-                cls.error_message = {
-                        "error": "look_good must be a bool",
-                        "where": "get_a_lineup",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("look_good must be a bool")
 
             game_stats = cls.data.get(game, {})
-
+            
             if not game_stats:
-                cls.error_message = {
-                        "error": "could not find the game",
-                        "where": "get_a_lineup",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
-
-            game_stats = cls.data.get(game, {})
+                raise KeyError("Could not find the game")
 
             team_players = game_stats.get("Lineup", {}).get(team, [])
             
             if not team_players:
-                cls.error_message = {
-                        "error": "could not find the team",
-                        "where": "get_a_lineup",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
-
-            game_stats = cls.data.get(game, {})
+                raise KeyError("Could not find the team")
             
             if look_good:
                 output = ["----------------- Team players ----------------------"]
                 for num, player in enumerate(team_players, start=1):
                     output.append(f"{num}. {player}")
+                
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_lineup ran successfully",
+                            where="get_lineup",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                
                 return "\n\n".join(output)
             else:
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_lineup ran successfully",
+                            where="get_lineup",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                
                 return team_players.copy()
             
-        except ValueError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "get_lineup",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        except KeyError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "get_lineup",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
         except Exception as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "get_lineup",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_lineup failed",
+                where="get_lineup",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
                 
     @classmethod
     def get_quarter_stats(cls, game: str, quarter: str, look_good: bool = False):
@@ -479,108 +385,66 @@ class AccessData:
             cls._ensure_initialized()
 
             if not isinstance(game, str):
-                cls.error_message = {
-                        "error": "game must be a string",
-                        "where": "get_quarter_stats",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("game must be a string")
             
             if not isinstance(quarter, str):
-                cls.error_message = {
-                        "error": "quarter must be a string",
-                        "where": "get_quarter_stats",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("quarter must be a string")
             
             if not isinstance(look_good, bool):
-                cls.error_message = {
-                        "error": "look_good must be a bool",
-                        "where": "get_quarter_stats",
-                        "what_error": "invalid prams",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("look_good must be a bool")
 
             game_stats = cls.data.get(game, {})
 
-            if not game_stats: # Only b/c {} == None or False b/c None == False
-                cls.error_message = {
-                        "error": "game not found",
-                        "where": "get_quarter_stats",
-                        "what_error": "invalid game",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
+            if not game_stats:
+                raise KeyError("Could not find the game")
 
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
-
-            game_stats = cls.data.get(game, {})
-            
             quarters = game_stats.get("Quarters")
             quarter_stats = quarters.get(quarter, {})
 
             if not quarter_stats:
-                cls.error_message = {
-                        "error": "quarter not found",
-                        "where": "get_quarter_stats",
-                        "what_error": "invalid quarter",
-                        "when": cls.current_time.isoformat(),
-                        "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise KeyError("Could not find the quarter")
             
             if look_good:
                 output = [f"-------------------- {game}: {quarter} stats --------------------------"]
                 for players_name, players_stats in quarter_stats.items():
                     stat_line = ", ".join(f"{stat_name}: {stat_value}" for stat_name, stat_value in players_stats.items())
                     output.append(f"{players_name}: {stat_line}\n")
+                
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_quarter_stats ran successfully",
+                            where="get_quarter_stats",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                
                 return "\n".join(output)
             else:
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_quarter_stats ran successfully",
+                            where="get_quarter_stats",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                
                 return quarter_stats.copy()
-        except ValueError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "get_lineup",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        except KeyError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "get_lineup",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
         except Exception as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "get_lineup",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_quarter_stats failed",
+                where="get_quarter_stats",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
     @classmethod
     def get_specific_stats(cls, game: str, quarter: str, player: str, look_good: bool = False): # Original name: find_a_players_quarter_stats and gets specific stats for a player
@@ -588,126 +452,70 @@ class AccessData:
             cls._ensure_initialized()
 
             if not isinstance(game, str):
-                cls.error_message = {
-                "error": "game must be a string",
-                "where": "get_specific_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("game must be a string")
 
             if not isinstance(quarter, str):
-                cls.error_message = {
-                "error": "quarter must be a string",
-                "where": "get_specific_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("quarter must be a string")
 
             if not isinstance(player, str):
-                cls.error_message = {
-                "error": "player must be a string",
-                "where": "get_specific_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("player must be a string")
 
             if not isinstance(look_good, bool):
-                cls.error_message = {
-                "error": "look_good must be a bool",
-                "where": "get_specific_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("look_good must be a bool")
 
             game_stats = cls.data.get(game, {})
 
             if not game_stats:
-                cls.error_message = {
-                "error": "game not found",
-                "where": "get_specific_stats",
-                "what_error": "invalid game",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise KeyError("Could not find the game")
             
             quarter_stats = game_stats.get("Quarters").get(quarter, {})
             if not quarter_stats:
-                cls.error_message = {
-                "error": "quarter not found",
-                "where": "get_specific_stats",
-                "what_error": "invalid quarter",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise KeyError("Could not find the quarter")
             
             players_stats = quarter_stats.get(player, {})
             if not players_stats:
-                cls.error_message = {
-                "error": "player not found",
-                "where": "get_specific_stats",
-                "what_error": "invalid player",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise KeyError("Could not find the player")
             
             if look_good:
                 output = f"-------------------- {player} stats in {game} in {quarter} ----------------------------\n"
                 for stat_name, stat_value in players_stats.items():
                     output += f"    - {stat_name}: {stat_value}\n"
+                
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_specific_stats ran successfully",
+                            where="get_specific_stats",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                
                 return output
             else:
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_specific_stats ran successfully",
+                            where="get_specific_stats",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                
                 return players_stats
-        except ValueError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "get_specific_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        except KeyError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "get_specific_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
         except Exception as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "get_specific_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_specific_stats failed",
+                where="get_specific_stats",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
     @classmethod
     def get_game_stats(cls, game: str, player: str, look_good: bool = False): # Original name: get_total_stats sums up a games stats
@@ -715,54 +523,22 @@ class AccessData:
             cls._ensure_initialized()
             
             if not isinstance(game, str):
-                cls.error_message = {
-                "error": "game must be a str",
-                "where": "get_game_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("game must be a string")
 
             if not isinstance(player, str):
-                cls.error_message = {
-                "error": "player must be a str",
-                "where": "get_game_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("player must be a string")
 
             if not isinstance(look_good, bool):
-                cls.error_message = {
-                "error": "look_good must be a look_good",
-                "where": "get_game_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("look_good must be a bool")
             
             game_stats = cls.data.get(game, {})
             
-            if not game:
-                cls.error_message = {
-                "error": "game not found",
-                "where": "get_game_stats",
-                "what_error": "invalid game",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+            if not game_stats:
+                raise KeyError("Could not find the game")
             
             quarters = game_stats.get("Quarters", {})
             if not quarters:
-                return {}
+                raise KeyError("Quarters not found")
             
             totals = {}
 
@@ -777,53 +553,64 @@ class AccessData:
                     for stat_name, value in stats.items():
                         totals[player_name][stat_name] += value 
 
-
             if look_good:
                 if player:
                     formatted = [f"------------------ Game: {game} ------------------\n"]
                     player_stats = totals.get(player, {})
                     formatted.extend( f"{stat}: {value}" for stat, value in player_stats.items())
+                    
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_game_stats ran successfully",
+                                where="get_game_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return "\n".join(formatted)
                 else:
                     lines = [f"------------------ Game: {game} Stats ------------------------\n"]
                     for player_name, stats in totals.items():
                         stat_line = ", ".join(f"{key}: {value}" for key, value in stats.items())
                         lines.append(f"{player_name}: {stat_line}")
+                    
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_game_stats ran successfully",
+                                where="get_game_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return "\n".join(lines)
             else:
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_game_stats ran successfully",
+                            where="get_game_stats",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                
                 return totals if not player else totals.get(player, {})
-        except ValueError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "get_game_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        except KeyError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "get_game_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
         except Exception as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "get_game_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_game_stats failed",
+                where="get_game_stats",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
     
     @classmethod
     def get_season_stats(cls, player: str, sum_total: bool = False, look_good: bool = False):
@@ -831,37 +618,13 @@ class AccessData:
             cls._ensure_initialized()
 
             if not isinstance(player, str):
-                cls.error_message = {
-                "error": "player must be a string",
-                "where": "get_season_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("player must be a string")
             
             if not isinstance(sum_total, bool):
-                cls.error_message = {
-                "error": "sum_total must be a bool",
-                "where": "get_season_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("sum_total must be a bool")
             
             if not isinstance(look_good, bool):
-                cls.error_message = {
-                "error": "look_good must be a bool",
-                "where": "get_season_stats",
-                "what_error": "invalid prams",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("look_good must be a bool")
 
             total = {}
 
@@ -876,8 +639,29 @@ class AccessData:
                     output = f"Season stats for {player}\n"
                     for stat, value in total.items():
                         output += f"    - {stat}: {value}\n"
+                    
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_season_stats ran successfully",
+                                where="get_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return output
                 else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_season_stats ran successfully",
+                                where="get_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return total
             else:
                 
@@ -894,8 +678,6 @@ class AccessData:
                     
                     if players_total:
                         game_totals[game_name] = players_total
-                
-                # {'Game_1': {'Points': 0, 'Fouls': 1, 'Rebounds': 1, 'Assists': 1, 'Turnovers': 5}, 'Game_2': {'Points': 3, 'Fouls': 2, 'Rebounds': 1, 'Assists': 2, 'Turnovers': 1}, 'Game 3': {'Points': 0, 'Fouls': 4, 'Rebounds': 1, 'Assists': 0, 'Turnovers': 0}}
 
                 if look_good:
                     output = f"------------------------- Game stats for {player} -------------------------------\n"
@@ -905,69 +687,52 @@ class AccessData:
                             output += f"    - {stat_name}: {stat_value}\n"
                             if stat_name == "Turnovers":
                                 output += "\n"
+                    
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_season_stats ran successfully",
+                                where="get_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return output        
                 else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_season_stats ran successfully",
+                                where="get_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return game_totals
-        except ValueError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "get_season_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        
-        except KeyError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "get_season_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
         except Exception as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "Exception",
-                "where": "get_season_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_season_stats failed",
+                where="get_season_stats",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
     @classmethod
     def get_team_season_stats(cls, sum_total: bool = False, look_good: bool = False):
         try:
             cls._ensure_initialized()
 
             if not isinstance(sum_total, bool):
-                cls.error_message = {
-                    "error": "sum_total must be a bool",
-                    "where": "get_team_season_stats",
-                    "what_error": "invalid prams",
-                    "when": cls.current_time.isoformat(),
-                    "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("sum_total must be a bool")
             
             if not isinstance(look_good, bool):
-                cls.error_message = {
-                    "error": "look_good must be a bool",
-                    "where": "get_team_season_stats",
-                    "what_error": "invalid prams",
-                    "when": cls.current_time.isoformat(),
-                    "time": f"{cls.current_time.time().isoformat()}"}
-
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", cls.error_message)
-                return cls.error_message
+                raise TypeError("look_good must be a bool")
 
             if sum_total:
                 team_totals = {}
@@ -976,9 +741,9 @@ class AccessData:
                     for quarter_name, quarter_stats in game_data["Quarters"].items():
                         for players_name, players_stats in quarter_stats.items():
                             if players_name not in team_totals:
-                                team_totals[players_name] = {}  # {"Myles Dragone": None}
+                                team_totals[players_name] = {}
                             for stat_name, stat_value in players_stats.items():
-                                team_totals[players_name][stat_name] = team_totals[players_name].get(stat_name, 0) + stat_value # {"Myles Dragone": {"Points": 3}}
+                                team_totals[players_name][stat_name] = team_totals[players_name].get(stat_name, 0) + stat_value
                 
                 if look_good:
                     output = "---------------- Newport Raiders U16 Boys Julie Season stats ----------------\n"
@@ -988,8 +753,28 @@ class AccessData:
                         for team_players_stat_name, team_players_stat_value in team_players_stats.items():
                             output += f"                            - {team_players_stat_name}: {team_players_stat_value}\n"
                     
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_team_season_stats ran successfully",
+                                where="get_team_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return output
                 else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_team_season_stats ran successfully",
+                                where="get_team_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return team_totals
             else:
                 game_team_totals = {}
@@ -1001,7 +786,7 @@ class AccessData:
                     for quarter_name, quarter_stats in game_data["Quarters"].items():
                         for players_name, players_data in quarter_stats.items():
                             if players_name not in player_total:
-                                player_total[players_name] = {} # {"Myles Dragone": {}}
+                                player_total[players_name] = {}
                             for player_stat_name, player_stat_value in players_data.items():
                                 player_total[players_name][player_stat_name] = player_total[players_name].get(player_stat_name, 0) + player_stat_value
 
@@ -1010,232 +795,448 @@ class AccessData:
                 if look_good:
                     output = ""
                     output += f"---------------------- Newport Raiders U16 Boys Julie Season stats ----------------------\n"
-                    # 'Game_1': {'Benjamin Berridge': {'Points': 10, 'Fouls': 1, 'Rebounds': 8, 'Assists': 0, 'Turnovers': 2}
                     for game_stat_name, game_stat_value in game_team_totals.items():
                         output += f"\n\n{game_stat_name}                                   \n"
                         for players_name, players_stats in game_stat_value.items():
                             output += f"\n\n{players_name}                                     \n"
                             for stat_name, stat_value in players_stats.items():
                                 output += f"\n{stat_name}: {stat_value}                       "
+                    
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_team_season_stats ran successfully",
+                                where="get_team_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return output
                 else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_team_season_stats ran successfully",
+                                where="get_team_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
                     return game_team_totals
-        except ValueError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "get_team_season_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
-        except KeyError as e:
-            cls.error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "get_team_season_stats",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", cls.error_message)
-            return cls.error_message
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_team_season_stats failed",
+                where="get_team_season_stats",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
     @classmethod
-    def get_quarter_season_stats(cls, player: str, quarter: str, sum_total: bool = False, look_good: bool = False): # Made by me does the same thing as get_season_stats but only for quarter stats 
-        cls._ensure_initialized()
+    def get_quarter_season_stats(cls, player: str, quarter: str, sum_total: bool = False, look_good: bool = False):
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(player, str):
-            return {"error": f"players_name must be a string"}
-        
-        if not isinstance(quarter, str):
-            return {"error": f"what_quarter must be a string"}
-        
-        if not isinstance(sum_total, bool):
-            return {"error": f"sum_total must be a boolean"}
-        
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
-
-        totals = {}
-
-        if quarter not in cls.data["Game_1"]["Quarters"]:
-            return {"Error": f"Quarter: {quarter} not found"}
-
-        if sum_total:
-            for game_name, game_stats in cls.data.items():
-                if quarter in game_stats["Quarters"]:
-                    if player in game_stats["Quarters"][quarter]:
-                        for stat, value in game_stats["Quarters"][quarter][player].items():
-                            totals[stat] = totals.get(stat, 0) + value
-
-            if look_good:
-                output = f"All of {quarter} stats together for {player}\n"
-                for stat, value in totals.items():
-                    output += f"    - {stat}: {value}\n"
-                return output
-            else:
-                return totals       
-        else:
-            game_totals = {}
-
-            for game_name, game_stats in cls.data.items():
-
-                players_totals = {}
-
-                if quarter in game_stats["Quarters"]:
-                    if player in game_stats["Quarters"][quarter]:
-                        for stat_name, stat_value in game_stats["Quarters"][quarter][player].items():
-                            players_totals[stat_name] = players_totals.get(stat_name, 0) + stat_value
-                
-                if players_totals:
-                    game_totals[game_name] = players_totals            
-
+            if not isinstance(player, str):
+                raise TypeError("player must be a string")
             
-        
-            # {'Game_1': {'Points': 0, 'Fouls': 1, 'Rebounds': 1, 'Assists': 1, 'Turnovers': 4}, 'Game_2': {'Points': 0, 'Fouls': 1, 'Rebounds': 0, 'Assists': 1, 'Turnovers': 0}, 'Game 3': {'Points': 0, 'Fouls': 2, 'Rebounds': 0, 'Assists': 0, 'Turnovers': 0}}
-            if look_good:
-                output = f"============= Seasons {quarter} stats for {player} =============\n"
+            if not isinstance(quarter, str):
+                raise TypeError("quarter must be a string")
+            
+            if not isinstance(sum_total, bool):
+                raise TypeError("sum_total must be a bool")
+            
+            if not isinstance(look_good, bool):
+                raise TypeError("look_good must be a bool")
 
-                for game_stat_name, game_stats in game_totals.items():
-                    output += f"    ---------------- Game: {game_stat_name} {quarter} stats ----------------\n"                    
-                    for game_Stat_name, game_stat_value in game_stats.items():
-                        output += f"       - {game_Stat_name}: {game_stat_value}\n"
+            totals = {}
 
-                return output
+            if quarter not in cls.data.get("Game_1", {}).get("Quarters", {}):
+                raise KeyError("Could not find the quarter")
+
+            if sum_total:
+                for game_name, game_stats in cls.data.items():
+                    if quarter in game_stats["Quarters"]:
+                        if player in game_stats["Quarters"][quarter]:
+                            for stat, value in game_stats["Quarters"][quarter][player].items():
+                                totals[stat] = totals.get(stat, 0) + value
+
+                if look_good:
+                    output = f"All of {quarter} stats together for {player}\n"
+                    for stat, value in totals.items():
+                        output += f"    - {stat}: {value}\n"
+                    
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_quarter_season_stats ran successfully",
+                                where="get_quarter_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
+                    return output
+                else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_quarter_season_stats ran successfully",
+                                where="get_quarter_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
+                    return totals       
             else:
-                return game_totals
+                game_totals = {}
+
+                for game_name, game_stats in cls.data.items():
+
+                    players_totals = {}
+
+                    if quarter in game_stats["Quarters"]:
+                        if player in game_stats["Quarters"][quarter]:
+                            for stat_name, stat_value in game_stats["Quarters"][quarter][player].items():
+                                players_totals[stat_name] = players_totals.get(stat_name, 0) + stat_value
+                    
+                    if players_totals:
+                        game_totals[game_name] = players_totals            
+
+                if look_good:
+                    output = f"============= Seasons {quarter} stats for {player} =============\n"
+
+                    for game_stat_name, game_stats in game_totals.items():
+                        output += f"    ---------------- Game: {game_stat_name} {quarter} stats ----------------\n"                    
+                        for game_Stat_name, game_stat_value in game_stats.items():
+                            output += f"       - {game_Stat_name}: {game_stat_value}\n"
+
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_quarter_season_stats ran successfully",
+                                where="get_quarter_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
+                    return output
+                else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_quarter_season_stats ran successfully",
+                                where="get_quarter_season_stats",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    
+                    return game_totals
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_quarter_season_stats failed",
+                where="get_quarter_season_stats",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
     @classmethod
-    def get_highest_stats_quarter(cls, game: str, quarter: str, what_to_look_for: str, look_good: bool = False): # Original name: find_a_players_quarter_stats finds out who got the most stats in a quarter
-        cls._ensure_initialized()
+    def get_highest_stats_quarter(cls, game: str, quarter: str, what_to_look_for: str, look_good: bool = False):
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(game, str):
-            return {"error": f"game must be a string"}
-        
-        if not isinstance(quarter, str):
-            return {"error": f"quarter must be a string"}
-        
-        if not isinstance(what_to_look_for, str):
-            return {"error": f"what_to_look_for must be a string"}
-        
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
+            if not isinstance(game, str):
+                raise TypeError("game must be a string")
+            
+            if not isinstance(quarter, str):
+                raise TypeError("quarter must be a string")
+            
+            if not isinstance(what_to_look_for, str):
+                raise TypeError("what_to_look_for must be a string")
+            
+            if not isinstance(look_good, bool):
+                raise TypeError("look_good must be a bool")
 
-        game_stats = cls.data.get(game, {})
+            game_stats = cls.data.get(game, {})
 
-        if not game_stats:
-            return {"Error": f"Game: {game} not found"}
-        
-        quarter_stats = game_stats.get("Quarters").get(quarter, {})
+            if not game_stats:
+                raise KeyError("Could not find the game")
+            
+            quarter_stats = game_stats.get("Quarters").get(quarter, {})
 
-        if not quarter_stats:
-            return {"Error": f"Quarter: {quarter} not found"}
-        
-        nums = [(player, stats.get(what_to_look_for, 0)) for player, stats in quarter_stats.items()] # all stats like points fouls blah blah blah
+            if not quarter_stats:
+                raise KeyError("Could not find the quarter")
+            
+            nums = [(player, stats.get(what_to_look_for, 0)) for player, stats in quarter_stats.items()]
 
-        if not nums:
+            if not nums:
+                if look_good:
+                    error_msg = f"Stat: {what_to_look_for} not found"
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_highest_stats_quarter ran successfully",
+                                where="get_highest_stats_quarter",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    return error_msg
+                else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_highest_stats_quarter ran successfully",
+                                where="get_highest_stats_quarter",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    return None
+            
+            max_stat_value = max(value for _, value in nums)
+
+            if max_stat_value == 0:
+                if look_good:
+                    msg = f"No one got any {what_to_look_for} in {game} of {quarter}"
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_highest_stats_quarter ran successfully",
+                                where="get_highest_stats_quarter",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    return msg
+                else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_highest_stats_quarter ran successfully",
+                                where="get_highest_stats_quarter",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    return None
+
+            top_players = [player for player, value in nums if value == max_stat_value]
+
+            resultstr = f"{top_players[0]}: {max_stat_value}" if len(top_players) == 1 else f"Tied at {max_stat_value} {what_to_look_for}: {', '.join(top_players)}"
+            
             if look_good:
-                return {"Error": f"stat: {what_to_look_for} not found"}
+                result = f"In {quarter} of {game}, the {'leader' if len(top_players) == 1 else 'leaders'} for {what_to_look_for} was: {resultstr}"
+                
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_highest_stats_quarter ran successfully",
+                            where="get_highest_stats_quarter",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                return result
             else:
-                return None
-        
-        max_stat_value = max(value for _, value in nums)
-
-        if max_stat_value == 0:
-            if look_good:
-                return f"No one got any {what_to_look_for} in {game} of {quarter}"
-            else:
-                return None
-
-        top_players = [player for player, value in nums if value == max_stat_value]
-
-
-        resultstr = f"{top_players[0]}: {max_stat_value}"if len(top_players) == 1 else f"Tied at {max_stat_value} {what_to_look_for}: {', '.join(top_players)}"
-        
-        if look_good:
-            return f"In {quarter} of {game}, the {'leader' if len(top_players) == 1 else 'leaders'} for {what_to_look_for} was: {resultstr}"
-        else:
-            return {player: max_stat_value for player in top_players}
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_highest_stats_quarter ran successfully",
+                            where="get_highest_stats_quarter",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                return {player: max_stat_value for player in top_players}
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_highest_stats_quarter failed",
+                where="get_highest_stats_quarter",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
 
     @classmethod
-    def get_highest_stats_game(cls, game: str, what_to_look_for: str, look_good: bool = False): # Original name: highest_stats_game does the same as get_highest_stats_quarter but does it for a game
-        cls._ensure_initialized()
+    def get_highest_stats_game(cls, game: str, what_to_look_for: str, look_good: bool = False):
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(game, str):
-            return {"error": f"game must be a string"}
-        
-        if not isinstance(what_to_look_for, str):
-            return {"error": f"what_to_look_for must be a string"}
-        
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
+            if not isinstance(game, str):
+                raise TypeError("game must be a string")
+            
+            if not isinstance(what_to_look_for, str):
+                raise TypeError("what_to_look_for must be a string")
+            
+            if not isinstance(look_good, bool):
+                raise TypeError("look_good must be a bool")
 
-        game_stats = cls.get_game_stats(game=game, player="", look_good=False)
-        if not game_stats:
-            return {'error': f'Game: {game} not found'}
-        
-        nums = [(player, stats.get(what_to_look_for,0)) for player, stats in game_stats.items() if what_to_look_for in stats]
+            game_stats = cls.get_game_stats(game=game, player="", look_good=False)
+            if not game_stats:
+                raise KeyError("Could not find the game")
+            
+            nums = [(player, stats.get(what_to_look_for, 0)) for player, stats in game_stats.items() if what_to_look_for in stats]
 
-        if not nums:
-            return {'error': f'Stats: No Stats for {what_to_look_for} in {game}' if look_good else None}
-        
-        max_value = max(value for _, value in nums)
+            if not nums:
+                raise KeyError(f"No stats found for {what_to_look_for}")
+            
+            max_value = max(value for _, value in nums)
 
-        if max_value == 0:
+            if max_value == 0:
+                msg = f"Could not find {what_to_look_for} in {game}"
+                if look_good:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_highest_stats_game ran successfully",
+                                where="get_highest_stats_game",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    return msg
+                else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="get_highest_stats_game ran successfully",
+                                where="get_highest_stats_game",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    return None
+
+            top_players = [player for player, value in nums if value == max_value]
+
+            resultstr = f"{top_players[0]}: {max_value}" if len(top_players) == 1 else f"Tied at {max_value} {what_to_look_for}: {', '.join(top_players)}"
+
             if look_good:
-                return f"No {what_to_look_for} was found in {game}"
+                result = f"In {game}, the {'leader' if len(top_players) == 1 else 'leaders'} for {what_to_look_for} was: {resultstr}"
+                
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_highest_stats_game ran successfully",
+                            where="get_highest_stats_game",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                return result
             else:
-                return None
-
-        top_players = [player for player, value in nums if value == max_value]
-
-        resultstr = (f"{top_players[0]}: {max_value}" if len(top_players) == 1 else f"Tied at {max_value} {what_to_look_for}: {', '.join(top_players)}")
-
-        if look_good:
-            return f"In {game}, the {'leader' if len(top_players) == 1 else 'leaders'} for {what_to_look_for} was: {resultstr}"
-        else:
-            return {player: max_value for player in top_players}            
-        
+                log_entry = create_log(
+                            level="INFO",
+                            message="get_highest_stats_game ran successfully",
+                            where="get_highest_stats_game",
+                            user_id=cls.user_id,
+                            source_ip=cls.source_ip,
+                            request_id=cls.request_id
+                        )
+                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                return {player: max_value for player in top_players}            
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="get_highest_stats_game failed",
+                where="get_highest_stats_game",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
     @classmethod
     def specific_players_best_stat(cls, player: str, what_to_look_for: str, look_good: bool = False): # Original name: find_players_best_stat does exactly what the name says
-        cls._ensure_initialized()
+        try:
+            cls._ensure_initialized()
 
-        if not isinstance(player, str):
-            return {"error": f"players_name must be a string"}
-        
-        if not isinstance(what_to_look_for, str):
-            return {"error": f"what_to_look_for must be a string"}
-        
-        if not isinstance(look_good, bool):
-            return {"error": f"look_good must be a boolean"}
+            if not isinstance(player, str):
+                raise TypeError("player must be a string")
+            
+            if not isinstance(what_to_look_for, str):
+                raise TypeError("game must be a string")
+            
+            if not isinstance(look_good, bool):
+                raise TypeError("look_good must be a bool")
 
-        best_val = -1
-        best_game = None
-        best_quarter = None
+            best_val = -1
+            best_game = None
+            best_quarter = None
 
-        for game, game_stats in cls.data.items():
-            for quarter, quarter_stats in game_stats["Quarters"].items():
-                if player in quarter_stats and what_to_look_for in quarter_stats[player]:
-                    value = quarter_stats[player][what_to_look_for]
-                    if value > best_val:
-                        best_val = value
-                        best_game = game
-                        best_quarter = quarter
+            for game, game_stats in cls.data.items():
+                for quarter, quarter_stats in game_stats["Quarters"].items():
+                    if player in quarter_stats and what_to_look_for in quarter_stats[player]:
+                        value = quarter_stats[player][what_to_look_for]
+                        if value > best_val:
+                            best_val = value
+                            best_game = game
+                            best_quarter = quarter
 
-        if best_val == -1:
-            if look_good:
-                return f"{player} has no recorded {what_to_look_for}"
+            if best_val == -1:
+                if look_good:
+                    raise TypeError(f"{player} has no recorded {what_to_look_for}")
+                else:
+                    return None
             else:
-                return None
-        else:
-            if look_good:
-                return f"{player} got the most {what_to_look_for} ({best_val}) in {best_quarter} of {best_game}"
-            else:
-                return f"{what_to_look_for} {best_val}"
+                if look_good:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="specific_players_best_stat ran successfully",
+                                where="specific_players_best_stat",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
+                    return f"{player} got the most {what_to_look_for} ({best_val}) in {best_quarter} of {best_game}"
+                else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="specific_players_best_stat ran successfully",
+                                where="specific_players_best_stat",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
+                    return f"{what_to_look_for} {best_val}"
+                
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="specific_players_best_stat failed",
+                where="specific_players_best_stat",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
     
     @classmethod
     def check_player(cls, game: str, team: str, player: str, look_good: bool = False):
@@ -1247,8 +1248,7 @@ class AccessData:
                                 "where": "check_player",
                                 "what_error": "invalid prams",
                                 "when": cls.current_time.isoformat(),
-                                "time": f"{cls.current_time.time().isoformat()}", 
-                                "who_caused_the_error": "me"}
+                                "time": f"{cls.current_time.time().isoformat()}"}
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
                 return error_message
             
@@ -1259,7 +1259,7 @@ class AccessData:
                     "what_error": "invalid prams",
                     "when": cls.current_time.isoformat(),
                     "time": f"{cls.current_time.time().isoformat()}",
-                    "who_caused_the_error": "me"}
+                }
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
                 return error_message
             
@@ -1269,7 +1269,7 @@ class AccessData:
                                 "what_error": "invalid prams",
                                 "when": cls.current_time.isoformat(),
                                 "time": f"{cls.current_time.time().isoformat()}",
-                                "who_caused_the_error": "me"}
+                                }
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
                 return error_message
             
@@ -1279,7 +1279,7 @@ class AccessData:
                                 "what_error": "invalid prams",
                                 "when": cls.current_time.isoformat(),
                                 "time": f"{cls.current_time.time().isoformat()}",
-                                "who_caused_the_error": "me"}
+                                }
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
                 return error_message
 
@@ -1289,7 +1289,7 @@ class AccessData:
                                 "what_error": "unable to fine the game",
                                 "when": cls.current_time.isoformat(),
                                 "time": f"{cls.current_time.time().isoformat()}",
-                                "who_caused_the_error": "you"}
+                                }
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
                 return error_message
             
@@ -1301,7 +1301,7 @@ class AccessData:
                     "what_error": "invalid prams",
                     "when": cls.current_time.isoformat(),
                     "time": f"{cls.current_time.time().isoformat()}",
-                    "who_caused_the_error": "you"}
+                    }
                     
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
                 return error_message
