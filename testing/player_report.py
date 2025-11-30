@@ -1024,7 +1024,7 @@ if __name__ == "__main__":
 # Author: Drags Jrs
 # Created: 2025
 # Last Modified: 2025
-# Version: 1.0.0
+# Version: 2.3.7
 # Status: Production
 # 
 # License: None hopefully

@@ -1,0 +1,26 @@
+[
+  {
+    "timestamp": "2025-11-30T00:22:27.564134+00:00",
+    "log_level": "TESTING",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "just testing to see if log works fine",
+    "where": "testing.test_file.py",
+    "user_id": "1234",
+    "source_ip": "1234.12345.555",
+    "request_id": "6e86d44d-f1c8-4e4e-a7fe-fa80b7be9b2e",
+    "error": "Fuck off"
+  },
+  {
+    "timestamp": "2025-11-30T00:23:23.576933+00:00",
+    "log_level": "TESTING",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "just testing to see if log works fine",
+    "where": "testing.test_file.py",
+    "user_id": "OWNER",
+    "source_ip": "1234.12345.555",
+    "request_id": "aa8b2561-ee3b-44d2-80bf-63884f25ed61",
+    "error": "Fuck off"
+  }
+]

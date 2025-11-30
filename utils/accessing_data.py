@@ -69,7 +69,7 @@ class AccessData:
                 source_ip=self.source_ip,
                 request_id=self.request_id
             )
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_lpg.json", log_entry)
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -81,7 +81,7 @@ class AccessData:
                 source_ip=self.source_ip,
                 request_id=self.request_id
             )
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_lpg.json", log_entry)
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
     def __repr__(self):
         self.error_message = {}
         try:
@@ -101,7 +101,7 @@ class AccessData:
                 source_ip=self.source_ip,
                 request_id=self.request_id
             )
-            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_lpg.json", log_entry)
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             
             return f"<AccessData file={self.file_path or 'Unknown'}\n games={game_count} players={player_count}>"
         except Exception as e:
@@ -172,14 +172,13 @@ class AccessData:
         self.file_path = data_file
 
         if not os.path.isfile(data_file):
-            return FileNotFoundError("Could not find the file. Or wrong data format")
+            raise FileNotFoundError("Could not find the file. Or wrong data format")
         
         try:
             with open(data_file, 'r', encoding="utf-8") as file:
                 data = json.load(file)
                 if not isinstance(data, dict):
-                    return ValueError("Invalid data format")
-                    return self.error_message
+                    raise ValueError("Invalid data format")
                 AccessData.data = data
 
             log_entry = create_log(
@@ -1176,7 +1175,7 @@ class AccessData:
                 raise TypeError("player must be a string")
             
             if not isinstance(what_to_look_for, str):
-                raise TypeError("game must be a string")
+                raise TypeError("what_to_look_for must be a string")
             
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
@@ -1196,9 +1195,9 @@ class AccessData:
 
             if best_val == -1:
                 if look_good:
-                    raise TypeError(f"{player} has no recorded {what_to_look_for}")
+                    raise  TypeError(f"{player} has no recorded {what_to_look_for}")
                 else:
-                    return None
+                    return TypeError(f"{player} has no recorded {what_to_look_for}")
             else:
                 if look_good:
                     log_entry = create_log(
@@ -1244,67 +1243,23 @@ class AccessData:
             cls._ensure_initialized()
 
             if not isinstance(game, str):
-                error_message = {"error": "game must be a string",
-                                "where": "check_player",
-                                "what_error": "invalid prams",
-                                "when": cls.current_time.isoformat(),
-                                "time": f"{cls.current_time.time().isoformat()}"}
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
-                return error_message
-            
+                raise TypeError("game must be a string")
         
             if not isinstance(team, str):
-                error_message = {"error": "team must be a string",
-                    "where": "check_player",
-                    "what_error": "invalid prams",
-                    "when": cls.current_time.isoformat(),
-                    "time": f"{cls.current_time.time().isoformat()}",
-                }
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
-                return error_message
+                raise TypeError("team must be a string")
             
             if not isinstance(player, str):
-                error_message = {"error": "player must be a string",
-                                "where": "check_player",
-                                "what_error": "invalid prams",
-                                "when": cls.current_time.isoformat(),
-                                "time": f"{cls.current_time.time().isoformat()}",
-                                }
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
-                return error_message
-            
+                raise TypeError("player must be a string")
             if not isinstance(look_good, bool):
-                error_message = {"error": "game must be a string",
-                                "where": "check_player",
-                                "what_error": "invalid prams",
-                                "when": cls.current_time.isoformat(),
-                                "time": f"{cls.current_time.time().isoformat()}",
-                                }
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
-                return error_message
+                raise TypeError("look_good must be a bool")
 
             if game not in cls.data:
-                error_message = {"error": "could not find the game",
-                                "where": "check_player",
-                                "what_error": "unable to fine the game",
-                                "when": cls.current_time.isoformat(),
-                                "time": f"{cls.current_time.time().isoformat()}",
-                                }
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
-                return error_message
+                raise KeyError("game not in the dataset")
             
             game_stats = cls.data.get(game, {})
 
             if team not in game_stats["Lineup"]:
-                error_message = {"error": "game must be a string",
-                    "where": "check_player",
-                    "what_error": "invalid prams",
-                    "when": cls.current_time.isoformat(),
-                    "time": f"{cls.current_time.time().isoformat()}",
-                    }
-                    
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/errors/accessing_data_errors.json", error_message)
-                return error_message
+                raise KeyError("team not in the game")
             
             team_players = game_stats.get("Lineup").get(team)
 
@@ -1317,44 +1272,305 @@ class AccessData:
             else:
                 if look_good:
                     output = f"{player} was found in {game} of {team}"
+                    log_entry = create_log(
+                                level="INFO",
+                                message="check_player ran successfully",
+                                where="check_player",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
                     return output
                 else:
+                    log_entry = create_log(
+                                level="INFO",
+                                message="check_player ran successfully",
+                                where="check_player",
+                                user_id=cls.user_id,
+                                source_ip=cls.source_ip,
+                                request_id=cls.request_id
+                            )
+                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
                     return True
-                
-        except ValueError as e:
-            error_message = {
-                "error_message": e,
-                "type": "ValueError",
-                "where": "check_player",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
-            return error_message
-        except KeyError as e:
-            error_message = {
-                "error_message": e,
-                "type": "KeyError",
-                "where": "check_player",
-                "when": cls.current_time.isoformat(),
-                "time": f"{cls.current_time.time().isoformat()}"
-            }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
-            return error_message
+    
         except Exception as e:
-            error_message = {
-                            "error_message": e,
-                            "type": "Exception",
-                            "where": "check_player",
-                            "when": cls.current_time.isoformat(),
-                            "time": f"{cls.current_time.time().isoformat()}"
-                        }
-
-            write.write_to("C:/Users/Drags Jrs/Database/errors/accessing_data_errors.json", error_message)
-            return error_message
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="check_player failed",
+                where="check_player",
+                error=error,
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
 if __name__ == '__main__':
     app = AccessData()
-    # get_details(cls, game: str, look_good: bool = False)
+
+
+# ============================================================================
+# END OF FILE: accessing_data.py
+# ============================================================================
+# MODULE: Basketball Data Access Layer System 
+# LOCATION: C:/Users/Drags Jrs/Drags/utils/accessing_data.py
+# ============================================================================
+# IF NEEDED: If you want the full docstring go to docs/accessing_data_doc.md
+#=============================================================================
+
+# ============================================================================
+# FILE STATISTICS
+# ============================================================================
+# TOTAL CLASSES: 1 (AccessData)
+# TOTAL METHODS: 18
+# TOTAL FUNCTIONS (NOT IN CLASS): 2
+# TOTAL FUNCTIONS AND METHODS: 20 
+# TOTAL LINES: ~1000 
+# ============================================================================
+
+# ============================================================================
+# FEATURE SUMMARY
+# ============================================================================
+#   1. UTILITY FUNCTIONS
+#      
+#    -    get_public_ip(): Retrieves public IP address with fallback to local hostname
+#    -    create_log(): Generates structured JSON log entries with contextual metadata
+#   
+#   2. INITIALIZATION & REPRESENTATION
+#
+#    -   __init__: Initializes instance with user tracking, UUID generation, and automatic data loading
+#    -   __repr__: Returns compact representation with game/player counts
+#    -   __str__: Returns formatted string representation with statistics summary
+#
+#   3. DATA MANAGEMENT 
+#
+#    -   initialize(): Loads JSON data with validation and error logging
+#    -   save(): Persists data with automatic backups and atomic write operations
+#    -   _ensure_initialized(): Classmethod ensuring singleton-like initialization
+#
+#   4. QUERY METHODS (ALL CLASSMETHODS - RETURN RAW OR FORMATTED DATA) 
+#
+#    -  get_details(): Game metadata retrieval
+#    -  get_lineup(): Team roster lookup
+#    -  get_quarter_stats(): Quarter-level statistics
+#    -  get_specific_stats(): Player stats for specific quarter
+#    -  get_game_stats(): Aggregated game statistics by player
+#    -  get_season_stats(): Player performance across all games
+#    -  get_team_season_stats(): Full team season statistics
+#    -  get_quarter_season_stats(): Quarter-specific season aggregates
+#    -  get_highest_stats_quarter(): Find leading player in quarter for stat type
+#    -  get_highest_stats_game(): Find leading player in game for stat type
+#    -  specific_players_best_stat(): Player's best performance for specific stat
+#    -  check_player(): Verify player participation in game
+#
+# ============================================================================
+# ============================================================================
+# PERFORMANCE NOTES
+# ============================================================================
+#   
+#   STRENGTHS
+#
+#       - Class data as shared dictionary avoids redundant loads
+#       - Atomic file operations prevent corruption
+#       - Type hints enable IDE optimization
+#       - Early returns in aggregation methods
+# 
+#   CONCERNS (WILL TRY AND FIX)
+#
+#       - Full aggregation: get_season_stats() iterates entire dataset every call
+#       - Repeated string operations: Multiple .get() calls and .format() operations
+#       - Memory overhead: Every look_good=True call creates large formatted strings
+#       - JSON file locking: save() blocks on I/O with no async support
+#   
+#   SCALABILITY ISSUES
+#       - Large datasets (1000+ games) will suffer from O(n) iterations
+#       - No caching mechanism for frequently accessed aggregates
+#       - Logging to JSON sequentially creates I/O bottleneck
+#
+# ============================================================================
+
+# ============================================================================
+# DEPENDENCIES
+# ============================================================================
+#   EXTERNAL
+#
+#       - json: Data serialization
+#       - os: File/directory operations
+#       - shutil: File backup operations
+#       - socket: Hostname/IP resolution
+#       - uuid: Request tracking
+#       - urllib.request: Public IP lookup
+#       - typing: Type hints
+#       - datetime: Timestamps and timezone handling
+#       - utils.write: Custom logging module (required)
+#
+#   INTERNAL
+#
+#       - Circular dependency risk: write module must exist and be importable
+#
+# ============================================================================
+
+# ============================================================================
+# DESIGN PATTERNS USED
+# ============================================================================
+#
+#   SINGLETON-LIKE CLASS DATA
+# 
+#       - Shared class-level data dict reduces memory/load overhead
+#       - Risk: Thread-unsafe mutations
+#
+#   CLASSMETHODS QUERY PATTERN
+#
+#       - Most methods are classmethods accessing shared data
+#       - Advantage: No instance creation needed
+#       - Disadvantage: Breaks encapsulation; all instances share state
+#
+#   OPTIONAL FORMATTING PATTERN
+# 
+#       - look_good parameter returns formatted vs. raw data
+#       - Mixing presentation logic with data access violates SRP
+#
+#   REQUEST TRACKING
+#
+#       - UUID per operation enables request tracing
+#       - Logged metadata for audit trails
+#
+#   DECORATOR-LIKE ERROR HANDLING
+#   
+#       - Try/except in every method logs to same JSON file
+#       - Verbose but comprehensive error tracking
+#
+# ============================================================================
+
+# ============================================================================
+# FUTURE ENHANCEMENTS
+# ============================================================================
+#   
+#   SHORT TERM (1-2 MONTHS)
+#   
+#       - Add caching layer: LRU cache for frequently accessed queries
+#       - Optimize aggregations: Build indices on game/player names
+#       - Async logging: Move log writes to thread pool
+#       - Separate concerns: Create QueryBuilder and Formatter classes
+#       - Batch operations: Add get_multiple_players_stats() method
+#       - Query optimization: Cache season aggregates, invalidate on save
+#
+#   LONG TERM (3-6 MONTHS)
+#
+#       === Database migration: Replace JSON with SQLite/PostgreSQL ===
+#           
+#           - Enable complex queries without full-dataset iteration
+#           - Add transactions for data consistency
+#
+#       - Analytics API: Pre-compute rankings, trends, percentiles
+#       - Time-series support: Track stat changes across season
+#       - Multi-season support: Current design assumes single season
+#       - Data validation schema: JSONSchema or Pydantic models
+#       - Rate limiting: Prevent abuse of expensive querie
+#       - Audit logs: Separate write operations to audit table
+#       - API layer: REST endpoints for remote data access
+#
+# ============================================================================
+
+# ============================================================================
+# TESTING RECOMMENDATIONS
+# ============================================================================
+#
+#   UNIT TESTS
+#       
+#       - Test initialization with missing file
+#       - Test save with corrupted data recovery
+#       - Test type validation on all parameters
+#       - Test edge cases (empty lineup, zero stats, tied leaders)
+#       - Test classmethod state isolation
+#
+#   INTEGRATION TESTS
+#
+#       - Load real JSON, verify aggregation accuracy
+#       - Backup file creation on save
+#       - Log file format and completeness
+#       - Error propagation and recovery'
+#
+#   PERFORMANCE TESTS 
+#       
+#       - Benchmark with 500+ games
+#       - Profile memory usage for look_good=True calls
+#       - Measure aggregation time for season stats
+#
+#   Edge Cases
+#   
+#       - Empty data structures
+#       - Tied statistics (multiple players with same max)
+#       - Missing keys in nested dictionaries
+#       - Unicode player names
+#       - Concurrent classmethod calls
+#
+#   LOAD TESTING
+#   
+#       - Stress test with 10,000+ queries
+#       - Database connection pooling requirements
+# ============================================================================
+
+# ============================================================================
+# MAINTENANCE NOTES
+# ============================================================================
+#   CURRENT DEBT
+#
+#       - Inconsistent error handling: Some methods raise, others return None
+#       - Hardcoded paths: Database paths embedded in methods (should use config)
+#
+#   CORE MAINTENANCE
+# 
+#       - Remove duplicate error handling code (20+ nearly identical try/except blocks)
+#       - Extract common patterns into private methods
+#       - Document JSON schema expectations
+#       - Add constants for magic strings (stat names, team names)
+#       - Create config file for hardcoded paths
+#   
+#   MONITORING 
+#
+#       - Set up alerts for JSON log file size growth
+#       - Monitor file I/O performance
+#       - Track query response times
+#       - Alert on unhandled exceptions
+#
+#   BACKWARDS COMPATIBILITY
+# 
+#       - Changing method signatures breaks API
+#       - Consider versioning for JSON schema changes
+#       - Add deprecation warnings before method renames
+# 
+#   DOCUMENTATION 
+# 
+#       - Add class-level docstring describing data structure
+#       - Document required JSON schema with example
+#       - Add usage examples for common queries
+#       - Create migration guide for future database move
+# ============================================================================
+3
+# ============================================================================
+# AUTHOR & LICENSE INFORMATION
+# ============================================================================
+# Author: Drags Jrs
+# Created: 2025
+# Last Modified: 2025
+# Version: 2.3.7
+# Status: Production
+# 
+# License: None hopefully
+# Copyright: © 2025 Drags Jrs. All rights reserved.
+#
+# Repository HTTPS: [https://github.com/SigmaCoder12205/Basketball-Stats.git]
+# ============================================================================
+
+# ============================================================================
+# ACKNOWLEDGMENTS
+# ============================================================================
+# - Newport Raiders U16 Boys Julie team for the use case and test
+# - Shout out to again to the Newport Raiders U16 Boys Julie team for everything 
+# - Don't forget my parents for helping me and giving the motivation to keep going
+# - And sadly my brother, for nothing...   
+# ============================================================================

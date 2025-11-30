@@ -1,0 +1,57 @@
+[
+  {
+    "timestamp": "2025-11-28T05:41:37.537914+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "initialize ran successfully",
+    "where": "initialize",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "ef1ba18a-787f-47f1-a258-9c34c0a631a5"
+  },
+  {
+    "timestamp": "2025-11-30T00:27:04.735369+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "initialize ran successfully",
+    "where": "initialize",
+    "user_id": "OWNER",
+    "source_ip": null,
+    "request_id": "0fd2e040-402a-47f5-bc28-641a302bb209"
+  },
+  {
+    "timestamp": "2025-11-30T00:27:04.739044+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "AccessData initialized successfully",
+    "where": "__init__",
+    "user_id": "OWNER",
+    "source_ip": null,
+    "request_id": "0fd2e040-402a-47f5-bc28-641a302bb209"
+  },
+  {
+    "timestamp": "2025-11-30T00:27:21.839607+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "initialize ran successfully",
+    "where": "initialize",
+    "user_id": 1,
+    "source_ip": null,
+    "request_id": "699060f1-d1fc-4128-a22a-aee32821da4d"
+  },
+  {
+    "timestamp": "2025-11-30T00:27:21.841444+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "AccessData initialized successfully",
+    "where": "__init__",
+    "user_id": 1,
+    "source_ip": null,
+    "request_id": "699060f1-d1fc-4128-a22a-aee32821da4d"
+  }
+]
