@@ -4,6 +4,7 @@
     "dictionaryDefinitions": [],
     "dictionaries": [],
     "words": [
+        "__repr__",
         "abspath",
         "Baronti",
         "Berridge",
@@ -11,6 +12,7 @@
         "Classmethod",
         "classmethods",
         "Consolas",
+        "cpython",
         "Dainiel",
         "deepcopy",
         "docstrings",
@@ -29,6 +31,7 @@
         "playmaking",
         "Prabal",
         "Pradyun",
+        "pycache",
         "querie",
         "resultstr",
         "rgba",

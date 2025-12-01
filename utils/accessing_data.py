@@ -10,9 +10,14 @@ import uuid
 import urllib.request
 from typing import Optional, Dict, Any
 from datetime import datetime, timezone
-from utils import write 
 
+# Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+try:
+    from utils import write
+except ImportError:
+    import write
 
 
 def get_public_ip() -> str:
@@ -51,6 +56,9 @@ class AccessData:
     _initialized: bool = False
     current_time = datetime.now()
     error_message = {}
+    user_id: str = "N/A"  # Class default for classmethods
+    source_ip: str = "N/A"  # Class default for classmethods
+    request_id: str = "N/A"  # Class default for classmethods
     
     def __init__(self, user_id: str = "anonymous", source_ip: Optional[str] = None):
         self.user_id = user_id
@@ -252,20 +260,19 @@ class AccessData:
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
-    @classmethod
-    def get_details(cls, game: str, look_good: bool = False):
+    def get_details(self, game: str, look_good: bool = False):
         try:
-            cls._ensure_initialized()
+            self._ensure_initialized()
 
             if not isinstance(game, str): 
                 raise TypeError("game must be a string")
                         
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
-            if not game or game not in cls.data:
+            if not game or game not in self.data:
                 raise KeyError("Could not find the game")
 
-            game_stats = cls.data.get(game, {})
+            game_stats = self.data.get(game, {})
 
             details = game_stats.get("Details", {})
 
@@ -279,9 +286,9 @@ class AccessData:
                             level="INFO",
                             message="get_details ran successfully",
                             where="get_details",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
+                            user_id=self.user_id,
+                            source_ip=self.source_ip,
+                            request_id=self.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
@@ -292,9 +299,9 @@ class AccessData:
                             level="INFO",
                             message="get_details ran successfully",
                             where="get_details",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
+                            user_id=self.user_id,
+                            source_ip=self.source_ip,
+                            request_id=self.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
@@ -307,15 +314,15 @@ class AccessData:
                 message="get_details failed",
                 where="get_details",
                 error=error,
-                user_id=cls.user_id,
-                source_ip=cls.source_ip,
-                request_id=cls.request_id
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-    @classmethod
-    def get_lineup(cls, game: str, team: str, look_good: bool =False):
+
+    def get_lineup(self, game: str, team: str, look_good: bool =False):
         try:
-            cls._ensure_initialized()
+            self._ensure_initialized()
 
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
@@ -326,7 +333,7 @@ class AccessData:
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
-            game_stats = cls.data.get(game, {})
+            game_stats = self.data.get(game, {})
             
             if not game_stats:
                 raise KeyError("Could not find the game")
@@ -345,9 +352,9 @@ class AccessData:
                             level="INFO",
                             message="get_lineup ran successfully",
                             where="get_lineup",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
+                            user_id=self.user_id,
+                            source_ip=self.source_ip,
+                            request_id=self.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
                 
@@ -357,9 +364,9 @@ class AccessData:
                             level="INFO",
                             message="get_lineup ran successfully",
                             where="get_lineup",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
+                            user_id=self.user_id,
+                            source_ip=self.source_ip,
+                            request_id=self.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
                 
@@ -371,10 +378,7 @@ class AccessData:
                 level="ERROR",
                 message="get_lineup failed",
                 where="get_lineup",
-                error=error,
-                user_id=cls.user_id,
-                source_ip=cls.source_ip,
-                request_id=cls.request_id
+                error=error
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
                 
