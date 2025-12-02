@@ -917,7 +917,7 @@ class AccessData:
                     output = f"============= Seasons {quarter} stats for {player} =============\n"
 
                     for game_stat_name, game_stats in game_totals.items():
-                        output += f"    ---------------- Game: {game_stat_name} {quarter} stats ----------------\n"                    
+                        output += f"    ---------------- Game: {game_stat_name} {quarter}: stats ----------------\n"                    
                         for game_Stat_name, game_stat_value in game_stats.items():
                             output += f"       - {game_Stat_name}: {game_stat_value}\n"
 
@@ -1311,6 +1311,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return False
 
 if __name__ == '__main__':
     app = AccessData()
