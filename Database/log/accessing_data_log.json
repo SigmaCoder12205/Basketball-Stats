@@ -2802,5 +2802,123 @@
     "user_id": "N/A",
     "source_ip": "N/A",
     "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-03T05:14:09.192333+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "initialize ran successfully",
+    "where": "initialize",
+    "user_id": "Owner",
+    "source_ip": null,
+    "request_id": "94e1a0de-e91b-4d7c-b4c9-5490a534ae38"
+  },
+  {
+    "timestamp": "2025-12-03T05:14:09.201716+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "AccessData initialized successfully",
+    "where": "__init__",
+    "user_id": "Owner",
+    "source_ip": null,
+    "request_id": "94e1a0de-e91b-4d7c-b4c9-5490a534ae38"
+  },
+  {
+    "timestamp": "2025-12-03T05:14:09.210948+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "initialize ran successfully",
+    "where": "initialize",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "3b5a3ad6-3718-4fdb-8f4c-599da35de4b8"
+  },
+  {
+    "timestamp": "2025-12-03T05:14:09.220005+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "AccessData initialized successfully",
+    "where": "__init__",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "3b5a3ad6-3718-4fdb-8f4c-599da35de4b8"
+  },
+  {
+    "timestamp": "2025-12-03T05:14:09.229360+00:00",
+    "log_level": "ERROR",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "specific_players_best_stat failed",
+    "where": "specific_players_best_stat",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A",
+    "error": {
+      "type": "TypeError",
+      "message": "NonExistentPlayer has no recorded Points"
+    }
+  },
+  {
+    "timestamp": "2025-12-03T05:15:00.011885+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "initialize ran successfully",
+    "where": "initialize",
+    "user_id": "Owner",
+    "source_ip": null,
+    "request_id": "71312b82-9567-4ab1-9b85-957b78609672"
+  },
+  {
+    "timestamp": "2025-12-03T05:15:00.017812+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "AccessData initialized successfully",
+    "where": "__init__",
+    "user_id": "Owner",
+    "source_ip": null,
+    "request_id": "71312b82-9567-4ab1-9b85-957b78609672"
+  },
+  {
+    "timestamp": "2025-12-03T05:15:00.027738+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "initialize ran successfully",
+    "where": "initialize",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "2dc0b898-a42b-44f2-b8a0-6c4892c593a6"
+  },
+  {
+    "timestamp": "2025-12-03T05:15:00.038923+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "AccessData initialized successfully",
+    "where": "__init__",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "2dc0b898-a42b-44f2-b8a0-6c4892c593a6"
+  },
+  {
+    "timestamp": "2025-12-03T05:15:00.051069+00:00",
+    "log_level": "ERROR",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "specific_players_best_stat failed",
+    "where": "specific_players_best_stat",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A",
+    "error": {
+      "type": "TypeError",
+      "message": "NonExistentPlayer has no recorded Points"
+    }
   }
 ]

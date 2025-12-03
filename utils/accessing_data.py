@@ -90,6 +90,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
     def __repr__(self):
         self.error_message = {}
         try:
@@ -124,6 +125,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
     
     def __str__(self):
         self.error_message = {}
@@ -160,6 +162,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
     @classmethod
     def _ensure_initialized(cls):
@@ -214,6 +217,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
         
     def save(self, filename: Optional[str] = None, backup: bool = True) -> bool:
         if not isinstance(self.data, dict):
@@ -259,6 +263,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
     def get_details(self, game: str, look_good: bool = False):
         try:
@@ -319,6 +324,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
     def get_lineup(self, game: str, team: str, look_good: bool =False):
         try:
@@ -378,9 +384,13 @@ class AccessData:
                 level="ERROR",
                 message="get_lineup failed",
                 where="get_lineup",
-                error=error
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
                 
     @classmethod
     def get_quarter_stats(cls, game: str, quarter: str, look_good: bool = False):
@@ -448,6 +458,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
     @classmethod
     def get_specific_stats(cls, game: str, quarter: str, player: str, look_good: bool = False): # Original name: find_a_players_quarter_stats and gets specific stats for a player
@@ -519,6 +530,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
     @classmethod
     def get_game_stats(cls, game: str, player: str, look_good: bool = False): # Original name: get_total_stats sums up a games stats
@@ -614,6 +626,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
     
     @classmethod
     def get_season_stats(cls, player: str, sum_total: bool = False, look_good: bool = False):
@@ -726,6 +739,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
     @classmethod
     def get_team_season_stats(cls, sum_total: bool = False, look_good: bool = False):
         try:
@@ -840,6 +854,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
     @classmethod
     def get_quarter_season_stats(cls, player: str, quarter: str, sum_total: bool = False, look_good: bool = False):
@@ -956,6 +971,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
     @classmethod
     def get_highest_stats_quarter(cls, game: str, quarter: str, what_to_look_for: str, look_good: bool = False):
@@ -1078,6 +1094,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
 
 
     @classmethod
@@ -1170,6 +1187,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
     @classmethod
     def specific_players_best_stat(cls, player: str, what_to_look_for: str, look_good: bool = False): # Original name: find_players_best_stat does exactly what the name says
         try:
@@ -1240,7 +1258,8 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-    
+            return log_entry
+
     @classmethod
     def check_player(cls, game: str, team: str, player: str, look_good: bool = False):
         try:
@@ -1311,7 +1330,7 @@ class AccessData:
                 request_id=cls.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-            return False
+            return log_entry
 
 if __name__ == '__main__':
     app = AccessData()

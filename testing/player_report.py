@@ -1,73 +1,122 @@
 # Rated 942/1000
 
 import sys
-"""System-specific parameters and functions for path manipulation and application control"""
+
+import urllib
 
 import os
-"""Operating system interface for file path operations and directory navigation"""
+
+import socket
+
+from typing import Optional, Dict, Any
+
+from datetime import datetime, timezone
+
+import uuid
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-"""
-Add parent directory to Python's module search path to enable local imports.
-Resolves the path: testing/player_report.py → Drags/ → add to sys.path[0]
-This allows importing utils.accessing_data without ModuleNotFoundError.
-"""
 
 from utils.accessing_data import AccessData
-"""
-Import the AccessData class which provides all data retrieval methods.
-Acts as the intermediary between this GUI and the Data.json file.
-Used extensively throughout PlayerReport for all statistical queries.
-"""
+
+from utils.write import write_to
 
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QTextEdit, QComboBox)
-"""
-Import PyQt5 GUI widgets:
-- QApplication: Main application controller and event loop manager
-- QWidget: Base widget class (parent of PlayerReport)
-- QLabel: Display static text (headers, titles)
-- QLineEdit: Single-line text input (imported but currently unused)
-- QPushButton: Clickable buttons for menu navigation
-- QVBoxLayout: Vertical layout manager for widget arrangement
-- QTextEdit: Multi-line display with HTML rendering capability
-- QComboBox: Dropdown menus for stat/game selection
-"""
 
 from PyQt5.QtCore import Qt
-"""
-Import Qt core module for constants and enums.
-Used for: widget alignment (Qt.AlignCenter), object naming, and other Qt core functionality.
-"""
+
+def create_log(
+        level: str,
+        message: str,
+        where: str,
+        error: Optional[Dict[str, Any]] = None,
+        service_name: str = "access_data_service",
+        host: str = socket.gethostname(),
+        user_id: str = "N/A",
+        source_ip: str = "N/A",
+        request_id: str = str(uuid.uuid4())
+) -> Dict[str, Any]:
+    return {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "log_level": level,
+        "service_name": service_name,
+        "host": host,
+        "message": message,
+        "where": where,
+        "user_id": user_id,
+        "source_ip": source_ip,
+        "request_id": request_id,
+        **({"error": error} if error else {})
+    }
+
+def get_public_ip() -> str:
+    try:
+        return urllib.request.urlopen("https://api.ipify.org").read().decode()
+    except Exception as e:
+        return socket.gethostbyname(socket.gethostname())
 
 class PlayerReport(QWidget):
+    current_time = datetime.now()
+    error_message = {}
+    user_id: str = "N/A"  
+    source_ip: str = "N/A"  
+    request_id: str = "N/A"
 
-    def __init__(self, players_name: str):
-        super().__init__()
+    def __init__(self, user_id: str = "anonymous", players_name: str = "", source_ip: Optional[str] = None):
+        try:
+            super().__init__()
+            self.user_id = user_id
+            self.source_ip = source_ip
+            self.request_id = str(uuid.uuid4())
+            self.current_time = datetime.now(timezone.utc)
 
-        if not isinstance(players_name, str):
-            return {'error': f"players_name must be a string"}
+            if not isinstance(players_name, str):
+                return {'error': f"players_name must be a string"}
 
-        self.players_name = players_name
+            self.players_name = players_name
 
-        # Header
-        self.header_label = QLabel(f"{self.players_name}'s Report Card")
-        self.header_label.setAlignment(Qt.AlignCenter)
-        self.header_label.setObjectName("header")
+            # Header
+            self.header_label = QLabel(f"{self.players_name}'s Report Card")
+            self.header_label.setAlignment(Qt.AlignCenter)
+            self.header_label.setObjectName("header")
 
-        # Buttons
-        self.get_quick_stats_btn = QPushButton("Get Quick Stats")
-        self.compare_all_games_btn = QPushButton("Compare All Games")
-        self.season_grading_btn = QPushButton("Season Grading")
-        self.best_worst_game_btn = QPushButton("Best/Worst Game Highlights")
-        self.game_rating_btn = QPushButton("Game Rating")
-        self.season_game_rating_btn = QPushButton("Season Game Rating")
+            # Buttons
+            self.get_quick_stats_btn = QPushButton("Get Quick Stats")
+            self.compare_all_games_btn = QPushButton("Compare All Games")
+            self.season_grading_btn = QPushButton("Season Grading")
+            self.best_worst_game_btn = QPushButton("Best/Worst Game Highlights")
+            self.game_rating_btn = QPushButton("Game Rating")
+            self.season_game_rating_btn = QPushButton("Season Game Rating")
 
-        self.get_quick_stats_btn.clicked.connect(self.Season_average)
-        self.compare_all_games_btn.clicked.connect(self.show_compare_all_games)
-        self.season_grading_btn.clicked.connect(self.show_grading)
-        self.best_worst_game_btn.clicked.connect(self.show_best_worst_highlights)
-        self.game_rating_btn.clicked.connect(self.show_game_rating)
-        self.season_game_rating_btn.clicked.connect(self.show_game_season_game_rating)
+            self.get_quick_stats_btn.clicked.connect(self.Season_average)
+            self.compare_all_games_btn.clicked.connect(self.show_compare_all_games)
+            self.season_grading_btn.clicked.connect(self.show_grading)
+            self.best_worst_game_btn.clicked.connect(self.show_best_worst_highlights)
+            self.game_rating_btn.clicked.connect(self.show_game_rating)
+            self.season_game_rating_btn.clicked.connect(self.show_game_season_game_rating)
+
+            log_entry = create_log(
+                level="INFO",
+                message="PlayerReport initialized successfully",
+                where="__init__",
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write_to("C:/Users/Drags Jrs/Drags/Database/log/player_report_log.json", log_entry)
+        
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="PlayerReport initialized failed",
+                where="__init__",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write_to("C:/Users/Drags Jrs/Drags/Database/log/player_report_log.json", log_entry)
+            return log_entry
 
         self.init_main_UI()
 
@@ -831,7 +880,7 @@ class PlayerReport(QWidget):
         </div>
             """
 
-        output += "</div/>"
+        output += "</div>"
         self.season_rating_display.setHtml(output)
 
 if __name__ == "__main__":

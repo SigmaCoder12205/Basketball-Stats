@@ -7,4 +7,3 @@ from utils import accessing_data as ad
 
 if __name__ == '__main__':
     ins = asd(user_id="Owner")
-    print(ins.check_player(game="Game_1", team="Newport Raiders U16 Boys Julie", player="Myles Dragone", look_good=True))
