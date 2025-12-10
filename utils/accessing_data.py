@@ -5,11 +5,7 @@ import json
 import os 
 os.makedirs("C:/Users/Drags Jrs/Database/errors", exist_ok=True)
 import shutil
-import socket
-import uuid
-import urllib.request
 from typing import Optional, Dict, Any
-from datetime import datetime, timezone
 
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -19,36 +15,17 @@ try:
 except ImportError:
     import write
 
+try:
+    from utils.logging import Logging
+except ImportError:
+    from logging import Logging
 
-def get_public_ip() -> str:
-    try:
-        return urllib.request.urlopen("https://api.ipify.org").read().decode()
-    except Exception as e:
-        return socket.gethostbyname(socket.gethostname())
-    
-def create_log(
-        level: str,
-        message: str,
-        where: str,
-        error: Optional[Dict[str, Any]] = None,
-        service_name: str = "access_data_service",
-        host: str = socket.gethostname(),
-        user_id: str = "N/A",
-        source_ip: str = "N/A",
-        request_id: str = str(uuid.uuid4())
-) -> Dict[str, Any]:
-    return {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "log_level": level,
-        "service_name": service_name,
-        "host": host,
-        "message": message,
-        "where": where,
-        "user_id": user_id,
-        "source_ip": source_ip,
-        "request_id": request_id,
-        **({"error": error} if error else {})
-    }
+# Initialize logging
+logger = Logging(service_name="access_data_service", user_id="N/A")
+create_log = logger.create_log
+
+from datetime import datetime, timezone
+import uuid
 
 class AccessData:
     data: Dict[str, Any] = {}

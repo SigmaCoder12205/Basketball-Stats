@@ -1,6 +1,6 @@
 [
   {
-    "timestamp": "2025-11-28T05:41:37.537914+00:00",
+    "timestamp": "2025-12-08T05:54:55.192816+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -8,153 +8,10 @@
     "where": "initialize",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "ef1ba18a-787f-47f1-a258-9c34c0a631a5"
+    "request_id": "e0f9588f-f43a-4d1f-9fe9-935e5a7f065f"
   },
   {
-    "timestamp": "2025-11-30T00:27:04.735369+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "OWNER",
-    "source_ip": null,
-    "request_id": "0fd2e040-402a-47f5-bc28-641a302bb209"
-  },
-  {
-    "timestamp": "2025-11-30T00:27:04.739044+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "OWNER",
-    "source_ip": null,
-    "request_id": "0fd2e040-402a-47f5-bc28-641a302bb209"
-  },
-  {
-    "timestamp": "2025-11-30T00:27:21.839607+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": 1,
-    "source_ip": null,
-    "request_id": "699060f1-d1fc-4128-a22a-aee32821da4d"
-  },
-  {
-    "timestamp": "2025-11-30T00:27:21.841444+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": 1,
-    "source_ip": null,
-    "request_id": "699060f1-d1fc-4128-a22a-aee32821da4d"
-  },
-  {
-    "timestamp": "2025-11-30T03:45:51.372939+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "79609750-7e5b-471b-a429-65a3af2a4a34"
-  },
-  {
-    "timestamp": "2025-11-30T03:45:51.374647+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "79609750-7e5b-471b-a429-65a3af2a4a34"
-  },
-  {
-    "timestamp": "2025-11-30T03:45:51.378067+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "__repr__ ran successfully",
-    "where": "__repr__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "79609750-7e5b-471b-a429-65a3af2a4a34"
-  },
-  {
-    "timestamp": "2025-11-30T03:47:10.898133+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "4a371904-0dcd-4329-8c7f-ec187fb198bc"
-  },
-  {
-    "timestamp": "2025-11-30T03:47:10.900544+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "4a371904-0dcd-4329-8c7f-ec187fb198bc"
-  },
-  {
-    "timestamp": "2025-11-30T03:47:10.904441+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "__str__ ran successfully",
-    "where": "__str__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "4a371904-0dcd-4329-8c7f-ec187fb198bc"
-  },
-  {
-    "timestamp": "2025-11-30T03:47:58.871437+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "1a592cd8-a53e-4946-849c-b827670740dd"
-  },
-  {
-    "timestamp": "2025-11-30T03:47:58.873432+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "1a592cd8-a53e-4946-849c-b827670740dd"
-  },
-  {
-    "timestamp": "2025-11-30T03:47:58.877832+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "58606b0c-9c48-49ce-bdae-d1d9b9a93179"
-  },
-  {
-    "timestamp": "2025-11-30T03:47:58.881649+00:00",
+    "timestamp": "2025-12-08T05:54:55.194774+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -162,1360 +19,10 @@
     "where": "__init__",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "58606b0c-9c48-49ce-bdae-d1d9b9a93179"
+    "request_id": "e0f9588f-f43a-4d1f-9fe9-935e5a7f065f"
   },
   {
-    "timestamp": "2025-11-30T03:49:35.806824+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "da905d85-9d4a-415c-9a04-e7f9aa38ed74"
-  },
-  {
-    "timestamp": "2025-11-30T03:49:35.809115+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "da905d85-9d4a-415c-9a04-e7f9aa38ed74"
-  },
-  {
-    "timestamp": "2025-11-30T03:49:35.814276+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "da905d85-9d4a-415c-9a04-e7f9aa38ed74"
-  },
-  {
-    "timestamp": "2025-11-30T03:49:54.928492+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "1f1e99c3-3441-49ba-a98c-5161f80a434f"
-  },
-  {
-    "timestamp": "2025-11-30T03:49:54.930806+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "1f1e99c3-3441-49ba-a98c-5161f80a434f"
-  },
-  {
-    "timestamp": "2025-11-30T03:49:54.935804+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "1f1e99c3-3441-49ba-a98c-5161f80a434f"
-  },
-  {
-    "timestamp": "2025-11-30T03:50:32.998508+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "3d15029b-b96c-418e-894f-c07bc082a0ec"
-  },
-  {
-    "timestamp": "2025-11-30T03:50:33.000729+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "3d15029b-b96c-418e-894f-c07bc082a0ec"
-  },
-  {
-    "timestamp": "2025-11-30T03:50:33.008272+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "3d15029b-b96c-418e-894f-c07bc082a0ec"
-  },
-  {
-    "timestamp": "2025-11-30T04:03:13.297165+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "305f515c-0f9c-4ce0-bf32-63029956c84d"
-  },
-  {
-    "timestamp": "2025-11-30T04:03:13.299815+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "305f515c-0f9c-4ce0-bf32-63029956c84d"
-  },
-  {
-    "timestamp": "2025-11-30T04:03:13.308929+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "save ran successfully",
-    "where": "save",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "305f515c-0f9c-4ce0-bf32-63029956c84d"
-  },
-  {
-    "timestamp": "2025-11-30T04:03:35.074944+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "9f59cb7b-0385-4bf6-8566-af1728ba2fd0"
-  },
-  {
-    "timestamp": "2025-11-30T04:03:35.076848+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "9f59cb7b-0385-4bf6-8566-af1728ba2fd0"
-  },
-  {
-    "timestamp": "2025-11-30T04:03:35.083862+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "save ran successfully",
-    "where": "save",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "9f59cb7b-0385-4bf6-8566-af1728ba2fd0"
-  },
-  {
-    "timestamp": "2025-11-30T04:05:20.787495+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e9366378-b691-4df1-ab68-69add32eaf80"
-  },
-  {
-    "timestamp": "2025-11-30T04:05:20.790158+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e9366378-b691-4df1-ab68-69add32eaf80"
-  },
-  {
-    "timestamp": "2025-11-30T04:05:20.800512+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "445b12ea-31df-46c0-bf18-9bfe81500b25"
-  },
-  {
-    "timestamp": "2025-11-30T04:05:20.805365+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "445b12ea-31df-46c0-bf18-9bfe81500b25"
-  },
-  {
-    "timestamp": "2025-11-30T04:07:10.118104+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e6319d65-c486-4813-8a46-5f27bdea34ac"
-  },
-  {
-    "timestamp": "2025-11-30T04:07:10.120482+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e6319d65-c486-4813-8a46-5f27bdea34ac"
-  },
-  {
-    "timestamp": "2025-11-30T04:08:08.700913+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a7bff273-5afb-48af-a90e-232a5297a7a2"
-  },
-  {
-    "timestamp": "2025-11-30T04:08:08.704448+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a7bff273-5afb-48af-a90e-232a5297a7a2"
-  },
-  {
-    "timestamp": "2025-11-30T04:08:08.710291+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "ca5716c1-5d7a-479a-9c1d-dbc4e3611350"
-  },
-  {
-    "timestamp": "2025-11-30T04:08:08.717905+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "ca5716c1-5d7a-479a-9c1d-dbc4e3611350"
-  },
-  {
-    "timestamp": "2025-11-30T04:10:35.927898+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a89a5d9a-ced4-49e9-be56-2e52f4ed1571"
-  },
-  {
-    "timestamp": "2025-11-30T04:10:35.930103+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a89a5d9a-ced4-49e9-be56-2e52f4ed1571"
-  },
-  {
-    "timestamp": "2025-11-30T04:10:35.936063+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "5f99bd0e-2941-4882-9f44-f9c16abf8319"
-  },
-  {
-    "timestamp": "2025-11-30T04:10:35.941250+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "5f99bd0e-2941-4882-9f44-f9c16abf8319"
-  },
-  {
-    "timestamp": "2025-11-30T04:10:35.946005+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_details ran successfully",
-    "where": "get_details",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a89a5d9a-ced4-49e9-be56-2e52f4ed1571"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:17.049136+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "62653417-221e-4994-af6f-a873518b2992"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:17.055471+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "62653417-221e-4994-af6f-a873518b2992"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:17.061894+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "cd25bc3f-cefc-4ba8-84a9-7ba1252ecd68"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:17.069096+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "cd25bc3f-cefc-4ba8-84a9-7ba1252ecd68"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:17.075215+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_details ran successfully",
-    "where": "get_details",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "62653417-221e-4994-af6f-a873518b2992"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:25.261296+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b8450cf6-4071-4c77-b69a-acf918104672"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:25.265401+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b8450cf6-4071-4c77-b69a-acf918104672"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:25.272631+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e9e32cb5-95e2-42d1-a018-54c3847c3869"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:25.278973+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e9e32cb5-95e2-42d1-a018-54c3847c3869"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:25.285458+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_details ran successfully",
-    "where": "get_details",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b8450cf6-4071-4c77-b69a-acf918104672"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:38.410925+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "dbc2664b-5563-411d-bc14-0f0fd6803c8a"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:38.415604+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "dbc2664b-5563-411d-bc14-0f0fd6803c8a"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:38.422533+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "38849e66-4dde-45e9-9938-a58d501189f1"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:38.429011+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "38849e66-4dde-45e9-9938-a58d501189f1"
-  },
-  {
-    "timestamp": "2025-12-01T07:29:38.435330+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_details ran successfully",
-    "where": "get_details",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "dbc2664b-5563-411d-bc14-0f0fd6803c8a"
-  },
-  {
-    "timestamp": "2025-12-01T07:30:37.538688+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "1f4a337e-6207-4fbc-8e9d-1c185c2fd6f7"
-  },
-  {
-    "timestamp": "2025-12-01T07:30:37.541546+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "1f4a337e-6207-4fbc-8e9d-1c185c2fd6f7"
-  },
-  {
-    "timestamp": "2025-12-01T07:30:37.547579+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "810f151b-0821-4174-84ba-ff9101345732"
-  },
-  {
-    "timestamp": "2025-12-01T07:30:37.553018+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "810f151b-0821-4174-84ba-ff9101345732"
-  },
-  {
-    "timestamp": "2025-12-01T07:31:33.472134+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "64a1228f-1f55-4d6e-be5f-4b10d9c64037"
-  },
-  {
-    "timestamp": "2025-12-01T07:31:33.475132+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "64a1228f-1f55-4d6e-be5f-4b10d9c64037"
-  },
-  {
-    "timestamp": "2025-12-01T07:31:33.482394+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "9eb84cf3-ae27-481f-a50c-a9b7a7adb972"
-  },
-  {
-    "timestamp": "2025-12-01T07:31:33.488922+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "9eb84cf3-ae27-481f-a50c-a9b7a7adb972"
-  },
-  {
-    "timestamp": "2025-12-01T07:31:33.705141+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "__repr__ ran successfully",
-    "where": "__repr__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "64a1228f-1f55-4d6e-be5f-4b10d9c64037"
-  },
-  {
-    "timestamp": "2025-12-01T07:32:48.810966+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6ab2360f-fdfe-486e-ae7a-3cef4c36fe93"
-  },
-  {
-    "timestamp": "2025-12-01T07:32:48.813974+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6ab2360f-fdfe-486e-ae7a-3cef4c36fe93"
-  },
-  {
-    "timestamp": "2025-12-01T07:32:48.821452+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "9a12b752-b967-4454-94d6-0de5782bd3d5"
-  },
-  {
-    "timestamp": "2025-12-01T07:32:48.827988+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "9a12b752-b967-4454-94d6-0de5782bd3d5"
-  },
-  {
-    "timestamp": "2025-12-01T07:32:48.835027+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_lineup failed",
-    "where": "get_lineup",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "cc3eeb82-9739-4d80-9fa7-9f9dec1a119b",
-    "error": {
-      "type": "KeyError",
-      "message": "'Could not find the team'"
-    }
-  },
-  {
-    "timestamp": "2025-12-01T07:33:15.212285+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "cf97b92a-7fd8-4dcb-935a-8d0639725382"
-  },
-  {
-    "timestamp": "2025-12-01T07:33:15.215455+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "cf97b92a-7fd8-4dcb-935a-8d0639725382"
-  },
-  {
-    "timestamp": "2025-12-01T07:33:15.221464+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "da89869c-46b1-4137-96a7-90be13d63663"
-  },
-  {
-    "timestamp": "2025-12-01T07:33:15.227284+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "da89869c-46b1-4137-96a7-90be13d63663"
-  },
-  {
-    "timestamp": "2025-12-01T07:33:15.233308+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_lineup failed",
-    "where": "get_lineup",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "6fff2f37-1886-4922-9921-045c18aa9096",
-    "error": {
-      "type": "KeyError",
-      "message": "'Could not find the team'"
-    }
-  },
-  {
-    "timestamp": "2025-12-01T07:35:24.258587+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "dac9d8eb-363a-4c10-a835-937114293a30"
-  },
-  {
-    "timestamp": "2025-12-01T07:35:24.262668+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "dac9d8eb-363a-4c10-a835-937114293a30"
-  },
-  {
-    "timestamp": "2025-12-01T07:35:24.270181+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "9d2e0c0a-6eb4-41cd-8996-33cc3c881df1"
-  },
-  {
-    "timestamp": "2025-12-01T07:35:24.276462+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "9d2e0c0a-6eb4-41cd-8996-33cc3c881df1"
-  },
-  {
-    "timestamp": "2025-12-01T07:35:24.284723+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_lineup ran successfully",
-    "where": "get_lineup",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "dac9d8eb-363a-4c10-a835-937114293a30"
-  },
-  {
-    "timestamp": "2025-12-01T07:36:09.995970+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "71ff3c25-07cf-43e0-ace6-af7d89d32c78"
-  },
-  {
-    "timestamp": "2025-12-01T07:36:10.003802+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "71ff3c25-07cf-43e0-ace6-af7d89d32c78"
-  },
-  {
-    "timestamp": "2025-12-01T07:36:10.011112+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "49847a20-753f-4e1d-b436-ec33ed57bf2c"
-  },
-  {
-    "timestamp": "2025-12-01T07:36:10.017127+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "49847a20-753f-4e1d-b436-ec33ed57bf2c"
-  },
-  {
-    "timestamp": "2025-12-01T07:36:10.028913+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_lineup ran successfully",
-    "where": "get_lineup",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "71ff3c25-07cf-43e0-ace6-af7d89d32c78"
-  },
-  {
-    "timestamp": "2025-12-01T07:43:28.264124+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "be05652d-e17a-4059-a03f-2eb1402c47e9"
-  },
-  {
-    "timestamp": "2025-12-01T07:43:28.267362+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "be05652d-e17a-4059-a03f-2eb1402c47e9"
-  },
-  {
-    "timestamp": "2025-12-01T07:43:28.274771+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "482dc2e7-90b4-4fd0-8864-2f025cb52c0b"
-  },
-  {
-    "timestamp": "2025-12-01T07:43:28.280832+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "482dc2e7-90b4-4fd0-8864-2f025cb52c0b"
-  },
-  {
-    "timestamp": "2025-12-01T07:43:28.288222+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_quarter_stats ran successfully",
-    "where": "get_quarter_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-01T07:44:59.357273+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e167c9f2-86cf-4849-b0a1-ab596fb27317"
-  },
-  {
-    "timestamp": "2025-12-01T07:44:59.361740+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e167c9f2-86cf-4849-b0a1-ab596fb27317"
-  },
-  {
-    "timestamp": "2025-12-01T07:44:59.438286+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "__repr__ ran successfully",
-    "where": "__repr__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e167c9f2-86cf-4849-b0a1-ab596fb27317"
-  },
-  {
-    "timestamp": "2025-12-01T07:44:59.443796+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "__repr__ ran successfully",
-    "where": "__repr__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e167c9f2-86cf-4849-b0a1-ab596fb27317"
-  },
-  {
-    "timestamp": "2025-12-01T07:45:19.835259+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6c7cd200-bfc8-441f-b78c-7a92781df92e"
-  },
-  {
-    "timestamp": "2025-12-01T07:45:19.839276+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6c7cd200-bfc8-441f-b78c-7a92781df92e"
-  },
-  {
-    "timestamp": "2025-12-01T07:45:19.858681+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "99e68aa4-043b-49e1-9665-54e5731bcc97"
-  },
-  {
-    "timestamp": "2025-12-01T07:45:19.865047+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "99e68aa4-043b-49e1-9665-54e5731bcc97"
-  },
-  {
-    "timestamp": "2025-12-01T07:45:19.872739+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_quarter_stats ran successfully",
-    "where": "get_quarter_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-01T08:00:17.518348+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6a98d415-8d53-4feb-8c8c-a1881433b33b"
-  },
-  {
-    "timestamp": "2025-12-01T08:00:17.525528+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6a98d415-8d53-4feb-8c8c-a1881433b33b"
-  },
-  {
-    "timestamp": "2025-12-01T08:00:17.532388+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "8c69de5f-d02e-4890-b157-faa019246012"
-  },
-  {
-    "timestamp": "2025-12-01T08:00:17.538745+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "8c69de5f-d02e-4890-b157-faa019246012"
-  },
-  {
-    "timestamp": "2025-12-01T08:00:17.546220+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_specific_stats ran successfully",
-    "where": "get_specific_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:04.853173+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "cdd25843-7e9b-4704-ab43-0fa563d79ff3"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:04.857088+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "cdd25843-7e9b-4704-ab43-0fa563d79ff3"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:04.864934+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "16aa501a-332b-40ad-a45e-1c826b5cc34c"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:04.871702+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "16aa501a-332b-40ad-a45e-1c826b5cc34c"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:04.879124+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_specific_stats ran successfully",
-    "where": "get_specific_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:15.582340+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "9e9759ba-e3b2-4c8b-8b00-d8f8330952d8"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:15.586108+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "9e9759ba-e3b2-4c8b-8b00-d8f8330952d8"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:15.593078+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "27a4ad22-8ece-4d24-9a2b-00f387cc84b0"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:15.600275+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "27a4ad22-8ece-4d24-9a2b-00f387cc84b0"
-  },
-  {
-    "timestamp": "2025-12-01T08:09:15.606968+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_specific_stats ran successfully",
-    "where": "get_specific_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-01T08:16:33.263383+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "3baad87b-944a-4ec4-96b7-2cb7833dcdd4"
-  },
-  {
-    "timestamp": "2025-12-01T08:16:33.272718+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "3baad87b-944a-4ec4-96b7-2cb7833dcdd4"
-  },
-  {
-    "timestamp": "2025-12-01T08:16:33.281158+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e75650d2-d0c6-4bea-930d-6c15e0ed27f9"
-  },
-  {
-    "timestamp": "2025-12-01T08:16:33.287979+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e75650d2-d0c6-4bea-930d-6c15e0ed27f9"
-  },
-  {
-    "timestamp": "2025-12-01T08:16:33.307227+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_specific_stats ran successfully",
-    "where": "get_specific_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T04:38:21.540444+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b908fb79-c270-4b9d-bef9-f0b164171e6d"
-  },
-  {
-    "timestamp": "2025-12-02T04:38:21.547711+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b908fb79-c270-4b9d-bef9-f0b164171e6d"
-  },
-  {
-    "timestamp": "2025-12-02T04:38:21.554837+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "846349cf-90e4-4cc0-a449-657a19f6d5b1"
-  },
-  {
-    "timestamp": "2025-12-02T04:38:21.561395+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "846349cf-90e4-4cc0-a449-657a19f6d5b1"
-  },
-  {
-    "timestamp": "2025-12-02T04:38:21.568448+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T04:39:40.219169+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "08cc130d-d166-4660-b4d6-469c419f8f08"
-  },
-  {
-    "timestamp": "2025-12-02T04:39:40.223409+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "08cc130d-d166-4660-b4d6-469c419f8f08"
-  },
-  {
-    "timestamp": "2025-12-02T04:39:40.230729+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "04878b0d-bea9-4310-a0d4-34d4f125dde8"
-  },
-  {
-    "timestamp": "2025-12-02T04:39:40.237884+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "04878b0d-bea9-4310-a0d4-34d4f125dde8"
-  },
-  {
-    "timestamp": "2025-12-02T04:39:40.254657+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T04:42:55.300394+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b7860bf6-fa10-41ec-857c-f1165906761a"
-  },
-  {
-    "timestamp": "2025-12-02T04:42:55.307661+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b7860bf6-fa10-41ec-857c-f1165906761a"
-  },
-  {
-    "timestamp": "2025-12-02T04:42:55.329224+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "36b87ba3-f428-49ab-83f9-8e4b4c975aec"
-  },
-  {
-    "timestamp": "2025-12-02T04:42:55.336849+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "36b87ba3-f428-49ab-83f9-8e4b4c975aec"
-  },
-  {
-    "timestamp": "2025-12-02T04:42:55.344903+00:00",
+    "timestamp": "2025-12-08T05:54:55.197140+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1526,51 +33,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:43:32.900132+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "3a3eee16-34e9-4b0c-afe5-cbe717b9ae8e"
-  },
-  {
-    "timestamp": "2025-12-02T04:43:32.904265+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "3a3eee16-34e9-4b0c-afe5-cbe717b9ae8e"
-  },
-  {
-    "timestamp": "2025-12-02T04:43:32.911757+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3fdba36f-e5c0-4b86-8fe8-eb6576891014"
-  },
-  {
-    "timestamp": "2025-12-02T04:43:32.918799+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3fdba36f-e5c0-4b86-8fe8-eb6576891014"
-  },
-  {
-    "timestamp": "2025-12-02T04:43:32.926256+00:00",
+    "timestamp": "2025-12-08T05:54:55.199572+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1581,161 +44,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:44:05.150080+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "ad886244-4266-49f5-a62b-afa9e4646798"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:05.154659+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "ad886244-4266-49f5-a62b-afa9e4646798"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:05.162797+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "a0a7c166-1956-4047-9973-29a1d5b87330"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:05.169931+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "a0a7c166-1956-4047-9973-29a1d5b87330"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:05.177322+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_season_stats ran successfully",
-    "where": "get_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:54.153122+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "8a3e385c-7554-4dde-a15c-cab984c80d3e"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:54.162683+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "8a3e385c-7554-4dde-a15c-cab984c80d3e"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:54.170385+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e53a091f-cb81-4627-bbb6-19e9e5c763e7"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:54.177425+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e53a091f-cb81-4627-bbb6-19e9e5c763e7"
-  },
-  {
-    "timestamp": "2025-12-02T04:44:54.193573+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_season_stats ran successfully",
-    "where": "get_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T04:47:01.393799+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "fd062281-8d69-4882-a363-4ed0c950df6a"
-  },
-  {
-    "timestamp": "2025-12-02T04:47:01.399263+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "fd062281-8d69-4882-a363-4ed0c950df6a"
-  },
-  {
-    "timestamp": "2025-12-02T04:47:01.408014+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "88b52b69-9298-4841-b265-cf90472bebfd"
-  },
-  {
-    "timestamp": "2025-12-02T04:47:01.416126+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "88b52b69-9298-4841-b265-cf90472bebfd"
-  },
-  {
-    "timestamp": "2025-12-02T04:47:01.423527+00:00",
+    "timestamp": "2025-12-08T05:54:55.202113+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1746,51 +55,29 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:48:06.039486+00:00",
+    "timestamp": "2025-12-08T05:55:10.034861+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e04ab5e4-83c2-48cc-9bfc-c1e3b47abf89"
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:48:06.044091+00:00",
+    "timestamp": "2025-12-08T05:55:10.036232+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "e04ab5e4-83c2-48cc-9bfc-c1e3b47abf89"
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:48:06.051995+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "077d07a8-6421-4d71-bebd-4726365d92ae"
-  },
-  {
-    "timestamp": "2025-12-02T04:48:06.060253+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "077d07a8-6421-4d71-bebd-4726365d92ae"
-  },
-  {
-    "timestamp": "2025-12-02T04:48:06.068064+00:00",
+    "timestamp": "2025-12-08T05:55:10.039006+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1801,51 +88,29 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:50:23.398456+00:00",
+    "timestamp": "2025-12-08T05:55:13.897259+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "ccd8fddf-38b3-427a-96fc-16388e913898"
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:50:23.406558+00:00",
+    "timestamp": "2025-12-08T05:55:13.898942+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "ccd8fddf-38b3-427a-96fc-16388e913898"
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:50:23.419524+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "80ac6155-b9db-48c3-bd4a-fd26e209080b"
-  },
-  {
-    "timestamp": "2025-12-02T04:50:23.431851+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "80ac6155-b9db-48c3-bd4a-fd26e209080b"
-  },
-  {
-    "timestamp": "2025-12-02T04:50:23.446109+00:00",
+    "timestamp": "2025-12-08T05:55:13.902717+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1856,51 +121,29 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:50:32.364446+00:00",
+    "timestamp": "2025-12-08T05:55:16.124767+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "9256d4eb-8d2f-4597-b610-e6b06453e787"
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:50:32.374319+00:00",
+    "timestamp": "2025-12-08T05:55:16.126259+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "9256d4eb-8d2f-4597-b610-e6b06453e787"
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T04:50:32.384717+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3dac4e22-bd01-4a5e-9a38-e12d28168d31"
-  },
-  {
-    "timestamp": "2025-12-02T04:50:32.393072+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3dac4e22-bd01-4a5e-9a38-e12d28168d31"
-  },
-  {
-    "timestamp": "2025-12-02T04:50:32.403179+00:00",
+    "timestamp": "2025-12-08T05:55:16.133597+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1911,1040 +154,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-02T05:08:15.218996+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a9d6fe80-ea4f-436e-a14c-395f31cc55b6"
-  },
-  {
-    "timestamp": "2025-12-02T05:08:15.226714+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a9d6fe80-ea4f-436e-a14c-395f31cc55b6"
-  },
-  {
-    "timestamp": "2025-12-02T05:08:15.241685+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "44e30826-d5f1-48a6-80a4-9157bcea7f2e"
-  },
-  {
-    "timestamp": "2025-12-02T05:08:15.249673+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "44e30826-d5f1-48a6-80a4-9157bcea7f2e"
-  },
-  {
-    "timestamp": "2025-12-02T05:08:15.259187+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_quarter_season_stats ran successfully",
-    "where": "get_quarter_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:09:18.298371+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "c5ff973c-bced-49e7-8bd1-432ebe17bc1d"
-  },
-  {
-    "timestamp": "2025-12-02T05:09:18.307099+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "c5ff973c-bced-49e7-8bd1-432ebe17bc1d"
-  },
-  {
-    "timestamp": "2025-12-02T05:09:18.316377+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "8605d502-67d2-438f-9076-0d5a9ef99783"
-  },
-  {
-    "timestamp": "2025-12-02T05:09:18.324876+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "8605d502-67d2-438f-9076-0d5a9ef99783"
-  },
-  {
-    "timestamp": "2025-12-02T05:09:18.333228+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_quarter_season_stats ran successfully",
-    "where": "get_quarter_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:21.971359+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a80475a8-5159-4dfc-9e1d-e95e73ce7c19"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:21.981765+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "a80475a8-5159-4dfc-9e1d-e95e73ce7c19"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:21.989932+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "754cde3a-3bc3-4170-8adf-2638429574b6"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:21.997643+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "754cde3a-3bc3-4170-8adf-2638429574b6"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:22.006412+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_highest_stats_quarter ran successfully",
-    "where": "get_highest_stats_quarter",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:38.500697+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "4c03c630-6552-47d6-bb08-e817d89eac84"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:38.506378+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "4c03c630-6552-47d6-bb08-e817d89eac84"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:38.515581+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "50d23d13-345e-49e2-9b27-16fe9e5dbc59"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:38.524567+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "50d23d13-345e-49e2-9b27-16fe9e5dbc59"
-  },
-  {
-    "timestamp": "2025-12-02T05:19:38.533556+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_highest_stats_quarter ran successfully",
-    "where": "get_highest_stats_quarter",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:28.737072+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "68bc2dc9-0f2d-45a0-bd0d-765128974c2e"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:28.746958+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "68bc2dc9-0f2d-45a0-bd0d-765128974c2e"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:28.755165+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "a1db23d4-d808-4521-bbc5-90372215cd38"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:28.763169+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "a1db23d4-d808-4521-bbc5-90372215cd38"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:28.771285+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:28.779410+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_highest_stats_game ran successfully",
-    "where": "get_highest_stats_game",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:39.649526+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6f0bd932-7068-4397-8522-8e57512180c5"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:39.655760+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6f0bd932-7068-4397-8522-8e57512180c5"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:39.675710+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "47856866-bb31-4c5c-b947-e61412f46cea"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:39.685034+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "47856866-bb31-4c5c-b947-e61412f46cea"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:39.694603+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:27:39.703140+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_highest_stats_game ran successfully",
-    "where": "get_highest_stats_game",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:28.067326+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "274a1d87-a4b3-4d75-b961-8230e41b917e"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:28.073459+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "274a1d87-a4b3-4d75-b961-8230e41b917e"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:28.083417+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e4fe6949-a1ac-4ee7-b068-67e221fc0ac6"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:28.093279+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "e4fe6949-a1ac-4ee7-b068-67e221fc0ac6"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:28.102657+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "specific_players_best_stat ran successfully",
-    "where": "specific_players_best_stat",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:39.673547+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6a62d4ed-9864-42ee-93e4-bd8ba4199ee9"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:39.679610+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "6a62d4ed-9864-42ee-93e4-bd8ba4199ee9"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:39.689396+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "f68b4b5d-49bf-4bcc-aab0-5a569343eb54"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:39.698318+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "f68b4b5d-49bf-4bcc-aab0-5a569343eb54"
-  },
-  {
-    "timestamp": "2025-12-02T05:28:39.707549+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "specific_players_best_stat ran successfully",
-    "where": "specific_players_best_stat",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:14.375873+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "8b2dc828-5c70-4aa1-97eb-a4b68b0d9f7a"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:14.382481+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "8b2dc828-5c70-4aa1-97eb-a4b68b0d9f7a"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:14.392749+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "40b726b4-2b41-4c1b-b5b1-5dfd1fe40065"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:14.401432+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "40b726b4-2b41-4c1b-b5b1-5dfd1fe40065"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:14.410813+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "check_player failed",
-    "where": "check_player",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "KeyError",
-      "message": "'team not in the game'"
-    }
-  },
-  {
-    "timestamp": "2025-12-02T05:30:43.204389+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "ea5e8dc8-794c-4dd5-9923-f32b7e2ab7ac"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:43.210883+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "ea5e8dc8-794c-4dd5-9923-f32b7e2ab7ac"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:43.220745+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3cd58eb3-0117-410a-bbe5-9aedcfc1f746"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:43.230829+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3cd58eb3-0117-410a-bbe5-9aedcfc1f746"
-  },
-  {
-    "timestamp": "2025-12-02T05:30:43.241083+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "check_player failed",
-    "where": "check_player",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "KeyError",
-      "message": "'team not in the game'"
-    }
-  },
-  {
-    "timestamp": "2025-12-02T05:31:35.113433+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "881c29d4-db65-4aab-8b8f-0c71ed3b9c59"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:35.119206+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "881c29d4-db65-4aab-8b8f-0c71ed3b9c59"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:35.129582+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "d670e7aa-20fe-47be-8c0f-b11d0d1c027e"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:35.138979+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "d670e7aa-20fe-47be-8c0f-b11d0d1c027e"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:35.148669+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "check_player failed",
-    "where": "check_player",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "KeyError",
-      "message": "'team not in the game'"
-    }
-  },
-  {
-    "timestamp": "2025-12-02T05:31:59.534233+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b612d5d1-91a9-4ce7-b553-d900e8d752e8"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:59.541472+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "b612d5d1-91a9-4ce7-b553-d900e8d752e8"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:59.552365+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "bc76fa40-8a50-47b2-ae0b-17f2deedf008"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:59.561752+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "bc76fa40-8a50-47b2-ae0b-17f2deedf008"
-  },
-  {
-    "timestamp": "2025-12-02T05:31:59.571214+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "check_player failed",
-    "where": "check_player",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "KeyError",
-      "message": "'team not in the game'"
-    }
-  },
-  {
-    "timestamp": "2025-12-02T05:32:05.550860+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "52539761-7535-4663-b641-2ae72327a67c"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:05.557072+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "52539761-7535-4663-b641-2ae72327a67c"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:05.567488+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3c090c87-8434-4d17-ab2b-5bce989a4536"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:05.578277+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3c090c87-8434-4d17-ab2b-5bce989a4536"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:05.587742+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "check_player failed",
-    "where": "check_player",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "KeyError",
-      "message": "'team not in the game'"
-    }
-  },
-  {
-    "timestamp": "2025-12-02T05:32:47.383161+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "7d2e9706-ad3f-4ab7-a658-eed820349b89"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:47.389051+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "7d2e9706-ad3f-4ab7-a658-eed820349b89"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:47.400027+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "bbf7c157-c952-459d-b229-bf0de479e959"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:47.409618+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "bbf7c157-c952-459d-b229-bf0de479e959"
-  },
-  {
-    "timestamp": "2025-12-02T05:32:47.419522+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "check_player failed",
-    "where": "check_player",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "KeyError",
-      "message": "'team not in the game'"
-    }
-  },
-  {
-    "timestamp": "2025-12-02T05:33:11.429880+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "79ec2af4-6159-4118-aea8-396169b3bfaf"
-  },
-  {
-    "timestamp": "2025-12-02T05:33:11.435872+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "79ec2af4-6159-4118-aea8-396169b3bfaf"
-  },
-  {
-    "timestamp": "2025-12-02T05:33:19.893946+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "5087f989-aad4-4c95-9295-828e0fde9f32"
-  },
-  {
-    "timestamp": "2025-12-02T05:33:19.899839+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "5087f989-aad4-4c95-9295-828e0fde9f32"
-  },
-  {
-    "timestamp": "2025-12-02T05:33:19.909452+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "2ac45783-3081-4a65-ae9f-42cb7c7d3e68"
-  },
-  {
-    "timestamp": "2025-12-02T05:33:19.918399+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "2ac45783-3081-4a65-ae9f-42cb7c7d3e68"
-  },
-  {
-    "timestamp": "2025-12-02T05:33:19.940852+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "check_player ran successfully",
-    "where": "check_player",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-03T05:14:09.192333+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "94e1a0de-e91b-4d7c-b4c9-5490a534ae38"
-  },
-  {
-    "timestamp": "2025-12-03T05:14:09.201716+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "94e1a0de-e91b-4d7c-b4c9-5490a534ae38"
-  },
-  {
-    "timestamp": "2025-12-03T05:14:09.210948+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3b5a3ad6-3718-4fdb-8f4c-599da35de4b8"
-  },
-  {
-    "timestamp": "2025-12-03T05:14:09.220005+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "3b5a3ad6-3718-4fdb-8f4c-599da35de4b8"
-  },
-  {
-    "timestamp": "2025-12-03T05:14:09.229360+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "specific_players_best_stat failed",
-    "where": "specific_players_best_stat",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "TypeError",
-      "message": "NonExistentPlayer has no recorded Points"
-    }
-  },
-  {
-    "timestamp": "2025-12-03T05:15:00.011885+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "71312b82-9567-4ab1-9b85-957b78609672"
-  },
-  {
-    "timestamp": "2025-12-03T05:15:00.017812+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "Owner",
-    "source_ip": null,
-    "request_id": "71312b82-9567-4ab1-9b85-957b78609672"
-  },
-  {
-    "timestamp": "2025-12-03T05:15:00.027738+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "2dc0b898-a42b-44f2-b8a0-6c4892c593a6"
-  },
-  {
-    "timestamp": "2025-12-03T05:15:00.038923+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "2dc0b898-a42b-44f2-b8a0-6c4892c593a6"
-  },
-  {
-    "timestamp": "2025-12-03T05:15:00.051069+00:00",
-    "log_level": "ERROR",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "specific_players_best_stat failed",
-    "where": "specific_players_best_stat",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A",
-    "error": {
-      "type": "TypeError",
-      "message": "NonExistentPlayer has no recorded Points"
-    }
-  },
-  {
-    "timestamp": "2025-12-05T06:29:27.366083+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "8155cfdb-594a-412c-a7fc-d05891ff1c6c"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:27.377802+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "8155cfdb-594a-412c-a7fc-d05891ff1c6c"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:27.388001+00:00",
+    "timestamp": "2025-12-08T05:55:19.732162+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -2955,29 +165,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:29:49.142203+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "de1ee789-2448-4d10-88fe-195554ee1098"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:49.148043+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "de1ee789-2448-4d10-88fe-195554ee1098"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:49.156909+00:00",
+    "timestamp": "2025-12-08T05:55:19.733657+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -2988,29 +176,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:29:50.815197+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_season_stats ran successfully",
-    "where": "get_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:52.526921+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_season_stats ran successfully",
-    "where": "get_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:54.034031+00:00",
+    "timestamp": "2025-12-08T05:55:19.742960+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3021,7 +187,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:29:54.040297+00:00",
+    "timestamp": "2025-12-08T05:55:23.244921+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3032,7 +198,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:29:56.293526+00:00",
+    "timestamp": "2025-12-08T05:55:25.006543+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3043,7 +209,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:29:57.784294+00:00",
+    "timestamp": "2025-12-08T05:55:25.008027+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3054,7 +220,18 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:30:00.498912+00:00",
+    "timestamp": "2025-12-08T05:55:25.011444+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_team_season_stats ran successfully",
+    "where": "get_team_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:33.907382+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3065,7 +242,150 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.131913+00:00",
+    "timestamp": "2025-12-08T05:55:33.909181+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:33.913870+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_team_season_stats ran successfully",
+    "where": "get_team_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:36.195132+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:36.196754+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:36.200702+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_team_season_stats ran successfully",
+    "where": "get_team_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:40.066482+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:54.217571+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:01.222525+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:03.554848+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:05.205618+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:09.557756+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_team_season_stats ran successfully",
+    "where": "get_team_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:09.559703+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:40.960934+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:57:09.992292+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3073,10 +393,10 @@
     "where": "initialize",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "1cd41028-9abd-4f78-9d2c-7528bf00147a"
+    "request_id": "34f04691-1664-4ace-8b70-1ce58e786c49"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.138018+00:00",
+    "timestamp": "2025-12-08T05:57:09.993958+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3084,10 +404,10 @@
     "where": "__init__",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "1cd41028-9abd-4f78-9d2c-7528bf00147a"
+    "request_id": "34f04691-1664-4ace-8b70-1ce58e786c49"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.149687+00:00",
+    "timestamp": "2025-12-08T05:57:09.998484+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3098,7 +418,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.161389+00:00",
+    "timestamp": "2025-12-08T05:57:10.002799+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3109,7 +429,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.171091+00:00",
+    "timestamp": "2025-12-08T05:57:10.006942+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3120,7 +440,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:53.719969+00:00",
+    "timestamp": "2025-12-08T05:58:12.992712+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3131,18 +451,29 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:55.077153+00:00",
+    "timestamp": "2025-12-08T05:58:12.995880+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "get_team_season_stats ran successfully",
-    "where": "get_team_season_stats",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
     "user_id": "N/A",
     "source_ip": "N/A",
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:55.084114+00:00",
+    "timestamp": "2025-12-08T05:58:13.003207+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:58:19.008436+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3153,7 +484,40 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:56.727614+00:00",
+    "timestamp": "2025-12-08T05:58:19.010168+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:58:19.017444+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:58:19.024363+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-08T05:58:23.396664+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3164,117 +528,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:40:58.621901+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_season_stats ran successfully",
-    "where": "get_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:40:59.950895+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_season_stats ran successfully",
-    "where": "get_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:40:59.960690+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:40:59.974529+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:01.493353+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:01.502144+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:02.636692+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_season_stats ran successfully",
-    "where": "get_season_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:02.644081+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:02.657515+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:02.670328+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-05T06:50:10.882376+00:00",
+    "timestamp": "2025-12-10T08:23:22.158414+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3282,10 +536,10 @@
     "where": "initialize",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "1cacefac-19dc-4809-9d2f-1918246534a7"
+    "request_id": "f2900673-d3d5-4e6d-a166-f63194ea1bc6"
   },
   {
-    "timestamp": "2025-12-05T06:50:10.888227+00:00",
+    "timestamp": "2025-12-10T08:23:22.164880+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3293,10 +547,10 @@
     "where": "__init__",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "1cacefac-19dc-4809-9d2f-1918246534a7"
+    "request_id": "f2900673-d3d5-4e6d-a166-f63194ea1bc6"
   },
   {
-    "timestamp": "2025-12-05T06:50:10.910698+00:00",
+    "timestamp": "2025-12-10T08:23:22.170430+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3307,7 +561,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:50:10.919856+00:00",
+    "timestamp": "2025-12-10T08:23:22.176593+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3318,7 +572,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-05T06:50:10.929290+00:00",
+    "timestamp": "2025-12-10T08:23:22.182568+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3329,7 +583,18 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:48:51.890318+00:00",
+    "timestamp": "2025-12-10T08:23:24.986772+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:30.279822+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3337,10 +602,10 @@
     "where": "initialize",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "721047f2-3fa5-43ca-aa5d-0a8c03089ba5"
+    "request_id": "4c6aba0c-43f0-48b9-8849-6f9a16a1c106"
   },
   {
-    "timestamp": "2025-12-06T02:48:51.900924+00:00",
+    "timestamp": "2025-12-10T08:31:30.282437+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3348,10 +613,10 @@
     "where": "__init__",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "721047f2-3fa5-43ca-aa5d-0a8c03089ba5"
+    "request_id": "4c6aba0c-43f0-48b9-8849-6f9a16a1c106"
   },
   {
-    "timestamp": "2025-12-06T02:48:51.925081+00:00",
+    "timestamp": "2025-12-10T08:31:30.287845+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3362,7 +627,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:48:51.935786+00:00",
+    "timestamp": "2025-12-10T08:31:30.293050+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3373,7 +638,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:48:51.946048+00:00",
+    "timestamp": "2025-12-10T08:31:30.298149+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3384,7 +649,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:49:29.913048+00:00",
+    "timestamp": "2025-12-10T08:31:33.235000+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3395,7 +660,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:49:29.919972+00:00",
+    "timestamp": "2025-12-10T08:31:33.238254+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3406,7 +671,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:49:29.930632+00:00",
+    "timestamp": "2025-12-10T08:31:33.243801+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3417,7 +682,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:53:31.057154+00:00",
+    "timestamp": "2025-12-10T08:31:36.055432+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3428,7 +693,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:53:48.470386+00:00",
+    "timestamp": "2025-12-10T08:31:36.058178+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3439,7 +704,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:55:51.682112+00:00",
+    "timestamp": "2025-12-10T08:31:36.063759+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3450,7 +715,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:55:51.688765+00:00",
+    "timestamp": "2025-12-10T08:31:38.913110+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3461,7 +726,18 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:58:03.376459+00:00",
+    "timestamp": "2025-12-10T08:31:38.916204+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:38.922638+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3472,7 +748,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T02:58:03.383613+00:00",
+    "timestamp": "2025-12-10T08:31:40.944955+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3483,7 +759,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:02:39.381746+00:00",
+    "timestamp": "2025-12-10T08:31:40.947573+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3494,7 +770,18 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:02:48.459716+00:00",
+    "timestamp": "2025-12-10T08:31:40.953689+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_team_season_stats ran successfully",
+    "where": "get_team_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:44.788636+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3505,7 +792,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:02:51.174602+00:00",
+    "timestamp": "2025-12-10T08:31:50.702973+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3516,7 +803,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:07:31.268470+00:00",
+    "timestamp": "2025-12-10T08:31:52.840872+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3527,139 +814,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:07:31.277201+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:31.291783+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:56.713596+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:56.725745+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:58.333910+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:58.344741+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:03.402624+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:03.413502+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:08.164974+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:08.176461+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:10.603572+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "initialize ran successfully",
-    "where": "initialize",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "44cd3f27-503c-4335-8fef-a12f1cac0aeb"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:10.611008+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "AccessData initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "44cd3f27-503c-4335-8fef-a12f1cac0aeb"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:10.622493+00:00",
+    "timestamp": "2025-12-10T08:31:54.543650+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3670,95 +825,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:14:10.638825+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:10.650576+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:12.286567+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:12.297590+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:13.861536+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:13.873383+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:17:30.087433+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:17:30.099353+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "get_game_stats ran successfully",
-    "where": "get_game_stats",
-    "user_id": "N/A",
-    "source_ip": "N/A",
-    "request_id": "N/A"
-  },
-  {
-    "timestamp": "2025-12-06T03:22:13.340734+00:00",
+    "timestamp": "2025-12-10T08:31:57.182571+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3769,7 +836,161 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.348735+00:00",
+    "timestamp": "2025-12-10T08:31:58.964357+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:03.692679+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:05.131231+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:05.161249+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:06.983770+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:07.711292+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:10.268858+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:12.413847+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:14.792004+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:16.006432+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:17.363904+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:20.489405+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_team_season_stats ran successfully",
+    "where": "get_team_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:20.492193+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:29.518203+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:29.522178+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3780,7 +1001,7 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.363924+00:00",
+    "timestamp": "2025-12-10T08:32:29.530035+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -3791,7 +1012,62 @@
     "request_id": "N/A"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.378433+00:00",
+    "timestamp": "2025-12-10T08:32:33.115276+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:33.118785+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:34.731942+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_season_stats ran successfully",
+    "where": "get_season_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:34.734676+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:34.742549+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "get_game_stats ran successfully",
+    "where": "get_game_stats",
+    "user_id": "N/A",
+    "source_ip": "N/A",
+    "request_id": "N/A"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:34.748583+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",

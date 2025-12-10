@@ -1,468 +1,6 @@
 [
   {
-    "timestamp": "2025-12-05T06:29:21.601521+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "Aston Sharp",
-    "source_ip": null,
-    "request_id": "d1a5bf79-d0c1-44d9-aaab-891e8b98f1c3"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:21.605634+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "Aston Sharp",
-    "source_ip": null,
-    "request_id": "d1a5bf79-d0c1-44d9-aaab-891e8b98f1c3"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:27.354623+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "Aston Sharp",
-    "source_ip": null,
-    "request_id": "d1a5bf79-d0c1-44d9-aaab-891e8b98f1c3"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:27.397754+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_season_stats ran successfully",
-    "where": "_update_season_stats",
-    "user_id": "Aston Sharp",
-    "source_ip": null,
-    "request_id": "d1a5bf79-d0c1-44d9-aaab-891e8b98f1c3"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:27.399290+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "Season_average ran successfully",
-    "where": "Season_average",
-    "user_id": "Aston Sharp",
-    "source_ip": null,
-    "request_id": "d1a5bf79-d0c1-44d9-aaab-891e8b98f1c3"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:28.591371+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "Aston Sharp",
-    "source_ip": null,
-    "request_id": "d1a5bf79-d0c1-44d9-aaab-891e8b98f1c3"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:46.257041+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:46.259665+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:49.135422+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:49.169131+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_season_stats ran successfully",
-    "where": "_update_season_stats",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:49.170627+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "Season_average ran successfully",
-    "where": "Season_average",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:50.821641+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_season_stats ran successfully",
-    "where": "_update_season_stats",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:51.729255+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:52.524104+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:52.534262+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_compare_all_games ran successfully",
-    "where": "_compare_all_games",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:52.536252+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_compare_all_games ran successfully",
-    "where": "show_compare_all_games",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:53.386426+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:54.031876+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:54.050204+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_grading ran successfully",
-    "where": "_grading",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:54.052284+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_grading ran successfully",
-    "where": "_format_grading",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:54.057751+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_grading ran successfully",
-    "where": "show_grading",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:55.412338+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:56.289566+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:56.300044+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_best_worst_highlights ran successfully",
-    "where": "show_best_worst_highlights",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:57.144385+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:57.782168+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:29:57.791651+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_game_rating ran successfully",
-    "where": "show_game_rating",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:30:00.121504+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:30:00.496482+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:30:00.505071+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_season_game_rating ran successfully",
-    "where": "_format_season_game_rating",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:30:00.506683+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_game_season_game_rating ran successfully",
-    "where": "show_game_season_game_rating",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:30:01.178937+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "211bac44-5a21-4b0c-a400-fbd09d42af57"
-  },
-  {
-    "timestamp": "2025-12-05T06:33:23.330596+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "19dc9b09-8f0e-406c-9e9e-292d5645ec4a"
-  },
-  {
-    "timestamp": "2025-12-05T06:33:23.333681+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "19dc9b09-8f0e-406c-9e9e-292d5645ec4a"
-  },
-  {
-    "timestamp": "2025-12-05T06:34:34.151795+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "5fea0f35-d94d-4dd3-a919-77c3b48e981b"
-  },
-  {
-    "timestamp": "2025-12-05T06:34:34.155424+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "5fea0f35-d94d-4dd3-a919-77c3b48e981b"
-  },
-  {
-    "timestamp": "2025-12-05T06:36:42.912711+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "fe8f1035-07f2-4e64-acbf-9eb5a7c870a9"
-  },
-  {
-    "timestamp": "2025-12-05T06:36:42.915700+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "fe8f1035-07f2-4e64-acbf-9eb5a7c870a9"
-  },
-  {
-    "timestamp": "2025-12-05T06:37:41.798592+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "1d0d65a8-9cae-4115-9520-7dec2cadafbe"
-  },
-  {
-    "timestamp": "2025-12-05T06:37:41.802066+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "1d0d65a8-9cae-4115-9520-7dec2cadafbe"
-  },
-  {
-    "timestamp": "2025-12-05T06:38:34.265171+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "2c9770da-356c-4432-a3ba-28895d26bdb8"
-  },
-  {
-    "timestamp": "2025-12-05T06:38:34.269124+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "Myles Dragone",
-    "source_ip": null,
-    "request_id": "2c9770da-356c-4432-a3ba-28895d26bdb8"
-  },
-  {
-    "timestamp": "2025-12-05T06:39:38.982550+00:00",
+    "timestamp": "2025-12-08T05:54:46.586888+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -470,10 +8,10 @@
     "where": "__init__",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "c504c647-1c3b-4c4c-905d-94342c67bc50"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:39:38.986748+00:00",
+    "timestamp": "2025-12-08T05:54:46.591259+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -481,32 +19,10 @@
     "where": "init_main_UI",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "c504c647-1c3b-4c4c-905d-94342c67bc50"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:32.326552+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
-  },
-  {
-    "timestamp": "2025-12-05T06:40:32.330262+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
-  },
-  {
-    "timestamp": "2025-12-05T06:40:50.123899+00:00",
+    "timestamp": "2025-12-08T05:54:55.177870+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -514,10 +30,10 @@
     "where": "_hide_menu_buttons",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.182743+00:00",
+    "timestamp": "2025-12-08T05:54:55.204534+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -525,10 +41,10 @@
     "where": "_calculate_season_average",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.185337+00:00",
+    "timestamp": "2025-12-08T05:54:55.206479+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -536,10 +52,10 @@
     "where": "_update_season_stats",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:50.190512+00:00",
+    "timestamp": "2025-12-08T05:54:55.209388+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -547,10 +63,98 @@
     "where": "Season_average",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:52.988347+00:00",
+    "timestamp": "2025-12-08T05:55:10.042545+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:10.045512+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:13.906643+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:13.909803+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:16.136849+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:16.139748+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:19.746456+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:19.749758+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:22.498793+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -558,10 +162,10 @@
     "where": "_back_to_main_menu",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:53.716125+00:00",
+    "timestamp": "2025-12-08T05:55:23.241250+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -569,10 +173,10 @@
     "where": "_hide_menu_buttons",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:53.726362+00:00",
+    "timestamp": "2025-12-08T05:55:23.246484+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -580,10 +184,10 @@
     "where": "_compare_all_games",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:53.729120+00:00",
+    "timestamp": "2025-12-08T05:55:23.248089+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -591,10 +195,10 @@
     "where": "_update_game_comparison",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:53.734702+00:00",
+    "timestamp": "2025-12-08T05:55:23.251514+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -602,10 +206,10 @@
     "where": "show_compare_all_games",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:54.570586+00:00",
+    "timestamp": "2025-12-08T05:55:24.246126+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -613,10 +217,10 @@
     "where": "_back_to_main_menu",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:55.073705+00:00",
+    "timestamp": "2025-12-08T05:55:25.004311+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -624,10 +228,252 @@
     "where": "_hide_menu_buttons",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:55.095640+00:00",
+    "timestamp": "2025-12-08T05:55:25.015139+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:25.017995+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:25.021416+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "Season_average ran successfully",
+    "where": "Season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:33.917461+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:33.920592+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:36.204733+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:36.207956+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:39.276075+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:40.064361+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:40.068200+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_compare_all_games ran successfully",
+    "where": "_compare_all_games",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:40.073275+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:40.077241+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "show_compare_all_games ran successfully",
+    "where": "show_compare_all_games",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:54.219241+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_compare_all_games ran successfully",
+    "where": "_compare_all_games",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:55:54.221647+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:01.224170+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_compare_all_games ran successfully",
+    "where": "_compare_all_games",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:01.226114+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:03.556576+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_compare_all_games ran successfully",
+    "where": "_compare_all_games",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:03.558772+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:05.207649+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_compare_all_games ran successfully",
+    "where": "_compare_all_games",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:05.209991+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:08.503685+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:09.554495+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
+  },
+  {
+    "timestamp": "2025-12-08T05:56:09.565100+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -635,10 +481,10 @@
     "where": "_grading",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:55.099435+00:00",
+    "timestamp": "2025-12-08T05:56:09.567619+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -646,10 +492,10 @@
     "where": "_format_grading",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:55.106641+00:00",
+    "timestamp": "2025-12-08T05:56:09.572896+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -657,10 +503,10 @@
     "where": "show_grading",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:55.778155+00:00",
+    "timestamp": "2025-12-08T05:56:39.208841+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -668,10 +514,10 @@
     "where": "_back_to_main_menu",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:56.723546+00:00",
+    "timestamp": "2025-12-08T05:56:40.957284+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -679,10 +525,10 @@
     "where": "_hide_menu_buttons",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:56.734428+00:00",
+    "timestamp": "2025-12-08T05:56:40.962966+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -690,10 +536,10 @@
     "where": "_best_worst_highlights",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:56.737394+00:00",
+    "timestamp": "2025-12-08T05:56:40.966066+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -701,10 +547,10 @@
     "where": "_format_highlights",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:56.739725+00:00",
+    "timestamp": "2025-12-08T05:56:40.970708+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -712,43 +558,32 @@
     "where": "show_best_worst_highlights",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "d207c09b-6d2f-44c7-88bc-1527e4217b35"
   },
   {
-    "timestamp": "2025-12-05T06:40:58.628726+00:00",
+    "timestamp": "2025-12-08T05:57:07.448416+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_best_worst_highlights ran successfully",
-    "where": "_best_worst_highlights",
+    "message": "PlayerReport initialized successfully",
+    "where": "__init__",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:40:58.633065+00:00",
+    "timestamp": "2025-12-08T05:57:07.452254+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_format_highlights ran successfully",
-    "where": "_format_highlights",
+    "message": "init_main_UI ran successfully",
+    "where": "init_main_UI",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:40:59.265522+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
-  },
-  {
-    "timestamp": "2025-12-05T06:40:59.948204+00:00",
+    "timestamp": "2025-12-08T05:57:09.984276+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -756,10 +591,65 @@
     "where": "_hide_menu_buttons",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:40:59.972297+00:00",
+    "timestamp": "2025-12-08T05:57:10.011319+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
+  },
+  {
+    "timestamp": "2025-12-08T05:57:10.014039+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
+  },
+  {
+    "timestamp": "2025-12-08T05:57:10.018994+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "Season_average ran successfully",
+    "where": "Season_average",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
+  },
+  {
+    "timestamp": "2025-12-08T05:58:12.007458+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
+  },
+  {
+    "timestamp": "2025-12-08T05:58:12.990359+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "anonymous",
+    "source_ip": null,
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
+  },
+  {
+    "timestamp": "2025-12-08T05:58:13.000742+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -767,10 +657,10 @@
     "where": "_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:40:59.985289+00:00",
+    "timestamp": "2025-12-08T05:58:13.008853+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -778,10 +668,10 @@
     "where": "_format_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:40:59.988801+00:00",
+    "timestamp": "2025-12-08T05:58:13.011107+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -789,32 +679,10 @@
     "where": "show_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:01.499841+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:01.514733+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
-  },
-  {
-    "timestamp": "2025-12-05T06:41:02.182986+00:00",
+    "timestamp": "2025-12-08T05:58:18.068214+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -822,10 +690,10 @@
     "where": "_back_to_main_menu",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:02.632992+00:00",
+    "timestamp": "2025-12-08T05:58:19.005461+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -833,10 +701,10 @@
     "where": "_hide_menu_buttons",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:02.654918+00:00",
+    "timestamp": "2025-12-08T05:58:19.015415+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -844,10 +712,10 @@
     "where": "_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:02.667285+00:00",
+    "timestamp": "2025-12-08T05:58:19.022288+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -855,10 +723,10 @@
     "where": "_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:02.682204+00:00",
+    "timestamp": "2025-12-08T05:58:19.029374+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -866,10 +734,10 @@
     "where": "_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:02.685757+00:00",
+    "timestamp": "2025-12-08T05:58:19.031405+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -877,10 +745,10 @@
     "where": "_season_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:02.688882+00:00",
+    "timestamp": "2025-12-08T05:58:19.036449+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -888,10 +756,10 @@
     "where": "_format_season_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:02.691365+00:00",
+    "timestamp": "2025-12-08T05:58:19.041434+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -899,10 +767,10 @@
     "where": "show_game_season_game_rating",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:41:04.027921+00:00",
+    "timestamp": "2025-12-08T05:58:21.998251+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -910,32 +778,10 @@
     "where": "_back_to_main_menu",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "4d7dbb58-55e0-4a80-a927-f11b4045f331"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:49:54.912123+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "7f326cd7-919f-4ba5-9de0-a7b0dd40891d"
-  },
-  {
-    "timestamp": "2025-12-05T06:49:54.916721+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "7f326cd7-919f-4ba5-9de0-a7b0dd40891d"
-  },
-  {
-    "timestamp": "2025-12-05T06:50:10.874533+00:00",
+    "timestamp": "2025-12-08T05:58:23.392640+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -943,406 +789,10 @@
     "where": "_hide_menu_buttons",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "7f326cd7-919f-4ba5-9de0-a7b0dd40891d"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-05T06:50:10.938549+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_calculate_season_average ran successfully",
-    "where": "_calculate_season_average",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "7f326cd7-919f-4ba5-9de0-a7b0dd40891d"
-  },
-  {
-    "timestamp": "2025-12-05T06:50:10.941579+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_season_stats ran successfully",
-    "where": "_update_season_stats",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "7f326cd7-919f-4ba5-9de0-a7b0dd40891d"
-  },
-  {
-    "timestamp": "2025-12-05T06:50:10.946912+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "Season_average ran successfully",
-    "where": "Season_average",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "7f326cd7-919f-4ba5-9de0-a7b0dd40891d"
-  },
-  {
-    "timestamp": "2025-12-06T02:48:44.648586+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "PlayerReport initialized successfully",
-    "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:48:44.656854+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "init_main_UI ran successfully",
-    "where": "init_main_UI",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:48:51.876051+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:48:51.957119+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_calculate_season_average ran successfully",
-    "where": "_calculate_season_average",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:48:51.960370+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_season_stats ran successfully",
-    "where": "_update_season_stats",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:48:51.967777+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "Season_average ran successfully",
-    "where": "Season_average",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:49:20.270612+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:49:29.909425+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:49:29.942079+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_calculate_season_average ran successfully",
-    "where": "_calculate_season_average",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:49:29.947022+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_season_stats ran successfully",
-    "where": "_update_season_stats",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:49:29.954090+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "Season_average ran successfully",
-    "where": "Season_average",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:30.195983+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:31.052258+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:31.064354+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_compare_all_games ran successfully",
-    "where": "_compare_all_games",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:31.068254+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_game_comparison ran successfully",
-    "where": "_update_game_comparison",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:31.074969+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_compare_all_games ran successfully",
-    "where": "show_compare_all_games",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:42.121518+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:48.466644+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:48.478596+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_compare_all_games ran successfully",
-    "where": "_compare_all_games",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:48.482646+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_update_game_comparison ran successfully",
-    "where": "_update_game_comparison",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:53:48.489059+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_compare_all_games ran successfully",
-    "where": "show_compare_all_games",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:55:50.402648+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:55:51.678155+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:55:51.701021+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_grading ran successfully",
-    "where": "_grading",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:55:51.704967+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_grading ran successfully",
-    "where": "_format_grading",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:55:51.711679+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_grading ran successfully",
-    "where": "show_grading",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:57:35.314632+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:58:03.372594+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:58:03.394922+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_grading ran successfully",
-    "where": "_grading",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:58:03.399216+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_grading ran successfully",
-    "where": "_format_grading",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T02:58:03.406192+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_grading ran successfully",
-    "where": "show_grading",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:00:08.789602+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:02:39.376394+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:02:39.388338+00:00",
+    "timestamp": "2025-12-08T05:58:23.398598+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1350,10 +800,10 @@
     "where": "_best_worst_highlights",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-06T03:02:39.392619+00:00",
+    "timestamp": "2025-12-08T05:58:23.401377+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1361,10 +811,10 @@
     "where": "_format_highlights",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-06T03:02:39.399366+00:00",
+    "timestamp": "2025-12-08T05:58:23.406367+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1372,54 +822,10 @@
     "where": "show_best_worst_highlights",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-06T03:02:48.466536+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_best_worst_highlights ran successfully",
-    "where": "_best_worst_highlights",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:02:48.471567+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_highlights ran successfully",
-    "where": "_format_highlights",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:02:51.182031+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_best_worst_highlights ran successfully",
-    "where": "_best_worst_highlights",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:02:51.187062+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_highlights ran successfully",
-    "where": "_format_highlights",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:20.959216+00:00",
+    "timestamp": "2025-12-08T05:58:26.453413+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
@@ -1427,369 +833,699 @@
     "where": "_back_to_main_menu",
     "user_id": "anonymous",
     "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
+    "request_id": "54e0e1cc-3a2f-422b-b448-faad1e2dca26"
   },
   {
-    "timestamp": "2025-12-06T03:07:31.264676+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_hide_menu_buttons ran successfully",
-    "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:31.288606+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:31.303553+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:31.306872+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "show_game_rating ran successfully",
-    "where": "show_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:56.721100+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:56.733784+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:58.340849+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:07:58.354576+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:03.409647+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:03.421625+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:08.172779+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:08.185233+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:08:41.337042+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_back_to_main_menu ran successfully",
-    "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "0ca439c2-ca8d-4bfa-8871-22d16121f339"
-  },
-  {
-    "timestamp": "2025-12-06T03:13:32.705340+00:00",
+    "timestamp": "2025-12-10T08:23:19.006315+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
     "message": "PlayerReport initialized successfully",
     "where": "__init__",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:13:32.711437+00:00",
+    "timestamp": "2025-12-10T08:23:19.015019+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
     "message": "init_main_UI ran successfully",
     "where": "init_main_UI",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:14:10.598327+00:00",
+    "timestamp": "2025-12-10T08:23:22.148709+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
     "message": "_hide_menu_buttons ran successfully",
     "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:14:10.646348+00:00",
+    "timestamp": "2025-12-10T08:23:22.188823+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:14:10.658856+00:00",
+    "timestamp": "2025-12-10T08:23:22.192465+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:14:10.662553+00:00",
+    "timestamp": "2025-12-10T08:23:22.199752+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "show_game_rating ran successfully",
-    "where": "show_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "message": "Season_average ran successfully",
+    "where": "Season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:14:12.293883+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:12.310512+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:13.869026+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
-  },
-  {
-    "timestamp": "2025-12-06T03:14:13.883951+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
-  },
-  {
-    "timestamp": "2025-12-06T03:17:30.095316+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
-  },
-  {
-    "timestamp": "2025-12-06T03:17:30.110519+00:00",
-    "log_level": "INFO",
-    "service_name": "access_data_service",
-    "host": "DESKTOP-L37T2JG",
-    "message": "_format_game_rating ran successfully",
-    "where": "_format_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
-  },
-  {
-    "timestamp": "2025-12-06T03:22:12.428509+00:00",
+    "timestamp": "2025-12-10T08:23:23.858322+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
     "message": "_back_to_main_menu ran successfully",
     "where": "_back_to_main_menu",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.335788+00:00",
+    "timestamp": "2025-12-10T08:23:24.982795+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
     "message": "_hide_menu_buttons ran successfully",
     "where": "_hide_menu_buttons",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.360048+00:00",
+    "timestamp": "2025-12-10T08:23:24.989724+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.373977+00:00",
+    "timestamp": "2025-12-10T08:23:24.993046+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "message": "show_compare_all_games ran successfully",
+    "where": "show_compare_all_games",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.390392+00:00",
+    "timestamp": "2025-12-10T08:23:26.130174+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_game_rating ran successfully",
-    "where": "_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4d761db8-c1a6-4759-8eec-62356c896775"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.394246+00:00",
+    "timestamp": "2025-12-10T08:29:55.064993+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
-    "message": "_season_game_rating ran successfully",
-    "where": "_season_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "message": "PlayerReport initialized successfully",
+    "where": "__init__",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "ab9374c8-2ba5-48d1-9188-9cd0a9ded67f"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.403803+00:00",
+    "timestamp": "2025-12-10T08:29:55.079516+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "init_main_UI ran successfully",
+    "where": "init_main_UI",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "ab9374c8-2ba5-48d1-9188-9cd0a9ded67f"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:28.617323+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "PlayerReport initialized successfully",
+    "where": "__init__",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:28.622454+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "init_main_UI ran successfully",
+    "where": "init_main_UI",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:30.230367+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:30.314433+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:30.321038+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:30.324023+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "Season_average ran successfully",
+    "where": "Season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:33.248775+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:33.253257+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:36.069448+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:36.075900+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:38.929130+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:38.934115+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:40.960173+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_calculate_season_average ran successfully",
+    "where": "_calculate_season_average",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:40.964725+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_season_stats ran successfully",
+    "where": "_update_season_stats",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:43.744199+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:44.784628+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:44.795547+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:44.798861+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "show_compare_all_games ran successfully",
+    "where": "show_compare_all_games",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:50.706161+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:52.844160+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:54.547132+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:57.186360+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_update_game_comparison ran successfully",
+    "where": "_update_game_comparison",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:57.924937+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:58.959958+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:58.968580+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:31:58.972945+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "show_best_worst_highlights ran successfully",
+    "where": "show_best_worst_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:03.697018+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:05.135297+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:05.164869+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:06.987394+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:07.715016+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:10.272855+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:12.418036+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:14.796351+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:16.010492+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:17.367821+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_highlights ran successfully",
+    "where": "_format_highlights",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:19.374908+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:20.484627+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:20.500083+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_grading ran successfully",
+    "where": "_format_grading",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:20.503536+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "show_grading ran successfully",
+    "where": "show_grading",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:28.915054+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:29.514783+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:29.536486+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_game_rating ran successfully",
+    "where": "_format_game_rating",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:29.540059+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "show_game_rating ran successfully",
+    "where": "show_game_rating",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:33.126461+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_format_game_rating ran successfully",
+    "where": "_format_game_rating",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:33.940174+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:34.727367+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_hide_menu_buttons ran successfully",
+    "where": "_hide_menu_buttons",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:34.770905+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
     "message": "_format_season_game_rating ran successfully",
     "where": "_format_season_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
   },
   {
-    "timestamp": "2025-12-06T03:22:13.411081+00:00",
+    "timestamp": "2025-12-10T08:32:34.775851+00:00",
     "log_level": "INFO",
     "service_name": "access_data_service",
     "host": "DESKTOP-L37T2JG",
     "message": "show_game_season_game_rating ran successfully",
     "where": "show_game_season_game_rating",
-    "user_id": "anonymous",
-    "source_ip": null,
-    "request_id": "dcdb072f-64c7-4312-a95e-60397731dfea"
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-10T08:32:36.122099+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "_back_to_main_menu ran successfully",
+    "where": "_back_to_main_menu",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
   }
 ]
