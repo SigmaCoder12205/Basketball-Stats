@@ -1,31 +1,31 @@
 # Rated 760/1000
 import sys
-sys.path.extend(r"C:/Users/Drags Jrs/Drags")
-import json
-import os 
-os.makedirs("C:/Users/Drags Jrs/Database/errors", exist_ok=True)
-import shutil
-from typing import Optional, Dict, Any
-
-# Add parent directory to path for imports
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
+from pathlib import Path
 try:
     from utils import write
 except ImportError:
     import write
-
 try:
     from utils.logging import Logging
 except ImportError:
     from logging import Logging
-
-# Initialize logging
-logger = Logging(service_name="access_data_service", user_id="N/A")
-create_log = logger.create_log
-
+import json
+import os
+import shutil
+from typing import Optional, Dict, Any
 from datetime import datetime, timezone
 import uuid
+
+BASE = Path.home() / "Drags"
+DB_ERRORS = Path.home() / "Database" / "errors"
+DB_ERRORS.mkdir(parents=True, exist_ok=True)
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+sys.path.extend([str(BASE)])
+sys.path.insert(0, str(PROJECT_ROOT))
+
+logger = Logging(service_name="access_data_service", user_id="N/A")
+create_log = logger.create_log
 
 class AccessData:
     data: Dict[str, Any] = {}
@@ -33,17 +33,16 @@ class AccessData:
     _initialized: bool = False
     current_time = datetime.now()
     error_message = {}
-    user_id: str = "N/A"  # Class default for classmethods
-    source_ip: str = "N/A"  # Class default for classmethods
-    request_id: str = "N/A"  # Class default for classmethods
-    
+    user_id: str = "N/A"
+    source_ip: str = "N/A"
+    request_id: str = "N/A"
     def __init__(self, user_id: str = "anonymous", source_ip: Optional[str] = None):
         self.user_id = user_id
         self.source_ip = source_ip
         self.request_id = str(uuid.uuid4())
         self.current_time = datetime.now(timezone.utc)
         self.error_message = {}
-        
+
         try:
             self.initialize()
             log_entry = create_log(
@@ -71,7 +70,7 @@ class AccessData:
     def __repr__(self):
         self.error_message = {}
         try:
-            game_count = len(self.data) if isinstance(self.data, dict) else 0 
+            game_count = len(self.data) if isinstance(self.data, dict) else 0
             player_count = 0
 
             for game in self.data.values():
@@ -88,7 +87,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-            
+
             return f"<AccessData file={self.file_path or 'Unknown'}\n games={game_count} players={player_count}>"
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -103,7 +102,7 @@ class AccessData:
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
-    
+
     def __str__(self):
         self.error_message = {}
         try:
@@ -114,7 +113,7 @@ class AccessData:
                 if isinstance(game, dict) and "Lineup" in game:
                     for team in game["Lineup"].values():
                         player_count += len(team) if isinstance(team, list) else 0
-            
+
             log_entry = create_log(
                 level="INFO",
                 message="__str__ ran successfully",
@@ -124,7 +123,7 @@ class AccessData:
                 request_id=self.request_id
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-            
+
             return f"File: {self.file_path or "Unknown"}\n Games Loaded: {game_count}\n Total Players: {player_count}"
 
         except Exception as e:
@@ -151,17 +150,17 @@ class AccessData:
     def initialize(self, load: bool = False, filename: str = "Data.json") -> Optional[Dict[str, Any]]:
         if not isinstance(load, bool):
             raise TypeError('load must be a bool')
-                    
+
         if not isinstance(filename, str):
             raise TypeError('filename must be a str')
-        
+
         base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         data_file = os.path.abspath(os.path.join(base_dir, "Database", filename))
         self.file_path = data_file
 
         if not os.path.isfile(data_file):
             raise FileNotFoundError("Could not find the file. Or wrong data format")
-        
+
         try:
             with open(data_file, 'r', encoding="utf-8") as file:
                 data = json.load(file)
@@ -181,7 +180,7 @@ class AccessData:
 
             if load:
                 return AccessData.data
-        
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -195,22 +194,22 @@ class AccessData:
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
-        
+
     def save(self, filename: Optional[str] = None, backup: bool = True) -> bool:
         if not isinstance(self.data, dict):
             raise TypeError('self.data must be a dict')
-        
+
         save_path = filename or self.file_path
         if not save_path:
             raise TypeError('File path not set')
-        
+
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
         try:
             if backup and os.path.exists(save_path):
                 backup_path = f"{save_path}.bak"
                 shutil.copy2(save_path, backup_path)
-            
+
             temp_path = f"{save_path}.tmp"
             with open(temp_path, "w", encoding="utf-8") as temp_file:
                 json.dump(self.data, temp_file, indent=4, ensure_ascii=False)
@@ -246,9 +245,9 @@ class AccessData:
         try:
             self._ensure_initialized()
 
-            if not isinstance(game, str): 
+            if not isinstance(game, str):
                 raise TypeError("game must be a string")
-                        
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
             if not game or game not in self.data:
@@ -288,7 +287,7 @@ class AccessData:
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
                 return details.copy()
-            
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -309,28 +308,28 @@ class AccessData:
 
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
-            
+
             if not isinstance(team, str):
                 raise TypeError("team must be a string")
-                
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
             game_stats = self.data.get(game, {})
-            
+
             if not game_stats:
                 raise KeyError("Could not find the game")
 
             team_players = game_stats.get("Lineup", {}).get(team, [])
-            
+
             if not team_players:
                 raise KeyError("Could not find the team")
-            
+
             if look_good:
                 output = ["----------------- Team players ----------------------"]
                 for num, player in enumerate(team_players, start=1):
                     output.append(f"{num}. {player}")
-                
+
                 log_entry = create_log(
                             level="INFO",
                             message="get_lineup ran successfully",
@@ -340,7 +339,7 @@ class AccessData:
                             request_id=self.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                
+
                 return "\n\n".join(output)
             else:
                 log_entry = create_log(
@@ -352,9 +351,9 @@ class AccessData:
                             request_id=self.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                
+
                 return team_players.copy()
-            
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -368,7 +367,7 @@ class AccessData:
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
-                
+
     @classmethod
     def get_quarter_stats(cls, game: str, quarter: str, look_good: bool = False):
         try:
@@ -376,10 +375,10 @@ class AccessData:
 
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
-            
+
             if not isinstance(quarter, str):
                 raise TypeError("quarter must be a string")
-            
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
@@ -393,13 +392,13 @@ class AccessData:
 
             if not quarter_stats:
                 raise KeyError("Could not find the quarter")
-            
+
             if look_good:
                 output = [f"-------------------- {game}: {quarter} stats --------------------------"]
                 for players_name, players_stats in quarter_stats.items():
                     stat_line = ", ".join(f"{stat_name}: {stat_value}" for stat_name, stat_value in players_stats.items())
                     output.append(f"{players_name}: {stat_line}\n")
-                
+
                 log_entry = create_log(
                             level="INFO",
                             message="get_quarter_stats ran successfully",
@@ -409,7 +408,7 @@ class AccessData:
                             request_id=cls.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                
+
                 return "\n".join(output)
             else:
                 log_entry = create_log(
@@ -421,7 +420,7 @@ class AccessData:
                             request_id=cls.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                
+
                 return quarter_stats.copy()
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -458,20 +457,20 @@ class AccessData:
 
             if not game_stats:
                 raise KeyError("Could not find the game")
-            
+
             quarter_stats = game_stats.get("Quarters").get(quarter, {})
             if not quarter_stats:
                 raise KeyError("Could not find the quarter")
-            
+
             players_stats = quarter_stats.get(player, {})
             if not players_stats:
                 raise KeyError("Could not find the player")
-            
+
             if look_good:
                 output = f"-------------------- {player} stats in {game} in {quarter} ----------------------------\n"
                 for stat_name, stat_value in players_stats.items():
                     output += f"    - {stat_name}: {stat_value}\n"
-                
+
                 log_entry = create_log(
                             level="INFO",
                             message="get_specific_stats ran successfully",
@@ -481,7 +480,7 @@ class AccessData:
                             request_id=cls.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                
+
                 return output
             else:
                 log_entry = create_log(
@@ -493,7 +492,7 @@ class AccessData:
                             request_id=cls.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                
+
                 return players_stats
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -513,7 +512,7 @@ class AccessData:
     def get_game_stats(cls, game: str, player: str, look_good: bool = False): # Original name: get_total_stats sums up a games stats
         try:
             cls._ensure_initialized()
-            
+
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
 
@@ -522,16 +521,16 @@ class AccessData:
 
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
-            
+
             game_stats = cls.data.get(game, {})
-            
+
             if not game_stats:
                 raise KeyError("Could not find the game")
-            
+
             quarters = game_stats.get("Quarters", {})
             if not quarters:
                 raise KeyError("Quarters not found")
-            
+
             totals = {}
 
             for _, quarter_stats in quarters.items():
@@ -543,14 +542,14 @@ class AccessData:
                         totals[player_name] = {key: 0 for key in stats}
 
                     for stat_name, value in stats.items():
-                        totals[player_name][stat_name] += value 
+                        totals[player_name][stat_name] += value
 
             if look_good:
                 if player:
                     formatted = [f"------------------ Game: {game} ------------------\n"]
                     player_stats = totals.get(player, {})
                     formatted.extend( f"{stat}: {value}" for stat, value in player_stats.items())
-                    
+
                     log_entry = create_log(
                                 level="INFO",
                                 message="get_game_stats ran successfully",
@@ -560,14 +559,14 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return "\n".join(formatted)
                 else:
                     lines = [f"------------------ Game: {game} Stats ------------------------\n"]
                     for player_name, stats in totals.items():
                         stat_line = ", ".join(f"{key}: {value}" for key, value in stats.items())
                         lines.append(f"{player_name}: {stat_line}")
-                    
+
                     log_entry = create_log(
                                 level="INFO",
                                 message="get_game_stats ran successfully",
@@ -577,7 +576,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return "\n".join(lines)
             else:
                 log_entry = create_log(
@@ -589,7 +588,7 @@ class AccessData:
                             request_id=cls.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                
+
                 return totals if not player else totals.get(player, {})
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -604,7 +603,7 @@ class AccessData:
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
-    
+
     @classmethod
     def get_season_stats(cls, player: str, sum_total: bool = False, look_good: bool = False):
         try:
@@ -612,10 +611,10 @@ class AccessData:
 
             if not isinstance(player, str):
                 raise TypeError("player must be a string")
-            
+
             if not isinstance(sum_total, bool):
                 raise TypeError("sum_total must be a bool")
-            
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
@@ -626,13 +625,13 @@ class AccessData:
                     for quarter, quarter_stats in game_stats["Quarters"].items():
                         if player in quarter_stats:
                             for stat_name, stat_value in quarter_stats[player].items():
-                                total[stat_name] = total.get(stat_name, 0) + stat_value                          
+                                total[stat_name] = total.get(stat_name, 0) + stat_value
 
                 if look_good:
                     output = f"Season stats for {player}\n"
                     for stat, value in total.items():
                         output += f"    - {stat}: {value}\n"
-                    
+
                     log_entry = create_log(
                                 level="INFO",
                                 message="get_season_stats ran successfully",
@@ -642,7 +641,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return output
                 else:
                     log_entry = create_log(
@@ -654,10 +653,10 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return total
             else:
-                
+
                 game_totals = {}
 
                 for game_name, game_stats in cls.data.items():
@@ -668,7 +667,7 @@ class AccessData:
                         if player in quarter_stats:
                             for players_stat_name, players_stat_value in quarter_stats[player].items():
                                 players_total[players_stat_name] = players_total.get(players_stat_name, 0) + players_stat_value
-                    
+
                     if players_total:
                         game_totals[game_name] = players_total
 
@@ -680,7 +679,7 @@ class AccessData:
                             output += f"    - {stat_name}: {stat_value}\n"
                             if stat_name == "Turnovers":
                                 output += "\n"
-                    
+
                     log_entry = create_log(
                                 level="INFO",
                                 message="get_season_stats ran successfully",
@@ -690,8 +689,8 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
-                    return output        
+
+                    return output
                 else:
                     log_entry = create_log(
                                 level="INFO",
@@ -702,7 +701,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return game_totals
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -724,7 +723,7 @@ class AccessData:
 
             if not isinstance(sum_total, bool):
                 raise TypeError("sum_total must be a bool")
-            
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
@@ -738,7 +737,7 @@ class AccessData:
                                 team_totals[players_name] = {}
                             for stat_name, stat_value in players_stats.items():
                                 team_totals[players_name][stat_name] = team_totals[players_name].get(stat_name, 0) + stat_value
-                
+
                 if look_good:
                     output = "---------------- Newport Raiders U16 Boys Julie Season stats ----------------\n"
 
@@ -746,7 +745,7 @@ class AccessData:
                         output += f"\n                       {team_players_name}                               \n"
                         for team_players_stat_name, team_players_stat_value in team_players_stats.items():
                             output += f"                            - {team_players_stat_name}: {team_players_stat_value}\n"
-                    
+
                     log_entry = create_log(
                                 level="INFO",
                                 message="get_team_season_stats ran successfully",
@@ -756,7 +755,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return output
                 else:
                     log_entry = create_log(
@@ -768,13 +767,13 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return team_totals
             else:
                 game_team_totals = {}
-                    
+
                 for game_name, game_data in cls.data.items():
-                    
+
                     player_total = {}
 
                     for quarter_name, quarter_stats in game_data["Quarters"].items():
@@ -785,7 +784,7 @@ class AccessData:
                                 player_total[players_name][player_stat_name] = player_total[players_name].get(player_stat_name, 0) + player_stat_value
 
                     game_team_totals[game_name] = player_total
-                
+
                 if look_good:
                     output = ""
                     output += f"---------------------- Newport Raiders U16 Boys Julie Season stats ----------------------\n"
@@ -795,7 +794,7 @@ class AccessData:
                             output += f"\n\n{players_name}                                     \n"
                             for stat_name, stat_value in players_stats.items():
                                 output += f"\n{stat_name}: {stat_value}                       "
-                    
+
                     log_entry = create_log(
                                 level="INFO",
                                 message="get_team_season_stats ran successfully",
@@ -805,7 +804,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return output
                 else:
                     log_entry = create_log(
@@ -817,7 +816,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return game_team_totals
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -840,13 +839,13 @@ class AccessData:
 
             if not isinstance(player, str):
                 raise TypeError("player must be a string")
-            
+
             if not isinstance(quarter, str):
                 raise TypeError("quarter must be a string")
-            
+
             if not isinstance(sum_total, bool):
                 raise TypeError("sum_total must be a bool")
-            
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
@@ -866,7 +865,7 @@ class AccessData:
                     output = f"All of {quarter} stats together for {player}\n"
                     for stat, value in totals.items():
                         output += f"    - {stat}: {value}\n"
-                    
+
                     log_entry = create_log(
                                 level="INFO",
                                 message="get_quarter_season_stats ran successfully",
@@ -876,7 +875,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return output
                 else:
                     log_entry = create_log(
@@ -888,8 +887,8 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
-                    return totals       
+
+                    return totals
             else:
                 game_totals = {}
 
@@ -901,15 +900,15 @@ class AccessData:
                         if player in game_stats["Quarters"][quarter]:
                             for stat_name, stat_value in game_stats["Quarters"][quarter][player].items():
                                 players_totals[stat_name] = players_totals.get(stat_name, 0) + stat_value
-                    
+
                     if players_totals:
-                        game_totals[game_name] = players_totals            
+                        game_totals[game_name] = players_totals
 
                 if look_good:
                     output = f"============= Seasons {quarter} stats for {player} =============\n"
 
                     for game_stat_name, game_stats in game_totals.items():
-                        output += f"    ---------------- Game: {game_stat_name} {quarter}: stats ----------------\n"                    
+                        output += f"    ---------------- Game: {game_stat_name} {quarter}: stats ----------------\n"
                         for game_Stat_name, game_stat_value in game_stats.items():
                             output += f"       - {game_Stat_name}: {game_stat_value}\n"
 
@@ -934,7 +933,7 @@ class AccessData:
                                 request_id=cls.request_id
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                    
+
                     return game_totals
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -957,13 +956,13 @@ class AccessData:
 
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
-            
+
             if not isinstance(quarter, str):
                 raise TypeError("quarter must be a string")
-            
+
             if not isinstance(what_to_look_for, str):
                 raise TypeError("what_to_look_for must be a string")
-            
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
@@ -971,12 +970,12 @@ class AccessData:
 
             if not game_stats:
                 raise KeyError("Could not find the game")
-            
+
             quarter_stats = game_stats.get("Quarters").get(quarter, {})
 
             if not quarter_stats:
                 raise KeyError("Could not find the quarter")
-            
+
             nums = [(player, stats.get(what_to_look_for, 0)) for player, stats in quarter_stats.items()]
 
             if not nums:
@@ -1003,7 +1002,7 @@ class AccessData:
                             )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
                     return None
-            
+
             max_stat_value = max(value for _, value in nums)
 
             if max_stat_value == 0:
@@ -1034,10 +1033,10 @@ class AccessData:
             top_players = [player for player, value in nums if value == max_stat_value]
 
             resultstr = f"{top_players[0]}: {max_stat_value}" if len(top_players) == 1 else f"Tied at {max_stat_value} {what_to_look_for}: {', '.join(top_players)}"
-            
+
             if look_good:
                 result = f"In {quarter} of {game}, the {'leader' if len(top_players) == 1 else 'leaders'} for {what_to_look_for} was: {resultstr}"
-                
+
                 log_entry = create_log(
                             level="INFO",
                             message="get_highest_stats_quarter ran successfully",
@@ -1081,22 +1080,22 @@ class AccessData:
 
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
-            
+
             if not isinstance(what_to_look_for, str):
                 raise TypeError("what_to_look_for must be a string")
-            
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
             game_stats = cls.get_game_stats(game=game, player="", look_good=False)
             if not game_stats:
                 raise KeyError("Could not find the game")
-            
+
             nums = [(player, stats.get(what_to_look_for, 0)) for player, stats in game_stats.items() if what_to_look_for in stats]
 
             if not nums:
                 raise KeyError(f"No stats found for {what_to_look_for}")
-            
+
             max_value = max(value for _, value in nums)
 
             if max_value == 0:
@@ -1130,7 +1129,7 @@ class AccessData:
 
             if look_good:
                 result = f"In {game}, the {'leader' if len(top_players) == 1 else 'leaders'} for {what_to_look_for} was: {resultstr}"
-                
+
                 log_entry = create_log(
                             level="INFO",
                             message="get_highest_stats_game ran successfully",
@@ -1151,7 +1150,7 @@ class AccessData:
                             request_id=cls.request_id
                         )
                 write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-                return {player: max_value for player in top_players}            
+                return {player: max_value for player in top_players}
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -1172,10 +1171,10 @@ class AccessData:
 
             if not isinstance(player, str):
                 raise TypeError("player must be a string")
-            
+
             if not isinstance(what_to_look_for, str):
                 raise TypeError("what_to_look_for must be a string")
-            
+
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
@@ -1222,7 +1221,7 @@ class AccessData:
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
                     return f"{what_to_look_for} {best_val}"
-                
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -1244,10 +1243,10 @@ class AccessData:
 
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
-        
+
             if not isinstance(team, str):
                 raise TypeError("team must be a string")
-            
+
             if not isinstance(player, str):
                 raise TypeError("player must be a string")
             if not isinstance(look_good, bool):
@@ -1255,12 +1254,12 @@ class AccessData:
 
             if game not in cls.data:
                 raise KeyError("game not in the dataset")
-            
+
             game_stats = cls.data.get(game, {})
 
             if team not in game_stats["Lineup"]:
                 raise KeyError("team not in the game")
-            
+
             team_players = game_stats.get("Lineup").get(team)
 
             if player not in team_players:
@@ -1294,7 +1293,7 @@ class AccessData:
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
                     return True
-    
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -1309,6 +1308,9 @@ class AccessData:
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
 
+class Formatter:
+    pass
+
 if __name__ == '__main__':
     app = AccessData()
 
@@ -1316,7 +1318,7 @@ if __name__ == '__main__':
 # ============================================================================
 # END OF FILE: accessing_data.py
 # ============================================================================
-# MODULE: Basketball Data Access Layer System 
+# MODULE: Basketball Data Access Layer System
 # LOCATION: C:/Users/Drags Jrs/Drags/utils/accessing_data.py
 # ============================================================================
 # IF NEEDED: If you want the full docstring go to docs/accessing_data_doc.md
@@ -1328,31 +1330,31 @@ if __name__ == '__main__':
 # TOTAL CLASSES: 1 (AccessData)
 # TOTAL METHODS: 18
 # TOTAL FUNCTIONS (NOT IN CLASS): 2
-# TOTAL FUNCTIONS AND METHODS: 20 
-# TOTAL LINES: ~1000 
+# TOTAL FUNCTIONS AND METHODS: 20
+# TOTAL LINES: ~1000
 # ============================================================================
 
 # ============================================================================
 # FEATURE SUMMARY
 # ============================================================================
 #   1. UTILITY FUNCTIONS
-#      
+#
 #    -    get_public_ip(): Retrieves public IP address with fallback to local hostname
 #    -    create_log(): Generates structured JSON log entries with contextual metadata
-#   
+#
 #   2. INITIALIZATION & REPRESENTATION
 #
 #    -   __init__: Initializes instance with user tracking, UUID generation, and automatic data loading
 #    -   __repr__: Returns compact representation with game/player counts
 #    -   __str__: Returns formatted string representation with statistics summary
 #
-#   3. DATA MANAGEMENT 
+#   3. DATA MANAGEMENT
 #
 #    -   initialize(): Loads JSON data with validation and error logging
 #    -   save(): Persists data with automatic backups and atomic write operations
 #    -   _ensure_initialized(): Classmethod ensuring singleton-like initialization
 #
-#   4. QUERY METHODS (ALL CLASSMETHODS - RETURN RAW OR FORMATTED DATA) 
+#   4. QUERY METHODS (ALL CLASSMETHODS - RETURN RAW OR FORMATTED DATA)
 #
 #    -  get_details(): Game metadata retrieval
 #    -  get_lineup(): Team roster lookup
@@ -1371,21 +1373,21 @@ if __name__ == '__main__':
 # ============================================================================
 # PERFORMANCE NOTES
 # ============================================================================
-#   
+#
 #   STRENGTHS
 #
 #       - Class data as shared dictionary avoids redundant loads
 #       - Atomic file operations prevent corruption
 #       - Type hints enable IDE optimization
 #       - Early returns in aggregation methods
-# 
+#
 #   CONCERNS (WILL TRY AND FIX)
 #
 #       - Full aggregation: get_season_stats() iterates entire dataset every call
 #       - Repeated string operations: Multiple .get() calls and .format() operations
 #       - Memory overhead: Every look_good=True call creates large formatted strings
 #       - JSON file locking: save() blocks on I/O with no async support
-#   
+#
 #   SCALABILITY ISSUES
 #       - Large datasets (1000+ games) will suffer from O(n) iterations
 #       - No caching mechanism for frequently accessed aggregates
@@ -1419,7 +1421,7 @@ if __name__ == '__main__':
 # ============================================================================
 #
 #   SINGLETON-LIKE CLASS DATA
-# 
+#
 #       - Shared class-level data dict reduces memory/load overhead
 #       - Risk: Thread-unsafe mutations
 #
@@ -1430,7 +1432,7 @@ if __name__ == '__main__':
 #       - Disadvantage: Breaks encapsulation; all instances share state
 #
 #   OPTIONAL FORMATTING PATTERN
-# 
+#
 #       - look_good parameter returns formatted vs. raw data
 #       - Mixing presentation logic with data access violates SRP
 #
@@ -1440,7 +1442,7 @@ if __name__ == '__main__':
 #       - Logged metadata for audit trails
 #
 #   DECORATOR-LIKE ERROR HANDLING
-#   
+#
 #       - Try/except in every method logs to same JSON file
 #       - Verbose but comprehensive error tracking
 #
@@ -1449,9 +1451,9 @@ if __name__ == '__main__':
 # ============================================================================
 # FUTURE ENHANCEMENTS
 # ============================================================================
-#   
+#
 #   SHORT TERM (1-2 MONTHS)
-#   
+#
 #       - Add caching layer: LRU cache for frequently accessed queries
 #       - Optimize aggregations: Build indices on game/player names
 #       - Async logging: Move log writes to thread pool
@@ -1462,7 +1464,7 @@ if __name__ == '__main__':
 #   LONG TERM (3-6 MONTHS)
 #
 #       === Database migration: Replace JSON with SQLite/PostgreSQL ===
-#           
+#
 #           - Enable complex queries without full-dataset iteration
 #           - Add transactions for data consistency
 #
@@ -1481,7 +1483,7 @@ if __name__ == '__main__':
 # ============================================================================
 #
 #   UNIT TESTS
-#       
+#
 #       - Test initialization with missing file
 #       - Test save with corrupted data recovery
 #       - Test type validation on all parameters
@@ -1495,14 +1497,14 @@ if __name__ == '__main__':
 #       - Log file format and completeness
 #       - Error propagation and recovery'
 #
-#   PERFORMANCE TESTS 
-#       
+#   PERFORMANCE TESTS
+#
 #       - Benchmark with 500+ games
 #       - Profile memory usage for look_good=True calls
 #       - Measure aggregation time for season stats
 #
 #   Edge Cases
-#   
+#
 #       - Empty data structures
 #       - Tied statistics (multiple players with same max)
 #       - Missing keys in nested dictionaries
@@ -1510,7 +1512,7 @@ if __name__ == '__main__':
 #       - Concurrent classmethod calls
 #
 #   LOAD TESTING
-#   
+#
 #       - Stress test with 10,000+ queries
 #       - Database connection pooling requirements
 # ============================================================================
@@ -1524,14 +1526,14 @@ if __name__ == '__main__':
 #       - Hardcoded paths: Database paths embedded in methods (should use config)
 #
 #   CORE MAINTENANCE
-# 
+#
 #       - Remove duplicate error handling code (20+ nearly identical try/except blocks)
 #       - Extract common patterns into private methods
 #       - Document JSON schema expectations
 #       - Add constants for magic strings (stat names, team names)
 #       - Create config file for hardcoded paths
-#   
-#   MONITORING 
+#
+#   MONITORING
 #
 #       - Set up alerts for JSON log file size growth
 #       - Monitor file I/O performance
@@ -1539,13 +1541,13 @@ if __name__ == '__main__':
 #       - Alert on unhandled exceptions
 #
 #   BACKWARDS COMPATIBILITY
-# 
+#
 #       - Changing method signatures breaks API
 #       - Consider versioning for JSON schema changes
 #       - Add deprecation warnings before method renames
-# 
-#   DOCUMENTATION 
-# 
+#
+#   DOCUMENTATION
+#
 #       - Add class-level docstring describing data structure
 #       - Document required JSON schema with example
 #       - Add usage examples for common queries
@@ -1560,7 +1562,7 @@ if __name__ == '__main__':
 # Last Modified: 2025
 # Version: 2.3.7
 # Status: Production
-# 
+#
 # License: None hopefully
 # Copyright: © 2025 Drags Jrs. All rights reserved.
 #
@@ -1571,7 +1573,7 @@ if __name__ == '__main__':
 # ACKNOWLEDGMENTS
 # ============================================================================
 # - Newport Raiders U16 Boys Julie team for the use case and test
-# - Shout out to again to the Newport Raiders U16 Boys Julie team for everything 
+# - Shout out to again to the Newport Raiders U16 Boys Julie team for everything
 # - Don't forget my parents for helping me and giving the motivation to keep going
-# - And sadly my brother, for nothing...   
+# - And sadly my brother, for nothing...
 # ============================================================================

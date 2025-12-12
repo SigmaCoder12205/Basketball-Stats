@@ -2,7 +2,7 @@
 
 ## Overview
 
-**FILE**: `.vscode/launch.json`  
+**FILE**: `.vscode/launch.json`
 **PURPOSE**: VS Code debugger configuration for Python basketball statistics application
 
 Defines launch configurations for running and debugging different entry points of the application through VS Code's integrated debugger.
@@ -98,7 +98,7 @@ VS Code debug configuration schema version.
 - `console`: Output destination (integrated terminal in VS Code)
 - `cwd`: Working directory (`${workspaceFolder}` = project root)
 
-**Usage**: 
+**Usage**:
 - Open any `.py` file
 - Press F5 or select from debug dropdown
 - Executes file in integrated terminal

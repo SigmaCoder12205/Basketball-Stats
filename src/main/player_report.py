@@ -1,58 +1,55 @@
 # Rated 942/1000
-
+from pathlib import Path
 import sys
-import os
 from typing import Optional, Dict, Any
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
 from utils.accessing_data import AccessData
 from utils.write import write_to
 from utils.logging import Logging
-from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QTextEdit, QComboBox)
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QTextEdit, QComboBox
 from PyQt5.QtCore import Qt
 from datetime import datetime, timezone
 import uuid
 
-logger = Logging(service_name="player_report_service", user_id="N/A")
+logger = Logging(service_name="player_report_service", user_id="Admin")
 create_log = logger.create_log
 
-
 class Backend:
-    
     @staticmethod
     def calculate_season_average(player: str, stat: str) -> Dict[str, Any]:
 
         sum_games_stats = AccessData.get_season_stats(player=player, sum_total=True)
-        
+
         if sum_games_stats is None or stat not in sum_games_stats:
             return None
-        
+
         all_games_stats = AccessData.get_season_stats(player=player, sum_total=False)
         if not all_games_stats:
             return None
-            
+
         games_played = len(all_games_stats)
         mean_val = sum_games_stats[stat] / games_played
         values = [game.get(stat, 0) for game in all_games_stats.values()]
         values.sort()
-        
+
         if not values:
             return None
-        
+
         mid = len(values) // 2
         median_val = values[mid] if len(values) % 2 != 0 else (values[mid - 1] + values[mid]) / 2
         best_val = max(values)
         worst_val = min(values)
         range_val = best_val - worst_val
-        
+
         team_stats = AccessData.get_team_season_stats(sum_total=True, look_good=False)
         if team_stats is None:
             team_total = 0
         else:
             team_total = sum(player_stats.get(stat, 0) for player_stats in team_stats.values())
-        
+
         percent = (sum_games_stats[stat] / team_total * 100) if team_total > 0 else 0
-        
+
         return {
             'mean': mean_val,
             'median': median_val,
@@ -61,19 +58,19 @@ class Backend:
             'worst': worst_val,
             'percent': percent
         }
-    
+
     @staticmethod
     def get_grading_data(player: str) -> Dict[str, Any]:
         summed_team_stats = AccessData.get_team_season_stats(True, False)
         summed_player_season_stats = AccessData.get_season_stats(player=player, sum_total=True, look_good=False)
-        
+
         if summed_team_stats is None or summed_player_season_stats is None:
             return None
-        
+
         grades = {}
         for stat, player_value in summed_player_season_stats.items():
             team_total = sum(players_stats.get(stat, 0) for players_stats in summed_team_stats.values())
-            
+
             if team_total == 0:
                 pct = 0
             else:
@@ -81,7 +78,7 @@ class Backend:
                     pct = 100 - (player_value / team_total) * 100
                 else:
                     pct = (player_value / team_total) * 100
-            
+
             if pct >= 90: grade = "A+"
             elif pct >= 80: grade = "A"
             elif pct >= 70: grade = "B+"
@@ -91,25 +88,25 @@ class Backend:
             elif pct >= 30: grade = "D+"
             elif pct >= 20: grade = "D"
             else: grade = "F"
-            
+
             grades[stat] = {"grade": grade, "percent": round(pct, 1), "value": player_value}
-        
+
         return grades
-    
+
     @staticmethod
     def get_comparison_data(player: str) -> Dict[str, Any]:
         all_games_stats = AccessData.get_season_stats(player=player)
-        
+
         if not all_games_stats:
             return {}
-        
+
         stat_names = set()
         trends_report = {}
         game_names = list(all_games_stats.keys())
-        
+
         for stats in all_games_stats.values():
             stat_names.update(stats.keys())
-        
+
         for stat_name in stat_names:
             stat_trend = []
             for i in range(1, len(game_names)):
@@ -118,36 +115,36 @@ class Backend:
                 arrow = "increased" if current > prev else "decreased" if current < prev else "no change"
                 stat_trend.append(f"{game_names[i-1]} to {game_names[i]}: {stat_name} {arrow} ({prev} to {current})")
             trends_report[stat_name] = stat_trend
-        
+
         return trends_report
-    
+
     @staticmethod
     def get_highlights(player: str, stat: str) -> Dict[str, Any]:
         all_games = AccessData.get_season_stats(player=player, sum_total=False)
-        
+
         if not all_games:
             return None
-        
+
         nums = {}
         for game_name, game_stats in all_games.items():
             if stat in game_stats:
                 nums[game_name] = game_stats.get(stat, 0)
-        
+
         if not nums:
             return None
-        
+
         best_game = max(nums, key=nums.get)
         worst_game = min(nums, key=nums.get)
-        
+
         return {"best": best_game, "best_val": nums[best_game], "worst": worst_game, "worst_val": nums[worst_game]}
-    
+
     @staticmethod
     def calculate_game_rating(player: str, game_name: str) -> float:
         game_stats = AccessData.get_game_stats(game=game_name, player=player, look_good=False)
-        
+
         if game_stats is None:
             return 0
-        
+
         scores = (
             game_stats.get('Points', 0) * 1.7 +
             game_stats.get('Assists', 0) * 1.2 +
@@ -155,35 +152,35 @@ class Backend:
             game_stats.get('Fouls', 0) * -0.3 +
             game_stats.get('Turnovers', 0) * -1.3
         )
-        
+
         rating = max(0, min(100, (scores + 10) * 2.2))
         return round(rating, 1)
-    
+
     @staticmethod
     def get_season_ratings(player: str) -> Dict[str, Any]:
         all_game_stats = AccessData.get_season_stats(player=player, sum_total=False, look_good=False)
-        
+
         if not all_game_stats:
             return {"average": 0, "all_games": {}}
-        
+
         ratings = []
         game_rating = {}
-        
+
         for game_name in all_game_stats.keys():
             rating = Backend.calculate_game_rating(player, game_name)
             ratings.append(rating)
             game_rating[game_name] = rating
-        
+
         try:
             avg_rating = sum(ratings) / len(ratings)
         except ZeroDivisionError:
             return {"average": 0, "all_games": {}}
-        
+
         return {"average": round(avg_rating, 1), "all_games": game_rating}
 
 
 class Style:
-    
+
     @staticmethod
     def get_stylesheet() -> str:
         return """
@@ -280,12 +277,12 @@ class Style:
                 border: 2px solid #5a5a8e;
             }
         """
-    
+
     @staticmethod
     def format_season_average(data: Dict[str, Any], player: str, stat: str) -> str:
         if data is None:
             return "<p>No game data available</p>"
-        
+
         return f"""
             <div style='padding: 20px;'>
                 <h2 style='color: #6366f1; margin-bottom: 20px; border-bottom: 2px solid #6366f1; padding-bottom: 10px; white-space: nowrap; font-size: 20px;'>
@@ -319,7 +316,7 @@ class Style:
                 </table>
             </div>
         """
-    
+
     @staticmethod
     def format_grading(grades: Dict[str, Any], player: str) -> str:
         output = f"""
@@ -329,12 +326,12 @@ class Style:
             </h2>
             <div style='margin-top: 20px;'>
         """
-        
+
         for stat_name, stat_data in grades.items():
             grade = stat_data['grade']
             percent = stat_data['percent']
             value = stat_data['value']
-            
+
             if grade in ["A+", "A"]:
                 color = "#10b981"
             elif grade in ['B+', "B"]:
@@ -345,7 +342,7 @@ class Style:
                 color = "#f97316"
             else:
                 color = "#ef4444"
-            
+
             output += f"""
                         <div style='padding: 16px; margin-bottom: 12px; background: rgba(30, 30, 40, 0.4); border-left: 4px solid {color}; border-radius: 8px;'>
                         <div style='display: flex; justify-content: space-between; align-items: center;'>
@@ -359,12 +356,12 @@ class Style:
             """
         output += f"</div></div>"
         return output
-    
+
     @staticmethod
     def format_comparison(trends: Dict[str, Any], player: str, stat: str) -> str:
         if not trends or stat not in trends:
             return "<p style='color: #ef4444;'>No data available for this stat</p>"
-        
+
         stats_trends = trends[stat]
         output = f"""
             <div style='padding: 20px;'>
@@ -373,7 +370,7 @@ class Style:
             </h2>
             <div style='margin-top: 20px;'>
         """
-        
+
         for trend in stats_trends:
             if "increased" in trend:
                 color = "#10b981"
@@ -384,33 +381,33 @@ class Style:
             else:
                 color = "#9ca3af"
                 arrow = "→"
-            
+
             output += f"""
             <div style='padding: 12px; margin-bottom: 10px; background: rgba(30, 30, 40, 0.4); border-left: 3px solid {color}; border-radius: 8px;'>
                 <span style='color: {color}; font-size: 18px; margin-right: 10px;'>{arrow}</span>
                 <span style='color: #e5e7eb;'>{trend}</span>
             </div>
             """
-        
+
         output += "</div></div>"
         return output
-    
+
     @staticmethod
     def format_highlights(highlights: Dict[str, Any], player: str, stat: str) -> str:
         if not highlights:
             return "<p style='color: #ef4444;'>No data available</p>"
-        
+
         best_game = highlights['best']
         best_val = highlights['best_val']
         worst_game = highlights['worst']
         worst_val = highlights['worst_val']
-        
+
         return f"""
                     <div style='padding: 20px;'>
             <h2 style='color: #6366f1; margin-bottom: 20px; border-bottom: 2px solid #6366f1; padding-bottom: 10px; font-size: 22px;'>
                 {stat} Highlights - {player}
             </h2>
-            
+
             <div style='padding: 20px; margin-bottom: 16px; background: rgba(16, 185, 129, 0.15); border: 2px solid #10b981; border-radius: 12px;'>
                 <div style='display: flex; align-items: center; margin-bottom: 12px;'>
                     <span style='color: #10b981; font-size: 32px; margin-right: 12px;'>⭐</span>
@@ -421,7 +418,7 @@ class Style:
                     <div><strong>{stat}:</strong> <span style='color: #10b981; font-size: 24px; font-weight: 700;'>{best_val}</span></div>
                 </div>
             </div>
-            
+
             <div style='padding: 20px; background: rgba(239, 68, 68, 0.15); border: 2px solid #ef4444; border-radius: 12px;'>
                 <div style='display: flex; align-items: center; margin-bottom: 12px;'>
                     <span style='color: #ef4444; font-size: 32px; margin-right: 12px;'>📉</span>
@@ -432,14 +429,14 @@ class Style:
                     <div><strong>{stat}:</strong> <span style='color: #ef4444; font-size: 24px; font-weight: 700;'>{worst_val}</span></div>
                 </div>
             </div>
-            
+
             <div style='margin-top: 20px; padding: 16px; background: rgba(30, 30, 40, 0.4); border-radius: 8px; text-align: center;'>
                 <span style='color: #9ca3af; font-size: 14px;'>Difference: </span>
                 <span style='color: #8b5cf6; font-size: 18px; font-weight: 700;'>{best_val - worst_val}</span>
             </div>
         </div>
         """
-    
+
     @staticmethod
     def format_game_rating(rating: float, game_name: str, game_stats: Dict[str, Any]) -> str:
         if rating >= 80:
@@ -457,56 +454,56 @@ class Style:
         else:
             rating_color = "#ef4444"
             rating_text = "Poor"
-        
+
         points_contrib = game_stats.get('Points', 0) * 1.5
         assists_contrib = game_stats.get('Assists', 0) * 1.0
         rebounds_contrib = game_stats.get('Rebounds', 0) * 1.25
         fouls_contrib = game_stats.get('Fouls', 0) * -0.5
         turnovers_contrib = game_stats.get('Turnovers', 0) * -1.5
-        
+
         return f"""
                 <div style='padding: 20px;'>
             <h2 style='color: #6366f1; margin-bottom: 20px; border-bottom: 2px solid #6366f1; padding-bottom: 10px; font-size: 22px;'>
                 Game Rating - {game_name}
             </h2>
-            
+
             <div style='text-align: center; padding: 30px; background: rgba(30, 30, 40, 0.6); border-radius: 16px; margin-bottom: 20px;'>
                 <div style='color: #9ca3af; font-size: 16px; margin-bottom: 10px;'>Overall Rating</div>
                 <div style='color: {rating_color}; font-size: 64px; font-weight: 700; margin-bottom: 10px;'>{rating:.1f}</div>
                 <div style='color: {rating_color}; font-size: 20px; font-weight: 600;'>{rating_text}</div>
             </div>
-            
+
             <div style='margin-top: 20px;'>
                 <h3 style='color: #e5e7eb; font-size: 18px; margin-bottom: 12px;'>Stat Breakdown</h3>
-                
+
                 <div style='padding: 12px; margin-bottom: 8px; background: rgba(30, 30, 40, 0.4); border-radius: 8px;'>
                     <div style='display: flex; justify-content: space-between;'>
                         <span style='color: #9ca3af;'>Points ({game_stats.get('Points', 0)} × 1.5)</span>
                         <span style='color: {"#10b981" if points_contrib > 0 else "#9ca3af"}; font-weight: 600;'>+{points_contrib:.1f}</span>
                     </div>
                 </div>
-                
+
                 <div style='padding: 12px; margin-bottom: 8px; background: rgba(30, 30, 40, 0.4); border-radius: 8px;'>
                     <div style='display: flex; justify-content: space-between;'>
                         <span style='color: #9ca3af;'>Assists ({game_stats.get('Assists', 0)} × 1.0)</span>
                         <span style='color: {"#10b981" if assists_contrib > 0 else "#9ca3af"}; font-weight: 600;'>+{assists_contrib:.1f}</span>
                     </div>
                 </div>
-                
+
                 <div style='padding: 12px; margin-bottom: 8px; background: rgba(30, 30, 40, 0.4); border-radius: 8px;'>
                     <div style='display: flex; justify-content: space-between;'>
                         <span style='color: #9ca3af;'>Rebounds ({game_stats.get('Rebounds', 0)} × 1.25)</span>
                         <span style='color: {"#10b981" if rebounds_contrib > 0 else "#9ca3af"}; font-weight: 600;'>+{rebounds_contrib:.1f}</span>
                     </div>
                 </div>
-                
+
                 <div style='padding: 12px; margin-bottom: 8px; background: rgba(30, 30, 40, 0.4); border-radius: 8px;'>
                     <div style='display: flex; justify-content: space-between;'>
                         <span style='color: #9ca3af;'>Fouls ({game_stats.get('Fouls', 0)} × -0.5)</span>
                         <span style='color: {"#ef4444" if fouls_contrib < 0 else "#9ca3af"}; font-weight: 600;'>{fouls_contrib:.1f}</span>
                     </div>
                 </div>
-                
+
                 <div style='padding: 12px; margin-bottom: 8px; background: rgba(30, 30, 40, 0.4); border-radius: 8px;'>
                     <div style='display: flex; justify-content: space-between;'>
                         <span style='color: #9ca3af;'>Turnovers ({game_stats.get('Turnovers', 0)} × -1.5)</span>
@@ -516,12 +513,12 @@ class Style:
             </div>
         </div>
         """
-    
+
     @staticmethod
     def format_season_ratings(data: Dict[str, Any], player: str) -> str:
         avg = data['average']
         all_games = data['all_games']
-        
+
         if avg >= 80:
             avg_color = "#10b981"
         elif avg >= 60:
@@ -530,21 +527,21 @@ class Style:
             avg_color = "#eab308"
         else:
             avg_color = "#ef4444"
-        
+
         output = f"""
                 <div style='padding: 20px;'>
                 <h2 style='color: #6366f1; margin-bottom: 20px; border-bottom: 2px solid #6366f1; padding-bottom: 10px; font-size: 22px;'>
                     Season Game Ratings - {player}
                 </h2>
-                
+
                 <div style='text-align: center; padding: 30px; background: rgba(30, 30, 40, 0.6); border-radius: 16px; margin-bottom: 20px;'>
                     <div style='color: #9ca3af; font-size: 16px; margin-bottom: 10px;'>Season Average Rating</div>
                     <div style='color: {avg_color}; font-size: 64px; font-weight: 700;'>{avg:.1f}</div>
                 </div>
-                
+
                 <h3 style='color: #e5e7eb; font-size: 18px; margin-bottom: 12px;'>All Games</h3>
         """
-        
+
         for game_name, rating in all_games.items():
             if rating >= 80:
                 color = "#10b981"
@@ -554,7 +551,7 @@ class Style:
                 color = "#eab308"
             else:
                 color = "#ef4444"
-            
+
             output += f"""
             <div style='padding: 12px; margin-bottom: 8px; background: rgba(30, 30, 40, 0.4); border-left: 4px solid {color}; border-radius: 8px;'>
                 <div style='display: flex; justify-content: space-between;'>
@@ -563,20 +560,20 @@ class Style:
                 </div>
             </div>
             """
-        
+
         output += "</div>"
         return output
 
 
 class Utils:
-    
+
     @staticmethod
     def check_error(result: Any) -> tuple:
         if isinstance(result, dict) and result.get("log_level") == "ERROR":
             error_msg = result.get("error", {}).get("message", "Unknown error")
             return True, f"<p style='color: #ef4444;'>Error: {error_msg}</p>"
         return False, None
-    
+
     @staticmethod
     def log_action(level: str, message: str, where: str, user_id: str, source_ip: str, request_id: str, error: Dict = None) -> None:
         try:
@@ -595,11 +592,11 @@ class Utils:
 
 
 class PlayerReport(QWidget):
-    
+
     current_time = datetime.now()
     error_message = {}
-    user_id: str = "N/A"  
-    source_ip: str = "N/A"  
+    user_id: str = "N/A"
+    source_ip: str = "N/A"
     request_id: str = "N/A"
 
     def __init__(self, players_name: str = "", user_id: str = "anonymous", source_ip: Optional[str] = None):
@@ -637,7 +634,7 @@ class PlayerReport(QWidget):
                 source_ip=self.source_ip,
                 request_id=self.request_id
             )
-        
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             Utils.log_action(
@@ -740,7 +737,7 @@ class PlayerReport(QWidget):
             for attr in ["stat_selector", "stats_display", "back_button",
                         "stat_selector_compare", "trends_display", "back_button_compare",
                         "grading_display", "back_button_grading",
-                        "highlights_selector", "highlights_display", "back_button_highlights", 
+                        "highlights_selector", "highlights_display", "back_button_highlights",
                         "game_selector", "game_rating_display", "back_button_game_rating",
                         "season_rating_display", "back_button_season_rating"]:
                 if hasattr(self, attr):
@@ -748,7 +745,7 @@ class PlayerReport(QWidget):
 
             for btn in self.menu_buttons:
                 btn.show()
-            
+
             Utils.log_action(
                 level="INFO",
                 message="_back_to_main_menu ran successfully",
@@ -775,10 +772,10 @@ class PlayerReport(QWidget):
         try:
             if not isinstance(stat_name, str):
                 return {'error': f'stat_name must be a string'}
-        
+
             result = self._calculate_season_average(stat_name)
             self.stats_display.setHtml(result)
-        
+
             Utils.log_action(
                 level="INFO",
                 message="_update_season_stats ran successfully",
@@ -804,18 +801,18 @@ class PlayerReport(QWidget):
         try:
             if not isinstance(stat_name, str):
                 return {'error': f"stat_name must be a string"}
-            
+
             # Backend: Get data
             data = Backend.calculate_season_average(self.players_name, stat_name)
-            
+
             # Check for errors
             is_error, error_html = Utils.check_error(data)
             if is_error:
                 return error_html
-            
+
             # Style: Format HTML
             output = Style.format_season_average(data, self.players_name, stat_name)
-            
+
             Utils.log_action(
                 level="INFO",
                 message="_calculate_season_average ran successfully",
@@ -896,14 +893,14 @@ class PlayerReport(QWidget):
         try:
             if not isinstance(stat_name, str):
                 return {'error': f'stat_name must be a string'}
-            
+
             trend_report = Backend.get_comparison_data(self.players_name)
 
             is_error, error_html = Utils.check_error(trend_report)
             if is_error:
                 self.trends_display.setHtml(error_html)
                 return
-            
+
             output = Style.format_comparison(trend_report, self.players_name, stat_name)
             self.trends_display.setHtml(output)
 
@@ -999,9 +996,9 @@ class PlayerReport(QWidget):
                 self.back_button_grading.setObjectName("backButton")
                 self.back_button_grading.clicked.connect(self._back_to_main_menu)
                 self.vbox.addWidget(self.back_button_grading)
-            
+
             self._format_grading()
-        
+
             Utils.log_action(
                 level="INFO",
                 message="show_grading ran successfully",
@@ -1031,10 +1028,10 @@ class PlayerReport(QWidget):
             if is_error:
                 self.grading_display.setHtml(error_html)
                 return
-            
+
             output = Style.format_grading(grades, self.players_name)
             self.grading_display.setHtml(output)
-        
+
             Utils.log_action(
                 level="INFO",
                 message="_format_grading ran successfully",
@@ -1085,7 +1082,7 @@ class PlayerReport(QWidget):
                 self.vbox.addWidget(self.back_button_highlights)
 
             self._format_highlights("Points")
-        
+
             Utils.log_action(
                 level="INFO",
                 message="show_best_worst_highlights ran successfully",
@@ -1118,10 +1115,10 @@ class PlayerReport(QWidget):
             if is_error:
                 self.highlights_display.setHtml(error_html)
                 return
-            
+
             output = Style.format_highlights(highlights, self.players_name, stat_name)
             self.highlights_display.setHtml(output)
-        
+
             Utils.log_action(
                 level="INFO",
                 message="_format_highlights ran successfully",
@@ -1149,11 +1146,11 @@ class PlayerReport(QWidget):
             self._hide_menu_buttons()
 
             all_games = AccessData.get_season_stats(player=self.players_name, sum_total=False)
-            
+
             is_error, error_html = Utils.check_error(all_games)
             if is_error:
                 return
-            
+
             game_list = list(all_games.keys())
 
             if hasattr(self, "game_selector"):
@@ -1190,7 +1187,7 @@ class PlayerReport(QWidget):
                 source_ip=self.source_ip,
                 request_id=self.request_id
             )
-    
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             Utils.log_action(
@@ -1210,16 +1207,16 @@ class PlayerReport(QWidget):
 
             rating = Backend.calculate_game_rating(self.players_name, game_name)
             game_stats = AccessData.get_game_stats(game=game_name, player=self.players_name, look_good=False)
-            
+
             # Check for error
             is_error, error_html = Utils.check_error(game_stats)
             if is_error:
                 self.game_rating_display.setHtml(error_html)
                 return
-            
+
             output = Style.format_game_rating(rating, game_name, game_stats)
             self.game_rating_display.setHtml(output)
-        
+
             Utils.log_action(
                 level="INFO",
                 message="_format_game_rating ran successfully",
@@ -1252,7 +1249,7 @@ class PlayerReport(QWidget):
                 self.season_rating_display = QTextEdit()
                 self.season_rating_display.setReadOnly(True)
                 self.vbox.addWidget(self.season_rating_display)
-            
+
             if hasattr(self, "back_button_season_rating"):
                 self.back_button_season_rating.show()
             else:
@@ -1260,8 +1257,8 @@ class PlayerReport(QWidget):
                 self.back_button_season_rating.setObjectName("backButton")
                 self.back_button_season_rating.clicked.connect(self._back_to_main_menu)
                 self.vbox.addWidget(self.back_button_season_rating)
-                
-            self._format_season_game_rating()    
+
+            self._format_season_game_rating()
 
             Utils.log_action(
                 level="INFO",
@@ -1292,7 +1289,7 @@ class PlayerReport(QWidget):
             if is_error:
                 self.season_rating_display.setHtml(error_html)
                 return
-            
+
             output = Style.format_season_ratings(data, self.players_name)
             self.season_rating_display.setHtml(output)
 
@@ -1511,7 +1508,7 @@ if __name__ == "__main__":
 # Last Modified: 2025
 # Version: 2.3.7
 # Status: Production
-# 
+#
 # License: None hopefully
 # Copyright: © 2025 Drags Jrs. All rights reserved.
 #
@@ -1523,7 +1520,7 @@ if __name__ == "__main__":
 # ============================================================================
 # - PyQt5 Development Team for the excellent GUI framework
 # - Newport Raiders U16 Boys Julie team for the use case and test
-# - Shout out to again to the Newport Raiders U16 Boys Julie team for everything 
+# - Shout out to again to the Newport Raiders U16 Boys Julie team for everything
 # - Don't forget my parents for helping me and giving the motivation to keep going
-# - And sadly my brother, for nothing...   
+# - And sadly my brother, for nothing...
 # ============================================================================

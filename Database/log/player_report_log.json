@@ -1527,5 +1527,27 @@
     "user_id": "admin",
     "source_ip": "192.168.1.1",
     "request_id": "4bb6b9d2-9102-44d4-be62-238d578603d3"
+  },
+  {
+    "timestamp": "2025-12-12T05:51:21.070046+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "PlayerReport initialized successfully",
+    "where": "__init__",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "f88e244c-4d26-4083-8e27-af959b3a0e01"
+  },
+  {
+    "timestamp": "2025-12-12T05:51:21.078962+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "init_main_UI ran successfully",
+    "where": "init_main_UI",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "f88e244c-4d26-4083-8e27-af959b3a0e01"
   }
 ]
