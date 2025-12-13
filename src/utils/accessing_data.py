@@ -241,15 +241,13 @@ class AccessData:
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
 
-    def get_details(self, game: str, look_good: bool = False):
+    def get_details(self, game: str):
         try:
             self._ensure_initialized()
 
             if not isinstance(game, str):
                 raise TypeError("game must be a string")
 
-            if not isinstance(look_good, bool):
-                raise TypeError("look_good must be a bool")
             if not game or game not in self.data:
                 raise KeyError("Could not find the game")
 
@@ -257,36 +255,16 @@ class AccessData:
 
             details = game_stats.get("Details", {})
 
-            if look_good:
-                output = ["--------------------- Details ------------------------"]
-                for detail, stat in details.items():
-                    output.append(f"{detail}: {stat}")
-                output.append("--------------------------------------------------")
-
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_details ran successfully",
-                            where="get_details",
-                            user_id=self.user_id,
-                            source_ip=self.source_ip,
-                            request_id=self.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                return "\n".join(output)
-            else:
-
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_details ran successfully",
-                            where="get_details",
-                            user_id=self.user_id,
-                            source_ip=self.source_ip,
-                            request_id=self.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                return details.copy()
+            log_entry = create_log(
+                        level="INFO",
+                        message="get_details ran successfully",
+                        where="get_details",
+                        user_id=self.user_id,
+                        source_ip=self.source_ip,
+                        request_id=self.request_id
+                    )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return details.copy()
 
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
@@ -302,7 +280,7 @@ class AccessData:
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
 
-    def get_lineup(self, game: str, team: str, look_good: bool =False):
+    def get_lineup(self, game: str, team: str):
         try:
             self._ensure_initialized()
 
@@ -311,9 +289,6 @@ class AccessData:
 
             if not isinstance(team, str):
                 raise TypeError("team must be a string")
-
-            if not isinstance(look_good, bool):
-                raise TypeError("look_good must be a bool")
 
             game_stats = self.data.get(game, {})
 
@@ -324,52 +299,35 @@ class AccessData:
 
             if not team_players:
                 raise KeyError("Could not find the team")
+            log_entry = create_log(
+                        level="INFO",
+                        message="get_lineup ran successfully",
+                        where="get_lineup",
+                        user_id=self.user_id,
+                        source_ip=self.source_ip,
+                        request_id=self.request_id
+                    )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
-            if look_good:
-                output = ["----------------- Team players ----------------------"]
-                for num, player in enumerate(team_players, start=1):
-                    output.append(f"{num}. {player}")
-
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_lineup ran successfully",
-                            where="get_lineup",
-                            user_id=self.user_id,
-                            source_ip=self.source_ip,
-                            request_id=self.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                return "\n\n".join(output)
-            else:
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_lineup ran successfully",
-                            where="get_lineup",
-                            user_id=self.user_id,
-                            source_ip=self.source_ip,
-                            request_id=self.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                return team_players.copy()
+            return team_players.copy()
 
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
-                level="ERROR",
-                message="get_lineup failed",
-                where="get_lineup",
-                error=error,
-                user_id=self.user_id,
-                source_ip=self.source_ip,
-                request_id=self.request_id
-            )
+                  level="ERROR",
+                  message="get_lineup failed",
+                  where="get_lineup",
+                  error=error,
+                  user_id=self.user_id,
+                  source_ip=self.source_ip,
+                  request_id=self.request_id
+              )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
             return log_entry
 
     @classmethod
-    def get_quarter_stats(cls, game: str, quarter: str, look_good: bool = False):
+    def get_quarter_stats(cls, game: str, quarter: str):
         try:
             cls._ensure_initialized()
 
@@ -378,9 +336,6 @@ class AccessData:
 
             if not isinstance(quarter, str):
                 raise TypeError("quarter must be a string")
-
-            if not isinstance(look_good, bool):
-                raise TypeError("look_good must be a bool")
 
             game_stats = cls.data.get(game, {})
 
@@ -393,35 +348,17 @@ class AccessData:
             if not quarter_stats:
                 raise KeyError("Could not find the quarter")
 
-            if look_good:
-                output = [f"-------------------- {game}: {quarter} stats --------------------------"]
-                for players_name, players_stats in quarter_stats.items():
-                    stat_line = ", ".join(f"{stat_name}: {stat_value}" for stat_name, stat_value in players_stats.items())
-                    output.append(f"{players_name}: {stat_line}\n")
+            log_entry = create_log(
+                        level="INFO",
+                        message="get_quarter_stats ran successfully",
+                        where="get_quarter_stats",
+                        user_id=cls.user_id,
+                        source_ip=cls.source_ip,
+                        request_id=cls.request_id
+                    )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_quarter_stats ran successfully",
-                            where="get_quarter_stats",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                return "\n".join(output)
-            else:
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_quarter_stats ran successfully",
-                            where="get_quarter_stats",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                return quarter_stats.copy()
+            return quarter_stats.copy()
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -437,7 +374,7 @@ class AccessData:
             return log_entry
 
     @classmethod
-    def get_specific_stats(cls, game: str, quarter: str, player: str, look_good: bool = False): # Original name: find_a_players_quarter_stats and gets specific stats for a player
+    def get_specific_stats(cls, game: str, quarter: str, player: str):
         try:
             cls._ensure_initialized()
 
@@ -449,9 +386,6 @@ class AccessData:
 
             if not isinstance(player, str):
                 raise TypeError("player must be a string")
-
-            if not isinstance(look_good, bool):
-                raise TypeError("look_good must be a bool")
 
             game_stats = cls.data.get(game, {})
 
@@ -466,34 +400,18 @@ class AccessData:
             if not players_stats:
                 raise KeyError("Could not find the player")
 
-            if look_good:
-                output = f"-------------------- {player} stats in {game} in {quarter} ----------------------------\n"
-                for stat_name, stat_value in players_stats.items():
-                    output += f"    - {stat_name}: {stat_value}\n"
 
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_specific_stats ran successfully",
-                            where="get_specific_stats",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            log_entry = create_log(
+                        level="INFO",
+                        message="get_specific_stats ran successfully",
+                        where="get_specific_stats",
+                        user_id=cls.user_id,
+                        source_ip=cls.source_ip,
+                        request_id=cls.request_id
+                    )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
-                return output
-            else:
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_specific_stats ran successfully",
-                            where="get_specific_stats",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                return players_stats
+            return players_stats
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -548,48 +466,27 @@ class AccessData:
                 if player:
                     formatted = [f"------------------ Game: {game} ------------------\n"]
                     player_stats = totals.get(player, {})
-                    formatted.extend( f"{stat}: {value}" for stat, value in player_stats.items())
-
-                    log_entry = create_log(
-                                level="INFO",
-                                message="get_game_stats ran successfully",
-                                where="get_game_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
-                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                    return "\n".join(formatted)
+                    formatted.extend(f"{stat}: {value}" for stat, value in player_stats.items())
+                    output = "\n".join(formatted)
                 else:
                     lines = [f"------------------ Game: {game} Stats ------------------------\n"]
                     for player_name, stats in totals.items():
                         stat_line = ", ".join(f"{key}: {value}" for key, value in stats.items())
                         lines.append(f"{player_name}: {stat_line}")
-
-                    log_entry = create_log(
-                                level="INFO",
-                                message="get_game_stats ran successfully",
-                                where="get_game_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
-                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                    return "\n".join(lines)
+                    output = "\n".join(lines)
             else:
-                log_entry = create_log(
-                            level="INFO",
-                            message="get_game_stats ran successfully",
-                            where="get_game_stats",
-                            user_id=cls.user_id,
-                            source_ip=cls.source_ip,
-                            request_id=cls.request_id
-                        )
-                write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                output = totals if not player else totals.get(player, {})
 
-                return totals if not player else totals.get(player, {})
+            log_entry = create_log(
+                level="INFO",
+                message="get_game_stats ran successfully",
+                where="get_game_stats",
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return output
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -611,16 +508,14 @@ class AccessData:
 
             if not isinstance(player, str):
                 raise TypeError("player must be a string")
-
             if not isinstance(sum_total, bool):
                 raise TypeError("sum_total must be a bool")
-
             if not isinstance(look_good, bool):
                 raise TypeError("look_good must be a bool")
 
-            total = {}
-
+            # Calculate stats
             if sum_total:
+                total = {}
                 for game_name, game_stats in cls.data.items():
                     for quarter, quarter_stats in game_stats["Quarters"].items():
                         if player in quarter_stats:
@@ -631,43 +526,16 @@ class AccessData:
                     output = f"Season stats for {player}\n"
                     for stat, value in total.items():
                         output += f"    - {stat}: {value}\n"
-
-                    log_entry = create_log(
-                                level="INFO",
-                                message="get_season_stats ran successfully",
-                                where="get_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
-                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                    return output
                 else:
-                    log_entry = create_log(
-                                level="INFO",
-                                message="get_season_stats ran successfully",
-                                where="get_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
-                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                    return total
+                    output = total
             else:
-
                 game_totals = {}
-
                 for game_name, game_stats in cls.data.items():
-
                     players_total = {}
-
                     for quarter_stats in game_stats["Quarters"].values():
                         if player in quarter_stats:
-                            for players_stat_name, players_stat_value in quarter_stats[player].items():
-                                players_total[players_stat_name] = players_total.get(players_stat_name, 0) + players_stat_value
-
+                            for stat_name, stat_value in quarter_stats[player].items():
+                                players_total[stat_name] = players_total.get(stat_name, 0) + stat_value
                     if players_total:
                         game_totals[game_name] = players_total
 
@@ -679,30 +547,20 @@ class AccessData:
                             output += f"    - {stat_name}: {stat_value}\n"
                             if stat_name == "Turnovers":
                                 output += "\n"
-
-                    log_entry = create_log(
-                                level="INFO",
-                                message="get_season_stats ran successfully",
-                                where="get_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
-                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
-
-                    return output
                 else:
-                    log_entry = create_log(
-                                level="INFO",
-                                message="get_season_stats ran successfully",
-                                where="get_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
-                    write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+                    output = game_totals
 
-                    return game_totals
+            log_entry = create_log(
+                level="INFO",
+                message="get_season_stats ran successfully",
+                where="get_season_stats",
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return output
+
         except Exception as e:
             error = {"type": type(e).__name__, 'message': str(e)}
             log_entry = create_log(
@@ -716,6 +574,7 @@ class AccessData:
             )
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
+
     @classmethod
     def get_team_season_stats(cls, sum_total: bool = False, look_good: bool = False):
         try:
@@ -747,25 +606,25 @@ class AccessData:
                             output += f"                            - {team_players_stat_name}: {team_players_stat_value}\n"
 
                     log_entry = create_log(
-                                level="INFO",
-                                message="get_team_season_stats ran successfully",
-                                where="get_team_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
+                        level="INFO",
+                        message="get_team_season_stats ran successfully",
+                        where="get_team_season_stats",
+                        user_id=cls.user_id,
+                        source_ip=cls.source_ip,
+                        request_id=cls.request_id
+                    )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
                     return output
                 else:
                     log_entry = create_log(
-                                level="INFO",
-                                message="get_team_season_stats ran successfully",
-                                where="get_team_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
+                        level="INFO",
+                        message="get_team_season_stats ran successfully",
+                        where="get_team_season_stats",
+                        user_id=cls.user_id,
+                        source_ip=cls.source_ip,
+                        request_id=cls.request_id
+                    )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
                     return team_totals
@@ -796,25 +655,25 @@ class AccessData:
                                 output += f"\n{stat_name}: {stat_value}                       "
 
                     log_entry = create_log(
-                                level="INFO",
-                                message="get_team_season_stats ran successfully",
-                                where="get_team_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
+                        level="INFO",
+                        message="get_team_season_stats ran successfully",
+                        where="get_team_season_stats",
+                        user_id=cls.user_id,
+                        source_ip=cls.source_ip,
+                        request_id=cls.request_id
+                    )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
                     return output
                 else:
                     log_entry = create_log(
-                                level="INFO",
-                                message="get_team_season_stats ran successfully",
-                                where="get_team_season_stats",
-                                user_id=cls.user_id,
-                                source_ip=cls.source_ip,
-                                request_id=cls.request_id
-                            )
+                        level="INFO",
+                        message="get_team_season_stats ran successfully",
+                        where="get_team_season_stats",
+                        user_id=cls.user_id,
+                        source_ip=cls.source_ip,
+                        request_id=cls.request_id
+                    )
                     write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
                     return game_team_totals
@@ -1309,11 +1168,258 @@ class AccessData:
             return log_entry
 
 class Formatter:
-    pass
+
+    def __init__(self, user_id: str = "anonymous", source_ip: Optional[str] = None):
+        self.user_id = user_id
+        self.source_ip = source_ip
+        self.request_id = str(uuid.uuid4())
+        self.current_time = datetime.now(timezone.utc)
+
+    def format_get_details(self, game: str):
+      try:
+        details = AccessData.get_details(game=game)
+
+        if isinstance(game, str):
+            raise TypeError("game must be a string")
+
+        output = ["--------------------- Details ------------------------"]
+        for detail, stat in details.items():
+          output.append(f"{detail}: {stat}")
+          output.append("--------------------------------------------------")
+          return "\n".join(output)
+
+          log_entry = create_log(
+                level="INFO",
+                message="formatget_details ran successfully",
+                where="format_get_details",
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+        write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
+      except Exception as e:
+        error = {"type": type(e).__name__, 'message': str(e)}
+        log_entry = create_log(
+            level="ERROR",
+            message="format_get_details failed",
+            where="format_get_details",
+            error=error,
+            user_id=self.user_id,
+            source_ip=self.source_ip,
+            request_id=self.request_id
+        )
+        write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+        return log_entry
+    def format_get_lineup(self, game: str, team: str):
+        try:
+          team_players = AccessData.get_lineup(game=game, team=team)
+
+          if isinstance(game, str):
+              raise TypeError("game must be a string")
+          if isinstance(team, str):
+              raise TypeError("team must be a string")
+
+          output = ["----------------- Team players ----------------------"]
+          for num, player in enumerate(team_players, start=1):
+              output.append(f"{num}. {player}")
+
+          log_entry = create_log(
+                          level="INFO",
+                          message="format_get_lineup ran successfully",
+                          where="format_get_lineup",
+                          user_id=self.user_id,
+                          source_ip=self.source_ip,
+                          request_id=self.request_id
+                      )
+          write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+          return "\n\n".join(output)
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                  level="ERROR",
+                  message="format_get_lineup failed",
+                  where="format_get_lineup",
+                  error=error,
+                  user_id=self.user_id,
+                  source_ip=self.source_ip,
+                  request_id=self.request_id
+              )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
+    def format_get_quarter_stats(self, game: str, quarter: str):
+        try:
+          quarter_stats = AccessData.get_quarter_stats(game=game, quarter=quarter)
+
+          if isinstance(game, str):
+              raise TypeError("game must be a string")
+          if isinstance(quarter, str):
+              raise TypeError("quarter must be a string")
+
+          output = [f"------------------ {quarter} stats for {game} ------------------"]
+          for player, stats in quarter_stats.items():
+              output.append(f"\n{player} stats:")
+              for stat_name, stat_value in stats.items():
+                  output.append(f"   - {stat_name}: {stat_value}")
+
+          log_entry = create_log(
+                          level="INFO",
+                          message="format_get_quarter_stats ran successfully",
+                          where="format_get_quarter_stats",
+                          user_id=self.user_id,
+                          source_ip=self.source_ip,
+                          request_id=self.request_id
+                      )
+          write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+          return "\n".join(output)
+        except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                  level="ERROR",
+                  message="format_get_quarter_stats failed",
+                  where="format_get_quarter_stats",
+                  error=error,
+                  user_id=self.user_id,
+                  source_ip=self.source_ip,
+                  request_id=self.request_id
+              )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
+    def format_get_specfic_stats(self, game: str, quarter: str, player: str):
+      try:
+        specific_stats = AccessData.get_specific_stats(game=game, quarter=quarter, player=player)
+
+        if isinstance(game, str):
+            raise TypeError("game must be a string")
+        if isinstance(quarter, str):
+            raise TypeError("quarter must be a string")
+        if isinstance(player, str):
+            raise TypeError("player must be a string")
+
+        output = [f"------------------ {player} stats for {quarter} of {game} ------------------"]
+        for stat_name, stat_value in specific_stats.items():
+            output.append(f"   - {stat_name}: {stat_value}")
+
+        log_entry = create_log(
+                        level="INFO",
+                        message="format_get_specific_stats ran successfully",
+                        where="format_get_specific_stats",
+                        user_id=self.user_id,
+                        source_ip=self.source_ip,
+                        request_id=self.request_id
+                    )
+        write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+        return "\n".join(output)
+      except Exception as e:
+          error = {"type": type(e).__name__, 'message': str(e)}
+          log_entry = create_log(
+                level="ERROR",
+                message="format_get_specific_stats failed",
+                where="format_get_specific_stats",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+          write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+          return log_entry
+
+    def format_get_game_stats(self, game: str, player: str):
+      try:
+          if isinstance(game, str):
+              raise TypeError("game must be a string")
+          if isinstance(player, str):
+              raise TypeError("player must be a string")
+
+          game_stats = AccessData.get_game_stats(game=game, player=player)
+
+          if player:
+            formatted = [f"------------------ Game: {game} ------------------\n"]
+            player_stats = game_stats.get(player, {})
+            formatted.extend(f"{stat}: {value}" for stat, value in player_stats.items())
+            output = "\n".join(formatted)
+          else:
+            lines = [f"------------------ Game: {game} Stats ------------------------\n"]
+            for player_name, stats in totals.items():
+                stat_line = ", ".join(f"{key}: {value}" for key, value in stats.items())
+                lines.append(f"{player_name}: {stat_line}")
+            output = "\n".join(lines)
+
+          log_entry = create_log(
+                level="INFO",
+                message="format_get_game_stats ran successfully",
+                where="format_get_game_stats",
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+          write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+          return output
+      except Exception as e:
+            error = {"type": type(e).__name__, 'message': str(e)}
+            log_entry = create_log(
+                level="ERROR",
+                message="format_get_game_stats failed",
+                where="format_get_game_stats",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+            write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+            return log_entry
+
+    def format_get_season_stats(self, player: str, sum_total: bool = False):
+      try:
+          if isinstance(player, str):
+              raise TypeError("player must be a string")
+          if isinstance(sum_total, bool):
+              raise TypeError("sum_total must be a bool")
+
+          season_stats = AccessData.get_season_stats(player=player, sum_total=sum_total)
+
+          if sum_total:
+            output = f"Season stats for {player}\n"
+            for stat, value in season_stats.items():
+              output += f"    - {stat}: {value}\n"
+          else:
+            output = f"------------------------- Game stats for {player} -------------------------------\n"
+            for game_name, game_stats in season_stats.items():
+                output += f"----------- {game_name} stats: ------------\n"
+                for stat_name, stat_value in game_stats.items():
+                    output += f"    - {stat_name}: {stat_value}\n"
+                    if stat_name == "Turnovers":
+                        output += "\n"
+          log_entry = create_log(
+                level="INFO",
+                message="format_get_season_stats ran successfully",
+                where="format_get_season_stats",
+                user_id=cls.user_id,
+                source_ip=cls.source_ip,
+                request_id=cls.request_id
+            )
+          write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+          return output
+
+      except Exception as e:
+        error = {"type": type(e).__name__, 'message': str(e)}
+        log_entry = create_log(
+            level="ERROR",
+            message="get_season_stats failed",
+            where="get_season_stats",
+            error=error,
+            user_id=self.user_id,
+            source_ip=self.source_ip,
+            request_id=self.request_id
+        )
+        write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+        return log_entry
+
+    def format_get_team_season_stats(self, sum_total: bool = False):
+        pass
 
 if __name__ == '__main__':
     app = AccessData()
-
 
 # ============================================================================
 # END OF FILE: accessing_data.py
@@ -1327,7 +1433,7 @@ if __name__ == '__main__':
 # ============================================================================
 # FILE STATISTICS
 # ============================================================================
-# TOTAL CLASSES: 1 (AccessData)
+# TOTAL CLASSES: 2   (AccessData, Formatter)
 # TOTAL METHODS: 18
 # TOTAL FUNCTIONS (NOT IN CLASS): 2
 # TOTAL FUNCTIONS AND METHODS: 20
@@ -1415,8 +1521,6 @@ if __name__ == '__main__':
 #       - Circular dependency risk: write module must exist and be importable
 #
 # ============================================================================
-
-# ============================================================================
 # DESIGN PATTERNS USED
 # ============================================================================
 #
@@ -1447,8 +1551,6 @@ if __name__ == '__main__':
 #       - Verbose but comprehensive error tracking
 #
 # ============================================================================
-
-# ============================================================================
 # FUTURE ENHANCEMENTS
 # ============================================================================
 #
@@ -1476,8 +1578,6 @@ if __name__ == '__main__':
 #       - Audit logs: Separate write operations to audit table
 #       - API layer: REST endpoints for remote data access
 #
-# ============================================================================
-
 # ============================================================================
 # TESTING RECOMMENDATIONS
 # ============================================================================
@@ -1516,8 +1616,6 @@ if __name__ == '__main__':
 #       - Stress test with 10,000+ queries
 #       - Database connection pooling requirements
 # ============================================================================
-
-# ============================================================================
 # MAINTENANCE NOTES
 # ============================================================================
 #   CURRENT DEBT
@@ -1552,8 +1650,6 @@ if __name__ == '__main__':
 #       - Document required JSON schema with example
 #       - Add usage examples for common queries
 #       - Create migration guide for future database move
-# ============================================================================
-3
 # ============================================================================
 # AUTHOR & LICENSE INFORMATION
 # ============================================================================
