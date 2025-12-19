@@ -9,6 +9,9 @@ __pycache__/
 # Database / local data
 Database/Data.json
 
+# Learning
+book/
+
 # Distribution / packaging
 build/
 dist/
@@ -17,3 +20,9 @@ dist/
 # OS files
 .DS_Store
 Thumbs.db
+
+echo "# Virtual Environment" >> .gitignore
+echo "Lib/" >> .gitignore
+echo "Scripts/" >> .gitignore
+echo "pyvenv.cfg" >> .gitignore
+echo "*.pyc" >> .gitignore

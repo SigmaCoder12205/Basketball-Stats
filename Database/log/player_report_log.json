@@ -1,0 +1,24 @@
+[
+  {
+    "timestamp": "2025-12-16T04:48:03.045488+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "PlayerReport initialized successfully",
+    "where": "__init__",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "67bcad1b-383c-4b85-99a7-12ea0a0e2765"
+  },
+  {
+    "timestamp": "2025-12-16T04:48:03.048390+00:00",
+    "log_level": "INFO",
+    "service_name": "access_data_service",
+    "host": "DESKTOP-L37T2JG",
+    "message": "init_main_UI ran successfully",
+    "where": "init_main_UI",
+    "user_id": "admin",
+    "source_ip": "192.168.1.1",
+    "request_id": "67bcad1b-383c-4b85-99a7-12ea0a0e2765"
+  }
+]

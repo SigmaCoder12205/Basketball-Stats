@@ -113,7 +113,7 @@
       "sideBar.background": "#191521"
     }
   },
-  "editor.minimap.enabled": false,
+  "editor.minimap.enabled": true,
   "editor.stickyScroll.enabled": false,
   "editor.colorDecorators": false,
   "editor.codeLens": false,
@@ -189,7 +189,7 @@
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.scrollback": 10000,
-  "terminal.integrated.tabs.enabled": false,
+  "terminal.integrated.tabs.enabled": true,
   "update.mode": "none",
   "extensions.ignoreRecommendations": true,
   "telemetry.telemetryLevel": "off",

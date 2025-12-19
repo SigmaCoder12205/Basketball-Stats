@@ -4,8 +4,8 @@
 
 Comprehensive basketball game statistics tracking and analysis system with GUI interface. Tracks individual player performance, game details, and provides advanced analytics for youth basketball teams.
 
-**Version:** 1.0  
-**Python Version:** 3.13  
+**Version:** 1.0
+**Python Version:** 3.13
 **Primary Framework:** PyQt5
 
 ---
@@ -305,7 +305,7 @@ Each module has corresponding documentation in `doc/` folders:
 
 ## Contact
 
-**Project Lead:** Drags Jrs  
+**Project Lead:** Drags Jrs
 **System Path:** `C:/Users/Drags Jrs/Drags`
 
 ---
@@ -314,7 +314,7 @@ Each module has corresponding documentation in `doc/` folders:
 
 ```bash
 # 1. Clone and setup
-git clone <repo-url>
+git clone [<repo-url[>[](https://github.com/SigmaCoder12205/Basketball-Stats.git)](https://github.com/SigmaCoder12205/Basketball-Stats.git)](https://github.com/SigmaCoder12205/Basketball-Stats.git)
 cd Drags
 git submodule update --init
 
@@ -342,5 +342,5 @@ Full documentation available in `doc/` folders:
 
 ---
 
-**Last Updated:** December 9, 2025  
+**Last Updated:** December 9, 2025
 **Documentation Version:** 1.0

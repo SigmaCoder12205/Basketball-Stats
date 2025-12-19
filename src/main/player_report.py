@@ -16,6 +16,7 @@ logger = Logging(service_name="player_report_service", user_id="Admin")
 create_log = logger.create_log
 
 class Backend:
+
     @staticmethod
     def calculate_season_average(player: str, stat: str) -> Dict[str, Any]:
 

@@ -16,6 +16,7 @@ from typing import Optional, Dict, Any
 from datetime import datetime, timezone
 import uuid
 from functools import lru_cache
+import pprint
 
 BASE = Path.home() / "Drags"
 DB_ERRORS = Path.home() / "Database" / "errors"
@@ -29,7 +30,7 @@ logger = Logging(service_name="access_data_service", user_id="N/A")
 create_log = logger.create_log
 
 class AccessData:
-    data: Dict[str, Any] = {}
+    data: Dict[str, Any] = None
     file_path: str = ""
     _initialized: bool = False
     current_time = datetime.now()
@@ -44,6 +45,8 @@ class AccessData:
         self.request_id = str(uuid.uuid4())
         self.current_time = datetime.now(timezone.utc)
         self.error_message = {}
+        if AccessData.data is None:
+            AccessData.data = {}
 
         try:
             self.initialize()
@@ -156,7 +159,8 @@ class AccessData:
         if not isinstance(filename, str):
             raise TypeError('filename must be a str')
 
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # Navigate from src/utils/accessing_data.py up to project root
+        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         data_file = os.path.abspath(os.path.join(base_dir, "Database", filename))
         self.file_path = data_file
 
@@ -913,6 +917,94 @@ class AccessData:
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
 
+    @lru_cache(maxsize=256)
+    def get_quick_team_stats(self, game: str, what_to_look_for: str = "Points"):
+        try:
+          if not isinstance(game, str):
+              return {'error': f"game must be a string not {type(game)}"}
+
+          if not isinstance(what_to_look_for, str):
+              return {'error': f"what_to_look_fro must be a string not {type(what_to_look_for)}"}
+
+          if game not in self.data:
+              return {'error': f"game not found: {game}"}
+
+          if what_to_look_for not in ["Points", "Fouls", "Assists", "Rebounds", "turnovers"]:
+              return {"error": f"invaild what_to_look_for: {what_to_look_for}"}
+
+          # all_stats
+          stats = {}
+          game_data = self.data[game]
+
+          for quarter_name, quarter_data in game_data.get("Quarters", {}).items():
+              for player_name, player_stats in quarter_data.items():
+                  if player_name not in stats:
+                      stats[player_name] = {}
+                  for stat_name, stat_value in player_stats.items():
+                      if stat_name not in stats[player_name]:
+                          stats[player_name][stat_name] = 0
+                      stats[player_name][stat_name] += stat_value
+          # Team Best performer
+          best_performer = self.get_highest_stats_game(game=game, what_to_look_for=what_to_look_for)
+
+          # Team worst performer
+
+          value_stats = {} # {players_name: {what_to_look_for: stat_value}, players_name: {what_to_look_for: stat_value}}
+          for player_name, player_data in stats.items():
+            if player_name not in value_stats.items():
+                value_stats[player_name] = {}
+                for stat_name, stat_value in player_data.items():
+                    if stat_name == what_to_look_for:
+                        if stat_name not in value_stats[player_name]:
+                            value_stats[player_name][stat_name] = stat_value
+
+          worst_performer = min(value_stats.items(), key=lambda item: item[1][what_to_look_for])
+
+          # list of team contruibtos
+          contribtors = {} # {players_name: {"percentage_of_team": int, "value", int, "total out of team": int out of int}}
+          added_up_stats = 0
+
+          for players_name, player_stats in value_stats.items():
+              for stat_name, stat_value in player_stats.items():
+                  added_up_stats += stat_value
+
+          for players_name, player_stats in value_stats.items():
+              stat_value = player_stats.get(what_to_look_for, 0)
+              percentage_out_of_team = round((stat_value / added_up_stats) * 100 if added_up_stats > 0 else 0, 2)
+              contribtors[players_name] = {
+                  "percentage_of_team": percentage_out_of_team,
+                  "value": stat_value,
+                  "team_total": added_up_stats
+              }
+
+          sorted_contributors = sorted(contribtors.items(), key=lambda item: item[1]["value"], reverse=True)
+
+          log_entry = create_log(
+              level="INFO",
+              message="get_quick_team_stats ran successfully",
+              where="get_quick_team_stats",
+              user_id=self.user_id,
+              source_ip=self.source_ip,
+              request_id=self.request_id
+          )
+          write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+
+          #pprint.pprint({"all_stats": stats, "best_performer": best_performer, "worst_performer": worst_performer, "test": sorted_contributors})
+          return {"all_stats": stats, "best_performer": best_performer, "worst_performer": worst_performer, "test": sorted_contributors}
+
+        except Exception as e:
+          error = {"type": type(e).__name__, 'message': str(e)}
+          log_entry = create_log(
+                level="ERROR",
+                message="check_player failed",
+                where="check_player",
+                error=error,
+                user_id=self.user_id,
+                source_ip=self.source_ip,
+                request_id=self.request_id
+            )
+          write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+          return log_entry
 
 class Formatter:
 
@@ -1425,10 +1517,14 @@ class Formatter:
             write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
             return log_entry
 
+
 if __name__ == '__main__':
     app = AccessData()
-    test  = "test"
-    print(type(test))
+    print(app.get_quick_team_stats(game="Game_2", what_to_look_for="Fouls"))
+
+
+
+
 
 # ============================================================================
 # END OF FILE: accessing_data.py
