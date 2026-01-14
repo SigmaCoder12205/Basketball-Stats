@@ -990,7 +990,7 @@ class AccessData:
           write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
 
           #pprint.pprint({"all_stats": stats, "best_performer": best_performer, "worst_performer": worst_performer, "test": sorted_contributors})
-          return {"all_stats": stats, "best_performer": best_performer, "worst_performer": worst_performer, "test": sorted_contributors}
+          return {"all_stats": stats, "best_performer": best_performer, "worst_performer": worst_performer, "sorted_contributors": sorted_contributors}
 
         except Exception as e:
           error = {"type": type(e).__name__, 'message': str(e)}
@@ -1005,6 +1005,11 @@ class AccessData:
             )
           write.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
           return log_entry
+
+    @lru_cache(maxsize=256)
+    def get_quick_team_season_stats(self, player: str, what_to_look_for: str):
+      pass
+      
 
 class Formatter:
 
@@ -1520,7 +1525,7 @@ class Formatter:
 
 if __name__ == '__main__':
     app = AccessData()
-    print(app.get_quick_team_stats(game="Game_2", what_to_look_for="Fouls"))
+    print(app.get_quick_team_season_stats(player="Myles Dragone", what_to_look_for="Fouls"))
 
 
 

@@ -55,7 +55,7 @@ SEASON RATING:
 
 """
 
-
+from pprint import pprint
 import sys
 import urllib
 import os
@@ -123,7 +123,7 @@ class Backend:
                 source_ip=self.source_ip,
                 request_id=self.request_id
             )
-        write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
+        Logging.write_to("C:/Users/Drags Jrs/Drags/Database/log/accessing_data_log.json", log_entry)
         return log_entry
 
 class Utils:
@@ -139,4 +139,4 @@ class TeamReport:
 
 if __name__ == '__main__':
   backend = Backend()
-  test = print(backend.get_quick_stats(game="Game_1", what_to_look_for="Rebounds"))
+  test = pprint(backend.get_quick_stats(game="Game_1", what_to_look_for="Rebounds"))

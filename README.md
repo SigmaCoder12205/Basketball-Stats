@@ -1,4 +1,9 @@
-# Basketball Statistics System
+# **Here's a quick note**
+
+I'm putting this project on hold for now. It’s taken longer than I expected, and I don’t want to keep sitting on it indefinitely. I’ll come back to it later, but for now, I want to move on and focus on learning more coding. I liked working on it, but it’s starting to get in the way of making progress, and learning needs to come first.
+
+
+## Basketball Statistics System
 
 ## Overview
 
@@ -261,6 +266,7 @@ Each module has corresponding documentation in `doc/` folders:
 
 ### Testing
 - Incomplete test coverage
+
 - No automated CI/CD
 - Manual test execution
 
